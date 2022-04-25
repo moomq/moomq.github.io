@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GCC常用编译选项 | Hexo</title><meta name="author" content="moomq"><meta name="copyright" content="moomq"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="GCC常用编译选项​         [TOC] ​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让开发者在使用GCC时更加游刃有余。 示例： 1234CFLAGS :&#x3D; -Wall -Wundef -Wshadow -Wconversion -Werror&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCC常用编译选项">
+<meta property="og:url" content="http://moomq.github.io/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GCC常用编译选项​         [TOC] ​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让开发者在使用GCC时更加游刃有余。 示例： 1234CFLAGS :&#x3D; -Wall -Wundef -Wshadow -Wconversion -Werror&#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2022-04-24T05:51:29.000Z">
+<meta property="article:modified_time" content="2022-04-25T03:20:48.444Z">
+<meta property="article:author" content="moomq">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://moomq.github.io/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'GCC常用编译选项',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-25 11:20:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GCC常用编译选项</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-24T05:51:29.000Z" title="Created 2022-04-24 13:51:29">2022-04-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-04-25T03:20:48.444Z" title="Updated 2022-04-25 11:20:48">2022-04-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="GCC常用编译选项"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="GCC常用编译选项"><a href="#GCC常用编译选项" class="headerlink" title="GCC常用编译选项"></a>GCC常用编译选项</h1><p>​        </p>
+<p>[TOC]</p>
+<p>​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让开发者在使用GCC时更加游刃有余。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CFLAGS := -Wall -Wundef -Wshadow -Wconversion -Werror=return-type \</span><br><span class="line">    -Werror=implicit-function-declaration -Werror=unused-variable \</span><br><span class="line">    -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \</span><br><span class="line">    -Wno-trigraphs -Os</span><br></pre></td></tr></table></figure>
+
+<p>对于调试版本，将<code>-Os</code>替换为<code>-g -Og</code>。</p>
+<h2 id="一-警告选项"><a href="#一-警告选项" class="headerlink" title="一 警告选项"></a>一 警告选项</h2><p>​        GCC编译器支持对代码进行诊断，<strong>针对代码本身不是错误但是疑似错误或者可能存在风险的地方发出警告</strong>，而警告编译选项就是用于<strong>控制需要告警的警告类型</strong>的。一般启用特定类型警告的格式为<code>-Wxxx</code>，而排除特定类型的警告的格式则一般为<code>-Wno-xxx</code>。</p>
+<h3 id="1-Wall"><a href="#1-Wall" class="headerlink" title="1 -Wall"></a>1 -Wall</h3><p>​        这是一个非常常用的编译选项，用于启用一批<strong>比较常见且易于修改的警告</strong>，这些选项都是对代码进行基本的检查，比如下面这些：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-Waddress</td>
+<td>检查是否存在可疑的内存地址使用</td>
+</tr>
+<tr>
+<td>-Wformat</td>
+<td>检查标准库函数的使用格式是否正确，比如printf的格式化字符串中的格式符和对应的参数是否匹配</td>
+</tr>
+<tr>
+<td>-Wunused-function</td>
+<td>对已声明但是未定义的静态函数和未被使用的非内联静态函数发出警告</td>
+</tr>
+<tr>
+<td>-Wswitch</td>
+<td>当用switch用于枚举类型时，判断分支是否包含所有枚举值，否则发出警告</td>
+</tr>
+<tr>
+<td>-Wunused-variable</td>
+<td>对声明但未被使用的变量发出警告</td>
+</tr>
+<tr>
+<td>-Wunused-but-set-variable</td>
+<td>对声明且被赋值但未被使用的变量发出警告</td>
+</tr>
+<tr>
+<td>-Warray-bounds=1</td>
+<td>数组越界检查，需启用选项-ftree-vrp</td>
+</tr>
+</tbody></table>
+<p>​        当需要排除某些类型的警告时，记得使用<code>-Wno-xxx</code>, 比如使用<code>-Wall -Wno-unused-variable</code>可以从<code>-Wall</code>中排除<code>-Wunused-variable</code>。</p>
+<p>​        完整的列表参见链接**<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">Warning-Options</a>**。</p>
+<h3 id="2-Wextra"><a href="#2-Wextra" class="headerlink" title="2 -Wextra"></a>2 -Wextra</h3><p>​        单单只有<code>-Wall</code>可能还不够严格，GCC还有<code>-Wextra</code>作为补充，包括另外一些没有被<code>-Wall</code>包含的警告类型，比如笔者比较喜欢的几个：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-Wcast-function-type</td>
+<td>当函数被强转为不兼容的函数指针时发出警告</td>
+</tr>
+<tr>
+<td>-Wempty-body</td>
+<td>当存在空的if、else或者do while语句时发出警告</td>
+</tr>
+<tr>
+<td>-Wunused-parameter</td>
+<td>当函数有未被使用的参数时发出警告，需配合-Wall</td>
+</tr>
+<tr>
+<td>-Wunused-but-set-parameter</td>
+<td>当存在被设置但是未被使用的参数发出警告，需配合-Wall</td>
+</tr>
+<tr>
+<td>-Wsign-compare</td>
+<td>当比较有符号和无符号值时发出警告</td>
+</tr>
+</tbody></table>
+<p>对于不同语言，<code>-Wall</code>和<code>-Wextra</code>启用的选项可能略有差异</p>
+<h3 id="3-Werror"><a href="#3-Werror" class="headerlink" title="3 -Werror"></a>3 -Werror</h3><p><code>-Werror</code>用于将所有警告视为错误。</p>
+<p>​        如果不希望某些类型的警告被视为错误可以使用<code>-Wno-error=&lt;警告类型&gt;</code>，比如<code>-Wno-error=switch</code>；而使用<code>-Werror=&lt;警告类型&gt;</code>则可以将指定警告类型视为错误，比如<code>-Werror=switch</code>。</p>
+<p>​        当代码量变得比较大的时候，同时启用<code>-Wall -Wextra -Werror</code>是比较严苛的，可能存在一些不准确的警告，这时可以将<code>-Werror</code>替换为只将某些警告视为错误，在自动化编译构建的时候提前报错终止提示开发者进行改进。</p>
+<p>​        对于大部分<code>-Wunused-</code>类警告选项，其实都是<strong>让开发者明确知道定义的变量或者参数是不是必须的</strong>，是多余的还是忘记使用了，对于反思代码逻辑和简化代码都是很有帮助的，所以建议将这些警告视为错误。</p>
+<h3 id="4-Wpedantic"><a href="#4-Wpedantic" class="headerlink" title="4 -Wpedantic"></a>4 -Wpedantic</h3><p>对于所有不符合<code>ISO C/ISO C++</code>语言标准的源代码发出警告，等价于<code>-pedantic</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-pedantic-errors`参数将这些警告视为错误，等同于`-Werror=pedantic</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-Wshadow"><a href="#5-Wshadow" class="headerlink" title="5 -Wshadow"></a>5 -Wshadow</h3><p>当局部变量屏蔽（shadow）已有已有变量时发出警告。比如以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int ret = 0;</span><br><span class="line">for (int i = 0; i &lt; 10; ++i) &#123;</span><br><span class="line">    int ret = i;  //  warning: declaration shadows a local variable</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Wconversion"><a href="#6-Wconversion" class="headerlink" title="6 -Wconversion"></a>6 -Wconversion</h3><p>​        在<strong>隐式转换可能导致值变化的时候</strong>发出警告。在隐式转换的时候，如果值发生变化，那么结果可能就不是预料中的，所以最好使用显式转换。</p>
+<h2 id="二-优化选项"><a href="#二-优化选项" class="headerlink" title="二 优化选项"></a>二 优化选项</h2><p>​        优化选项用于控制编译器对代码的优化等级。比较常用的是<code>-O2</code>和<code>-Os</code>。详细的介绍请查看官网**<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">Optimize-Options</a>**。</p>
+<h3 id="1-O0-Og"><a href="#1-O0-Og" class="headerlink" title="1 -O0/-Og"></a>1 -O0/-Og</h3><p>​        <code>-O0</code>是默认选项，不执行任何优化。在编译调试版本的时候，一般使用<code>-O0</code>，可以确保调试执行过程完全和代码一致（如果使用优化选项，根据源文件设定的断点和经过优化编译得到的程序可能对不上，所以不能准确停在预期的地方）。</p>
+<p>​        <code>-Og</code>是针对调试的优化选项，它会启用<code>-O1</code>的优化指令，除了那么可能会干扰调试的优化选项，同时可获取到更多的调试信息，提供更好好的编译体验，</p>
+<h3 id="2-O-O1"><a href="#2-O-O1" class="headerlink" title="2 -O/-O1"></a>2 -O/-O1</h3><p>​        执行级别1的优化，尝试减少代码大小和提高性能，但是不包括需要花费大量编译时间的优化选项。</p>
+<p>比如：</p>
+<ol>
+<li><code>-fdce</code>：移除不可能执行到的代码</li>
+<li><code>-fif-conversion</code>：尝试简化if语句。使用更少的分支、转化成标志位等操作</li>
+<li><code>-fmerge-constants</code>：尝试合并相同的常量</li>
+</ol>
+<h3 id="3-O2"><a href="#3-O2" class="headerlink" title="3 -O2"></a>3 -O2</h3><p>​        执行<code>-O1</code>所有优化选项，同时额外执行<strong>几乎全部不需要在空间和性能之间平衡</strong>的优化选项。</p>
+<p>比如：</p>
+<ol>
+<li><code>-fgcse</code>：优化全局公共表达式、常量的传递</li>
+<li><code>-fcode-hoisting</code>：将所有分支都需要执行的表达式尽早执行（对于优化代码大小很有用，同时也提升性能）</li>
+<li><code>-finline-functions</code>：考虑将所有函数变成内联函数（即使没有被声明为inline）</li>
+</ol>
+<h3 id="4-Os"><a href="#4-Os" class="headerlink" title="4 -Os"></a>4 -Os</h3><p>​        这是专门用于优化代码大小的优化级别，执行<code>-O2</code>所有优化选项，排除那些可能导致程序大小增加的优化选项。</p>
+<h3 id="5-O3"><a href="#5-O3" class="headerlink" title="5 -O3"></a>5 -O3</h3><p>​        最高优化等级。该优化级别较高，执行的优化不会很直观，所以可能也会出现一些问题，需要看实际情况选择是否需要使用<code>-O3</code>。在使用<code>-O3</code>优化级别时，<strong>小概率出现代码执行一段时间后出现了一些不符合预期的现象</strong>，在降低优化等级时则没有问题。</p>
+<h3 id="6-ffunction-sections-fdata-sections-Wl-–gc-sections"><a href="#6-ffunction-sections-fdata-sections-Wl-–gc-sections" class="headerlink" title="6 -ffunction-sections/-fdata-sections/-Wl,–gc-sections"></a>6 -ffunction-sections/-fdata-sections/-Wl,–gc-sections</h3><p>​        在开发过程中，可能会实现一些实际并不会用到的函数或者对外有多个接口，并不是所有的接口都需要用到所有的模块和函数，但是默认情况下，GCC会把整个静态库链接到目标可执行文件，所以会增加可执行文件的大小。</p>
+<p>​        GCC在链接的时候以<code>section</code>为单元处理，所以可以尝试使用<code>-ffunction-sections/-fdata-sections</code>将每个函数或者符号创建成独立的<code>section</code>，然后结合选项<code>-Wl,--gc-sections</code>让链接器忽略用不到的<code>section</code>，这样就可以减少目标可执行程序的大小。其中<code>-Wl</code>表示将后面的参数传递给链接器，所以也可以直接设置链接器选项。</p>
+<p>​        注意这个并不是所有的链接器都支持的，大多数支持编译ELF目标文件的工具链都是支持的，<strong>一般嵌入式开发会比较常用</strong>的。</p>
+<h2 id="三-代码生成选项"><a href="#三-代码生成选项" class="headerlink" title="三 代码生成选项"></a>三 代码生成选项</h2><p>​        最常用的就只有<code>-fPIC</code>，该选项用于生成**位置无关代码(PIC，position-independent code)**，主要是为了生成共享库。此类代码通过全局偏移表 (GOT) 访问所有常量地址，在程序启动的时候，动态加载器会确定需要使用的共享库的GOT。</p>
+<p><code>-fPIE</code>和<code>-fPIC</code>是类似的，但<code>-fPIE</code>产生的位置无关代码只能用于链接可执行文件。</p>
+<p>另外可能还会偶尔用到<code>-fpic</code>和<code>-fpie</code>，它们和全大写的区别只在于系统对GOT大小有一定限制。</p>
+<h2 id="四-调试选项"><a href="#四-调试选项" class="headerlink" title="四 调试选项"></a>四 调试选项</h2><p>​        一般情况下是为了能够正常使用调试器调试程序，必须要让编译器给编译目标添加额外的调试信息。最常使用的是<code>-g</code>，一般可以满足需求。但是如果为了提升一些调试程序的性能，可以配合使用针对调试的优化选项<code>-Og</code>。（添加的调试信息可以使用<code>strip</code>工具移除，一般对于需要release的程序代码可以都通过此工具移除一些敏感信息，同时也能够减少目标文件的大小。）</p>
+<p>​        GCC的编译选项还有很多，对于常用的就是上面这一些，在开发阶段，最重要还是通过一些有用的警告选项排查常见的代码bug，提高代码的鲁棒性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">moomq</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://moomq.github.io/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/">http://moomq.github.io/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/24/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">几种常见的开源协议介绍</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/24/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Thread.sleep(0)的作用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">moomq</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">GCC常用编译选项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E8%AD%A6%E5%91%8A%E9%80%89%E9%A1%B9"><span class="toc-number">1.1.</span> <span class="toc-text">一 警告选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Wall"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 -Wall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Wextra"><span class="toc-number">1.1.2.</span> <span class="toc-text">2 -Wextra</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Werror"><span class="toc-number">1.1.3.</span> <span class="toc-text">3 -Werror</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Wpedantic"><span class="toc-number">1.1.4.</span> <span class="toc-text">4 -Wpedantic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Wshadow"><span class="toc-number">1.1.5.</span> <span class="toc-text">5 -Wshadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Wconversion"><span class="toc-number">1.1.6.</span> <span class="toc-text">6 -Wconversion</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%BC%98%E5%8C%96%E9%80%89%E9%A1%B9"><span class="toc-number">1.2.</span> <span class="toc-text">二 优化选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-O0-Og"><span class="toc-number">1.2.1.</span> <span class="toc-text">1 -O0&#x2F;-Og</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-O-O1"><span class="toc-number">1.2.2.</span> <span class="toc-text">2 -O&#x2F;-O1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-O2"><span class="toc-number">1.2.3.</span> <span class="toc-text">3 -O2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Os"><span class="toc-number">1.2.4.</span> <span class="toc-text">4 -Os</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-O3"><span class="toc-number">1.2.5.</span> <span class="toc-text">5 -O3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ffunction-sections-fdata-sections-Wl-%E2%80%93gc-sections"><span class="toc-number">1.2.6.</span> <span class="toc-text">6 -ffunction-sections&#x2F;-fdata-sections&#x2F;-Wl,–gc-sections</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E9%80%89%E9%A1%B9"><span class="toc-number">1.3.</span> <span class="toc-text">三 代码生成选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E8%B0%83%E8%AF%95%E9%80%89%E9%A1%B9"><span class="toc-number">1.4.</span> <span class="toc-text">四 调试选项</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/25/Git/" title="Git常用指令"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git常用指令"/></a><div class="content"><a class="title" href="/2022/04/25/Git/" title="Git常用指令">Git常用指令</a><time datetime="2022-04-25T03:18:29.000Z" title="Created 2022-04-25 11:18:29">2022-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/24/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE-GNU-GPL/" title="开源许可协议 GNU GPL"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="开源许可协议 GNU GPL"/></a><div class="content"><a class="title" href="/2022/04/24/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE-GNU-GPL/" title="开源许可协议 GNU GPL">开源许可协议 GNU GPL</a><time datetime="2022-04-24T05:54:49.000Z" title="Created 2022-04-24 13:54:49">2022-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/24/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" title="几种常见的开源协议介绍"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="几种常见的开源协议介绍"/></a><div class="content"><a class="title" href="/2022/04/24/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/" title="几种常见的开源协议介绍">几种常见的开源协议介绍</a><time datetime="2022-04-24T05:53:46.000Z" title="Created 2022-04-24 13:53:46">2022-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/" title="GCC常用编译选项"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GCC常用编译选项"/></a><div class="content"><a class="title" href="/2022/04/24/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/" title="GCC常用编译选项">GCC常用编译选项</a><time datetime="2022-04-24T05:51:29.000Z" title="Created 2022-04-24 13:51:29">2022-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/24/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/" title="Thread.sleep(0)的作用"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Thread.sleep(0)的作用"/></a><div class="content"><a class="title" href="/2022/04/24/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/" title="Thread.sleep(0)的作用">Thread.sleep(0)的作用</a><time datetime="2022-04-24T05:51:29.000Z" title="Created 2022-04-24 13:51:29">2022-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By moomq</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
