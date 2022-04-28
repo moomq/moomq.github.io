@@ -489,10 +489,25 @@
                 
 
                 
-
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.8k
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -700,7 +715,15 @@
 <p>4&amp;3 为0</p>
 <p>所以，如果 n 是2的整数次方，那么 n &amp; ( n - 1 )结果一定为0:</p>
 <p>n 的数值要大于 0 </p>
-<h3 id="2-使用位运算交换两个数字【不使用中间变量】"><a href="#2-使用位运算交换两个数字【不使用中间变量】" class="headerlink" title="2. 使用位运算交换两个数字【不使用中间变量】"></a>2. 使用位运算交换两个数字【不使用中间变量】</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n ^= m;</span><br><span class="line">6.          m ^= n;</span><br><span class="line">7.          n ^= m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-使用位运算交换两个数字【不使用中间变量】"><a href="#2-使用位运算交换两个数字【不使用中间变量】" class="headerlink" title="2. 使用位运算交换两个数字【不使用中间变量】"></a>2. 使用位运算交换两个数字【不使用中间变量】</h3><pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) {
+4.          int n = 8, m = 10;
+5.          n ^= m;
+6.          m ^= n;
+7.          n ^= m;
+8.          System.out.println(n + ", " + m);
+9.      }
+10.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>如： a = 13, b = 6:<br>a的二进制为 13 = 8 + 4 + 1 = 1101(二进制)<br>b的二进制为 6 = 4 + 2 = 110(二进制)</p>
 <ol>
@@ -709,30 +732,72 @@
 <li>a ^= b a = 1011 ^ 1101 = 110; 即a == 6</li>
 </ol>
 <p>其他方法，<strong>使用加减法</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n = n + m;</span><br><span class="line">6.          m = n - m;</span><br><span class="line">7.          n = n - m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) {
+4.          int n = 8, m = 10;
+5.          n = n + m;
+6.          m = n - m;
+7.          n = n - m;
+8.          System.out.println(n + ", " + m);
+9.      }
+10.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="3-计算在一个-32-位的整数的二进制表示中有多少个-1"><a href="#3-计算在一个-32-位的整数的二进制表示中有多少个-1" class="headerlink" title="3. 计算在一个 32 位的整数的二进制表示中有多少个 1"></a>3. 计算在一个 32 位的整数的二进制表示中有多少个 1</h3><p>循环使用x &amp; (x-1)消去最后一位1，计算总共消去了多少次即可。如：</p>
 <p>13： 1101</p>
 <p>12： 1100</p>
 <p>相与：1100， 消去最后一位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          // 计算在一个 32 位的整数的二进制表示中有多少个 1</span><br><span class="line">5.          int m = 13, num = 0;</span><br><span class="line">6.          while (true){</span><br><span class="line">7.              if (m == 0) break;</span><br><span class="line">8.              m &amp;= (m-1); </span><br><span class="line">9.              num ++; </span><br><span class="line">10.          }</span><br><span class="line">11.          System.out.println(num);</span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) {
+4.          // 计算在一个 32 位的整数的二进制表示中有多少个 1
+5.          int m = 13, num = 0;
+6.          while (true){
+7.              if (m == 0) break;
+8.              m &amp;= (m-1); 
+9.              num ++; 
+10.          }
+11.          System.out.println(num);
+12.      }
+14.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="4-正数变成负数，或者负数变成正数"><a href="#4-正数变成负数，或者负数变成正数" class="headerlink" title="4. 正数变成负数，或者负数变成正数"></a>4. 正数变成负数，或者负数变成正数</h3><p><strong>变换符号只需要取反后加1即可</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) { </span><br><span class="line">5.          int m = -13; </span><br><span class="line">6.          int changeM = ~m + 1; </span><br><span class="line">7.          System.out.println(changeM);</span><br><span class="line">8.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) { 
+5.          int m = -13; 
+6.          int changeM = ~m + 1; 
+7.          System.out.println(changeM);
+8.      }
+10.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="5-判断一个数值的奇偶"><a href="#5-判断一个数值的奇偶" class="headerlink" title="5. 判断一个数值的奇偶"></a>5. 判断一个数值的奇偶</h3><p>只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数，所以只需要与 1 相与。</p>
 <p>因此可以用if ((a &amp; 1) == 0)代替if (a % 2 == 0)来判断a是不是偶数。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int m = -14;</span><br><span class="line">6.          if ((m &amp; 1) == 1){</span><br><span class="line">7.              System.out.println("ji");</span><br><span class="line">8.          }else{</span><br><span class="line">9.              System.out.println("ou"); </span><br><span class="line">10.          }  </span><br><span class="line">11.      }</span><br><span class="line">13.  }</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) {  
+4.          int m = -14;
+6.          if ((m &amp; 1) == 1){
+7.              System.out.println("ji");
+8.          }else{
+9.              System.out.println("ou"); 
+10.          }  
+11.      }
+13.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="6-乘以2-的m次方操作"><a href="#6-乘以2-的m次方操作" class="headerlink" title="6. 乘以2 的m次方操作"></a>6. 乘以2 的m次方操作</h3><p>乘以2的操作，即2的1次方，左移 1 位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;1);</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">System.out.println(10&lt;&lt;1);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>推导扩展，乘以2的m次方：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;2); // 乘以 2的2次方，相当于乘以 4 </span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">System.out.println(10&lt;&lt;2); // 乘以 2的2次方，相当于乘以 4 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="7-除以2运算-负奇数的运算不可用"><a href="#7-除以2运算-负奇数的运算不可用" class="headerlink" title="7.除以2运算(负奇数的运算不可用)"></a>7.除以2运算(负奇数的运算不可用)</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&gt;&gt;1);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="7-除以2运算-负奇数的运算不可用"><a href="#7-除以2运算-负奇数的运算不可用" class="headerlink" title="7.除以2运算(负奇数的运算不可用)"></a>7.除以2运算(负奇数的运算不可用)</h3><pre class="line-numbers language-none"><code class="language-none">System.out.println(10&gt;&gt;1);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="8-转换成绝对值"><a href="#8-转换成绝对值" class="headerlink" title="8. 转换成绝对值"></a>8. 转换成绝对值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int n = 12;</span><br><span class="line">6.          System.out.println(0 &gt;&gt; 31); // 0 </span><br><span class="line">7.          System.out.println(10 &gt;&gt; 31);  // 0  </span><br><span class="line">8.          System.out.println(-10 &gt;&gt; 31);  // -1</span><br><span class="line">10.          System.out.println((n ^ (n &gt;&gt; 31)) - (n &gt;&gt; 31));  // 12 </span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="8-转换成绝对值"><a href="#8-转换成绝对值" class="headerlink" title="8. 转换成绝对值"></a>8. 转换成绝对值</h3><pre class="line-numbers language-none"><code class="language-none">1.  public class Main {
+3.      public static void main(String[] args) {  
+4.          int n = 12;
+6.          System.out.println(0 &gt;&gt; 31); // 0 
+7.          System.out.println(10 &gt;&gt; 31);  // 0  
+8.          System.out.println(-10 &gt;&gt; 31);  // -1
+10.          System.out.println((n ^ (n &gt;&gt; 31)) - (n &gt;&gt; 31));  // 12 
+12.      }
+14.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>1.首先：n&gt;&gt;31 取得n的符号</p>
 <p>若n为正数，n&gt;&gt;31等于0；若n为负数，n&gt;&gt;31等于-1 若n为正数 n^0-0数不变；</p>
@@ -740,22 +805,47 @@
 <li>若 n 为负数 n^-1 需要计算 n 和 -1 的补码，异或后再取补码， 结果n变号并且绝对值减1，再减去-1就是绝对值</li>
 </ol>
 <h3 id="9-判断两数符号是否相同"><a href="#9-判断两数符号是否相同" class="headerlink" title="9.判断两数符号是否相同"></a>9.判断两数符号是否相同</h3><p>true 表示 x和y有相同的符号， false表示x，y有相反的符号。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a ^ b) &gt; 0);</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">System.out.println((a ^ b) &gt; 0);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="10-求两个整数（int）的平均数"><a href="#10-求两个整数（int）的平均数" class="headerlink" title="10. 求两个整数（int）的平均数"></a>10. 求两个整数（int）的平均数</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a+b) &gt;&gt; 1);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="10-求两个整数（int）的平均数"><a href="#10-求两个整数（int）的平均数" class="headerlink" title="10. 求两个整数（int）的平均数"></a>10. 求两个整数（int）的平均数</h3><pre class="line-numbers language-none"><code class="language-none">System.out.println((a+b) &gt;&gt; 1);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="11-求两个整数的最大值"><a href="#11-求两个整数的最大值" class="headerlink" title="11. 求两个整数的最大值"></a>11. 求两个整数的最大值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int max(int a,int b){</span><br><span class="line">2.      return b &amp; ((a-b) &gt;&gt; 31) | a &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="11-求两个整数的最大值"><a href="#11-求两个整数的最大值" class="headerlink" title="11. 求两个整数的最大值"></a>11. 求两个整数的最大值</h3><pre class="line-numbers language-none"><code class="language-none">1.  int max(int a,int b){
+2.      return b &amp; ((a-b) &gt;&gt; 31) | a &amp; (~(a-b) &gt;&gt; 31);
+3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/
+4.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="12-求两个整数的最小值"><a href="#12-求两个整数的最小值" class="headerlink" title="12.求两个整数的最小值"></a>12.求两个整数的最小值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int min(int a,int b){</span><br><span class="line">2.      return a &amp; ((a-b) &gt;&gt; 31) | b &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="12-求两个整数的最小值"><a href="#12-求两个整数的最小值" class="headerlink" title="12.求两个整数的最小值"></a>12.求两个整数的最小值</h3><pre class="line-numbers language-none"><code class="language-none">1.  int min(int a,int b){
+2.      return a &amp; ((a-b) &gt;&gt; 31) | b &amp; (~(a-b) &gt;&gt; 31);
+3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/
+4.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="13-两个整数的加法运算"><a href="#13-两个整数的加法运算" class="headerlink" title="13. 两个整数的加法运算"></a>13. <strong>两个整数的加法运算</strong></h3><p>使用 <code>^</code> 和 <code>&amp;</code> 将两个整数相加</p>
 <ol>
 <li>两个数异或：相当于两个数相加，而不考虑进位；</li>
 <li>两个数相与，并左移一位：相当于求得进位；</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">13+11 = ？;</span><br><span class="line">13 的二进制      1 1 0 1                     -----a        13</span><br><span class="line">11 的二进制      1 0 1 1                     -----b        11  </span><br><span class="line"> (a&amp;b) &lt;&lt;1  -&gt;   1 0 0 1 0                         -----d         18</span><br><span class="line">          a^b  -&gt;     0 1 1 0                   -----e          6</span><br><span class="line"> (d&amp;e) &lt;&lt;1  -&gt;   0 0 1 0 0                       ------f         4</span><br><span class="line">          d^e  -&gt;  1 0 1 0 0                  -----g        20</span><br><span class="line"> (f&amp;g) &lt;&lt;1  -&gt;   0 1 0 0 0                       ------h        8</span><br><span class="line">          f^g  -&gt;  1 0 0 0 0                   ------i           16</span><br><span class="line"> (h&amp;i) &lt;&lt;1  -&gt;   0 0 0 0 0                      ------h        0       ---- -------- 没有进位了， 则退出循环</span><br><span class="line">          h^i  -&gt;  1 1 0 0 0                  ------i           24</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">13+11 = ？;
+13 的二进制      1 1 0 1                     -----a        13
+11 的二进制      1 0 1 1                     -----b        11  
+ (a&amp;b) &lt;&lt;1  -&gt;   1 0 0 1 0                         -----d         18
+          a^b  -&gt;     0 1 1 0                   -----e          6
+ (d&amp;e) &lt;&lt;1  -&gt;   0 0 1 0 0                       ------f         4
+          d^e  -&gt;  1 0 1 0 0                  -----g        20
+ (f&amp;g) &lt;&lt;1  -&gt;   0 1 0 0 0                       ------h        8
+          f^g  -&gt;  1 0 0 0 0                   ------i           16
+ (h&amp;i) &lt;&lt;1  -&gt;   0 0 0 0 0                      ------h        0       ---- -------- 没有进位了， 则退出循环
+          h^i  -&gt;  1 1 0 0 0                  ------i           24<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  private static int getSum(int a, int b) {</span><br><span class="line">2.      if (a == 0) return b;</span><br><span class="line">3.      if (b == 0) return a;</span><br><span class="line">4.      while (b != 0) {</span><br><span class="line">5.          int carry = a &amp; b; // 得到有进位的位置</span><br><span class="line">6.          a = a ^ b; // 直接相加，但是没有进位</span><br><span class="line">7.          b = carry &lt;&lt; 1; // 得到进位</span><br><span class="line">8.      }</span><br><span class="line">9.      return a;</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">1.  private static int getSum(int a, int b) {
+2.      if (a == 0) return b;
+3.      if (b == 0) return a;
+4.      while (b != 0) {
+5.          int carry = a &amp; b; // 得到有进位的位置
+6.          a = a ^ b; // 直接相加，但是没有进位
+7.          b = carry &lt;&lt; 1; // 得到进位
+8.      }
+9.      return a;
+10.  }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1263,7 +1353,7 @@
     
 
     <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1273,6 +1363,9 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">32.3k</span>
             
             
             
@@ -1293,6 +1386,60 @@
             <br>
 
             <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "4";
+                        var startDate = "22";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
             
             <br>
             

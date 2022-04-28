@@ -471,10 +471,25 @@
                 
 
                 
-
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.3k
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -492,7 +507,10 @@
 <p>[TOC]</p>
 <p>​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让开发者在使用GCC时更加游刃有余。</p>
 <p>示例：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CFLAGS := -Wall -Wundef -Wshadow -Wconversion -Werror=return-type \</span><br><span class="line">    -Werror=implicit-function-declaration -Werror=unused-variable \</span><br><span class="line">    -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \</span><br><span class="line">    -Wno-trigraphs -Os</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">CFLAGS := -Wall -Wundef -Wshadow -Wconversion -Werror=return-type \
+    -Werror=implicit-function-declaration -Werror=unused-variable \
+    -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \
+    -Wno-trigraphs -Os<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>对于调试版本，将<code>-Os</code>替换为<code>-g -Og</code>。</p>
 <h2 id="一-警告选项"><a href="#一-警告选项" class="headerlink" title="一 警告选项"></a>一 警告选项</h2><p>​        GCC编译器支持对代码进行诊断，<strong>针对代码本身不是错误但是疑似错误或者可能存在风险的地方发出警告</strong>，而警告编译选项就是用于<strong>控制需要告警的警告类型</strong>的。一般启用特定类型警告的格式为<code>-Wxxx</code>，而排除特定类型的警告的格式则一般为<code>-Wno-xxx</code>。</p>
@@ -570,10 +588,13 @@
 <p>​        当代码量变得比较大的时候，同时启用<code>-Wall -Wextra -Werror</code>是比较严苛的，可能存在一些不准确的警告，这时可以将<code>-Werror</code>替换为只将某些警告视为错误，在自动化编译构建的时候提前报错终止提示开发者进行改进。</p>
 <p>​        对于大部分<code>-Wunused-</code>类警告选项，其实都是<strong>让开发者明确知道定义的变量或者参数是不是必须的</strong>，是多余的还是忘记使用了，对于反思代码逻辑和简化代码都是很有帮助的，所以建议将这些警告视为错误。</p>
 <h3 id="4-Wpedantic"><a href="#4-Wpedantic" class="headerlink" title="4 -Wpedantic"></a>4 -Wpedantic</h3><p>对于所有不符合<code>ISO C/ISO C++</code>语言标准的源代码发出警告，等价于<code>-pedantic</code>。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-pedantic-errors`参数将这些警告视为错误，等同于`-Werror=pedantic</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">-pedantic-errors`参数将这些警告视为错误，等同于`-Werror=pedantic<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="5-Wshadow"><a href="#5-Wshadow" class="headerlink" title="5 -Wshadow"></a>5 -Wshadow</h3><p>当局部变量屏蔽（shadow）已有已有变量时发出警告。比如以下代码：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int ret = 0;</span><br><span class="line">for (int i = 0; i &lt; 10; ++i) {</span><br><span class="line">    int ret = i;  //  warning: declaration shadows a local variable</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">int ret = 0;
+for (int i = 0; i &lt; 10; ++i) {
+    int ret = i;  //  warning: declaration shadows a local variable
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="6-Wconversion"><a href="#6-Wconversion" class="headerlink" title="6 -Wconversion"></a>6 -Wconversion</h3><p>​        在<strong>隐式转换可能导致值变化的时候</strong>发出警告。在隐式转换的时候，如果值发生变化，那么结果可能就不是预料中的，所以最好使用显式转换。</p>
 <h2 id="二-优化选项"><a href="#二-优化选项" class="headerlink" title="二 优化选项"></a>二 优化选项</h2><p>​        优化选项用于控制编译器对代码的优化等级。比较常用的是<code>-O2</code>和<code>-Os</code>。详细的介绍请查看官网**<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">Optimize-Options</a>**。</p>
@@ -1113,7 +1134,7 @@
     
 
     <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1123,6 +1144,9 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">32.3k</span>
             
             
             
@@ -1143,6 +1167,60 @@
             <br>
 
             <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "4";
+                        var startDate = "22";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
             
             <br>
             

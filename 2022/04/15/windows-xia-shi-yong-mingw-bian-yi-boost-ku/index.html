@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Windows下使用MinGW编译boost库, qqmo">
     <meta name="description" content="Windows下使用MinGW编译boost库编译​        解压并打开boost源码目录，
-12call .\build.bat 改成 call .\build.bat gccSET TOOLSET=msvc 改成 SET TOOL">
+call .\build.bat 改成 call .\build.bat gcc
+SET TOOLSET=msvc 改成 SET TOOLS">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,10 +471,25 @@
                 
 
                 
-
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    283
+                </div>
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -488,16 +504,21 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="Windows下使用MinGW编译boost库"><a href="#Windows下使用MinGW编译boost库" class="headerlink" title="Windows下使用MinGW编译boost库"></a>Windows下使用MinGW编译boost库</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>​        解压并打开boost源码目录，</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call .\build.bat 改成 call .\build.bat gcc</span><br><span class="line">SET TOOLSET=msvc 改成 SET TOOLSET=gcc</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">call .\build.bat 改成 call .\build.bat gcc
+SET TOOLSET=msvc 改成 SET TOOLSET=gcc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>​        执行bootstrap.bat批处理文件，会在目录内产生一个b2.exe文件。在目录文件夹，按住shift键+鼠标右键，选择“在此处打开PowerShell窗口”（或“在此处打开控制台窗口”），执行指令：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./b2.exe --help </span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">./b2.exe --help <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>会列出关于boost的编译选项，其主要选项如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--prefix=&lt;PREFIX&gt;   编译后安装路径，默认C:\Boost</span><br><span class="line">--build-type=&lt;type&gt; 编译类型，可选minimal（最小）、complete（完整），默认minimal。</span><br><span class="line">--with-&lt;library&gt;    加入此参数，代表只编译的库。</span><br><span class="line">--without-&lt;library&gt; 加入此参数，代表忽略编译的库。</span><br><span class="line">toolset             编译器，win下默认msvc，用MinGW则选择gcc。</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">--prefix=&lt;PREFIX&gt;   编译后安装路径，默认C:\Boost
+--build-type=&lt;type&gt; 编译类型，可选minimal（最小）、complete（完整），默认minimal。
+--with-&lt;library&gt;    加入此参数，代表只编译的库。
+--without-&lt;library&gt; 加入此参数，代表忽略编译的库。
+toolset             编译器，win下默认msvc，用MinGW则选择gcc。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在此编译参数可设置为：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./b2.exe install --prefix=E:\boost\boost_1_76_0_mingw --build-type=complete toolset=gcc threading=multi</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">./b2.exe install --prefix=E:\boost\boost_1_76_0_mingw --build-type=complete toolset=gcc threading=multi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>参数解析：完整编译（会编译包含/不包含运行时库的debug/release的动态/静态库），编译器选择MinGW（gcc），多线程，编译完成后将库和头文件复制到D:\boost\boost_1.65.1_mingw路径。</p>
 
@@ -1010,7 +1031,7 @@
     
 
     <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -1020,6 +1041,9 @@
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">32.3k</span>
             
             
             
@@ -1040,6 +1064,60 @@
             <br>
 
             <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "4";
+                        var startDate = "22";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
             
             <br>
             
