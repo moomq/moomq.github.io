@@ -4,9 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Windows下使用MinGW编译boost库, c/c++">
-    <meta name="description" content="Windows下使用MinGW编译boost库编译​        解压并打开boost源码目录，
-12call .\build.bat 改成 call .\build.bat gccSET TOOLSET=msvc 改成 SET TOOL">
+    <meta name="keywords" content="几种常见的开源协议介绍, qqmo">
+    <meta name="description" content="开源协议介绍[TOC]
+一、几种常见的开源协议介绍常用的几种开源协议：
+
+GPL （GNU General Public License） ：GNU通用公共许可协议
+
+LGPL （GNU Lesser General Public Lice">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +24,7 @@
 
     
 
-    <title>Windows下使用MinGW编译boost库 | qqmo&#39;s blog</title>
+    <title>几种常见的开源协议介绍 | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +317,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/37.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Windows下使用MinGW编译boost库</h1>
+                    <h1 class="description center-align post-title">几种常见的开源协议介绍</h1>
                 </div>
             </div>
         </div>
@@ -434,12 +438,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/boost/">
-                                <span class="chip bg-color">boost</span>
-                            </a>
-                        
-                            <a href="/tags/MinGW/">
-                                <span class="chip bg-color">MinGW</span>
+                            <a href="/tags/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/">
+                                <span class="chip bg-color">开源协议</span>
                             </a>
                         
                     </div>
@@ -450,8 +450,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                编程笔记
+                            <a href="/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                开源协议
                             </a>
                         
                     </div>
@@ -463,7 +463,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-15
+                    2022-04-03
                 </div>
                 
 
@@ -479,24 +479,84 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Windows下使用MinGW编译boost库"><a href="#Windows下使用MinGW编译boost库" class="headerlink" title="Windows下使用MinGW编译boost库"></a>Windows下使用MinGW编译boost库</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>​        解压并打开boost源码目录，</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call .\build.bat 改成 call .\build.bat gcc</span><br><span class="line">SET TOOLSET=msvc 改成 SET TOOLSET=gcc</span><br></pre></td></tr></tbody></table></figure>
-
-<p>​        执行bootstrap.bat批处理文件，会在目录内产生一个b2.exe文件。在目录文件夹，按住shift键+鼠标右键，选择“在此处打开PowerShell窗口”（或“在此处打开控制台窗口”），执行指令：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./b2.exe --help </span><br></pre></td></tr></tbody></table></figure>
-
-<p>会列出关于boost的编译选项，其主要选项如下：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--prefix=&lt;PREFIX&gt;   编译后安装路径，默认C:\Boost</span><br><span class="line">--build-type=&lt;type&gt; 编译类型，可选minimal（最小）、complete（完整），默认minimal。</span><br><span class="line">--with-&lt;library&gt;    加入此参数，代表只编译的库。</span><br><span class="line">--without-&lt;library&gt; 加入此参数，代表忽略编译的库。</span><br><span class="line">toolset             编译器，win下默认msvc，用MinGW则选择gcc。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在此编译参数可设置为：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./b2.exe install --prefix=E:\boost\boost_1_76_0_mingw --build-type=complete toolset=gcc threading=multi</span><br></pre></td></tr></tbody></table></figure>
-
-<p>参数解析：完整编译（会编译包含/不包含运行时库的debug/release的动态/静态库），编译器选择MinGW（gcc），多线程，编译完成后将库和头文件复制到D:\boost\boost_1.65.1_mingw路径。</p>
+                <h1 id="开源协议介绍"><a href="#开源协议介绍" class="headerlink" title="开源协议介绍"></a>开源协议介绍</h1><p>[TOC]</p>
+<h2 id="一、几种常见的开源协议介绍"><a href="#一、几种常见的开源协议介绍" class="headerlink" title="一、几种常见的开源协议介绍"></a>一、几种常见的开源协议介绍</h2><p>常用的几种开源协议：</p>
+<ul>
+<li><p><strong>GPL （GNU General Public License） ：GNU通用公共许可协议</strong></p>
+</li>
+<li><p><strong>LGPL （GNU Lesser General Public License） ：GNU宽通用公共许可协议</strong></p>
+</li>
+<li><p><strong>BSD (Berkeley Software Distribution) :伯克利软件分发许可协议</strong></p>
+</li>
+<li><p><strong>MIT （Massachusetts Institute of Technology）：MIT许可协议之名源自麻省理工学院，又称“X许可协议”或“X11许可协议”</strong></p>
+</li>
+<li><p><strong>Apache （Apache License） ：Apache许可协议</strong></p>
+</li>
+<li><p><strong>MPL （Mozilla Public License） ：Mozilla公共许可协议</strong></p>
+</li>
+</ul>
+<h3 id="1-BSD协议"><a href="#1-BSD协议" class="headerlink" title="1.BSD协议"></a>1.BSD协议</h3><p>​        BSD开源协议是一个给于使用者很大自由的协议。可以自由的使用，修改源代码，也可以将修改后的代码作为开源或者专有软件再发布。但前提是发布使用了BSD协议的代码，或以BSD协议代码为基础做二次开发自己的产品时，需要满足三个条件： </p>
+<ul>
+<li>如果再发布的产品中包含源代码，则在源代码中必须带有原来代码中的BSD协议。</li>
+<li>如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议。</li>
+<li>不可以用开源代码的作者/机构名字和原来产品的名字做市场推广。 </li>
+</ul>
+<p>​        BSD代码鼓励代码共享，但需要尊重代码作者的著作权。BSD由于允许使用者修改和重新发布代码，也允许使用或在BSD代码上开发商业软件发布和销售，因此是对商业集成很友好的协议。而很多的公司企业在选用开源产品的时候都首选BSD协议，因为可以完全控制这些第三方的代码，在必要的时候可以修改或者二次开发。</p>
+<h3 id="2-MIT协议"><a href="#2-MIT协议" class="headerlink" title="2.MIT协议"></a>2.MIT协议</h3><p>​        MIT是和BSD一样宽范的许可协议，源自麻省理工学院（Massachusetts Institute of Technology, MIT），又称X11协议。作者只想保留版权,而无任何其他了限制。MIT与BSD类似，但是比BSD协议更加宽松，是目前最少限制的协议。这个协议唯一的条件就是在修改后的代码或者发行包包含原作者的许可信息。适用商业软件。使用MIT的软件项目有：jquery、Node.js。<br>​        MIT与BSD类似，但是比BSD协议更加宽松，是目前最少限制的协议。这个协议唯一的条件就是在修改后的代码或者发行包包含原作者的许可信息。适用商业软件。使用MIT的软件项目有：jquery、Node.js。 </p>
+<ul>
+<li>被授权人有权利使用、复制、修改、合并、出版发行、散布、再授权及贩售软件及软件的副本。</li>
+<li>被授权人可根据程序的需要修改授权条款为适当的内容。</li>
+<li>在软件和软件的所有副本中都必须包含版权声明和许可声明。 </li>
+</ul>
+<p>​        此授权条款并非属copyleft的自由软件授权条款，允许在自由/开放源码软件或非自由软件（proprietary software）所使用。MIT的内容可依照程序著作权者的需求更改内容。此亦为MIT与BSD（The BSD license, 3-clause BSD license）本质上不同处。MIT条款可与其他授权条款并存。另外，MIT条款也是自由软件基金会（FSF）所认可的自由软件授权条款，与GPL兼容。</p>
+<h3 id="3-Apache-协议"><a href="#3-Apache-协议" class="headerlink" title="3.Apache 协议"></a>3.Apache 协议</h3><p>​        Apache Licence是著名的非盈利开源组织Apache采用的协议。该协议和BSD类似，同样鼓励代码共享和最终原作者的著作权，同样允许源代码修改和再发布。但是也需要遵循以下条件： </p>
+<ol>
+<li>需要给代码的用户一份Apache Licence。</li>
+<li>如果修改了代码，需要再被修改的文件中说明。</li>
+<li>在衍生的代码中（修改和有源代码衍生的代码中）需要带有原来代码中的协议，商标，专利声明和其他原来作者规定需要包含的说明。</li>
+<li>如果再发布的产品中包含一个Notice文件，则在Notice文件中需要带有Apache Licence。你可以再Notice中增加自己的许可，但是不可以表现为对Apache Licence构成更改。 </li>
+</ol>
+<p>使用这个协议的好处是: </p>
+<ol>
+<li>永久权利：一旦被授权，永久拥有。</li>
+<li>全球范围的权利：在一个国家获得授权，适用于所有国家。假如你在美国，许可是从印度授权的，也没有问题。</li>
+<li>授权免费：无版税， 前期、后期均无任何费用。</li>
+<li>授权无排他性：任何人都可以获得授权</li>
+<li>授权不可撤消 一旦获得授权，没有任何人可以取消。 </li>
+</ol>
+<p>Apache Licence也是对商业应用友好的许可。使用者也可以再需要的时候修改代码来满足并作为开源或商业产品发布/销售。</p>
+<h3 id="4-GPL协议"><a href="#4-GPL协议" class="headerlink" title="4.GPL协议"></a>4.GPL协议</h3><p>GPL（ GNU General Public Licence ）的出发点是代码的开源/免费使用和引用/修改/衍生代码的开源/免费使用，但不允许修改后和衍生的代码做为闭源的商业软件发布和销售。Linux就是采用了GPL协议。</p>
+<ol>
+<li>可自由复制：你可以将软件复制到你的电脑，你客户的电脑，或者任何地方。复制份数没有任何限制。</li>
+<li>可自由分发：在你的网站提供下载，拷贝到U盘送人，或者将源代码打印出来从窗户扔出去（环保起见，请别这样做）。</li>
+<li>可以用来盈利：你可以在分发软件的时候收费，但你必须在收费前向你的客户提供该软件的 GNU GPL 许可协议，以便让他们知道，他们可以从别的渠道免费得到这份软件，以及你收费的理由。</li>
+<li>可自由修改：如果你想添加或删除某个功能，没问题，如果你想在别的项目中使用部分代码，也没问题，唯一的要求是，使用了这段代码的项目也必须使用 GPL 协议。 </li>
+</ol>
+<p>还有一些要求 </p>
+<ol>
+<li>如果你使用了GPL协议的开源代码，将此开源代码用在了你的软件产品里，那么，你的整个软件产品必须开源，而且必须以GPL协议开源。</li>
+<li>如果软件以GPL协议开源，那么源代码必须是面向社会开源的。而且你发布产品的时候源代码也必须一同附上。</li>
+<li>如果软件以GPL协议开源，那么你可以对该软件收取一定的服务费用，但你永远不能对该软件的源代码收费。</li>
+</ol>
+<p>5.LGPL协议<br>        LGPL 是GPL的一个为主要为类库使用设计的开源协议。和GPL要求任何使用/修改/衍生之GPL类库的的软件必须采用GPL协议不同。LGPL 允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。这使得采用LGPL协议的开源代码可以被商业软件作为类库引用并 发布和销售。 </p>
+<p>​        但是如果修改LGPL协议的代码或者衍生，则所有修改的代码，涉及修改部分的额外代码和衍生的代码都必须采用LGPL协议。因 此LGPL协议的开源 代码很适合作为第三方类库被商业软件引用，但不适合希望以LGPL协议代码为基础，通过修改和衍生的方式做二次开发的商业软件采用。 </p>
+<p>GPL/LGPL都保障原作者的知识产权，避免有人利用开源代码复制并开发类似的产品。</p>
+<h3 id="6-MPL"><a href="#6-MPL" class="headerlink" title="6.MPL"></a><strong>6.MPL</strong></h3><p>​        MPL既是得到自由软件基金会承认的自由软件许可证，也是得到开放源代码促进会承认的开源软件许可证。MPL允许在其授权下的源代码与其他授权的文件进行混合，包括私有许可证。但在MPL授权下的代码文件必须保持MPL授权，并且保持开源。这样的条款让MPL既不像MIT和BSD那样允许派生作品完全转化为私有，也不像GPL那样要求所有的派生作品，包括新的组件在内，全部必须保持GPL。通过允许在派生项目中存在私有模块，同时保证核心文件的开源，MPL同时激励了商业及开源社区来参与帮助开发核心软件。</p>
+<p>​        使用MPL授权的软件并不受专利的限制，其可以自由使用，修改，并可自由的重新发布。带有专利代码的版本仍然可以使用，转让，甚至出售，但未经许可则不能修改代码。此外，MPL并不授予用户对于开发者商标的使用权。</p>
+<p>​        为了满足MPL的条款限制，用户必须负担一些“责任”，主要是关于散发使用MPL授权的软件。用户必须确保重新散发的软件所有源代码均以MPL授权，即使是以可执行文件的方式提供或是与其他使用专有软件授权的源代码结合也一样。但若跟以GNU通用公共许可协议、GNU宽通用公共许可证、Affero通用公共许可证授权的源代码结合则是例外。此时开发者则可选用以上三种更加严格的条款来授权。</p>
+<h2 id="二、开源协议选择"><a href="#二、开源协议选择" class="headerlink" title="二、开源协议选择"></a>二、开源协议选择</h2><p>按照使用条件的不同，开源软件许可证可以分为三类（严苛程度递减）。 </p>
+<p>第一类使用该开源软件的代码再散布（redistribute）时，源码也必须以相同许可证公开。代表许可类型 GPL，AGPL。 </p>
+<p>第二类使用该开源软件的代码并且对开源代码有所修改后再散布时，源码必须以相同许可证公开。如LGPL，CPL，CDDL，CPL，MPL等。 </p>
+<p>第三类用该开源软件的代码（包括修改）再散布（redistribute）时，没有特殊限制，只需要明记许可。如ASL，BSD，MIT等。</p>
+<p><img src="/2022/04/03/%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.png" alt="在这里插入图片描述"></p>
 
                 
             </div>
@@ -523,7 +583,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/15/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8MinGW%E7%BC%96%E8%AF%91boost%E5%BA%93/">http://moomq.github.io/2022/04/15/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8MinGW%E7%BC%96%E8%AF%91boost%E5%BA%93/</a>
+                    <a href="http://moomq.github.io/2022/04/03/ji-chong-chang-jian-de-kai-yuan-xie-yi-jie-shao/">http://moomq.github.io/2022/04/03/ji-chong-chang-jian-de-kai-yuan-xie-yi-jie-shao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -561,12 +621,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/boost/">
-                                    <span class="chip bg-color">boost</span>
-                                </a>
-                            
-                                <a href="/tags/MinGW/">
-                                    <span class="chip bg-color">MinGW</span>
+                                <a href="/tags/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/">
+                                    <span class="chip bg-color">开源协议</span>
                                 </a>
                             
                         </div>
@@ -744,13 +800,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/28/ThreadPool/">
+                <a href="/2022/04/04/kai-yuan-xu-ke-xie-yi-gnu-gpl/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="ThreadPool">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="开源许可协议 GNU GPL">
                         
-                        <span class="card-title">ThreadPool</span>
+                        <span class="card-title">开源许可协议 GNU GPL</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -761,14 +817,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-04
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
+                            <a href="/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                    开源协议
                                 </a>
                             
                             
@@ -778,8 +834,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ThreadPool/">
-                        <span class="chip bg-color">ThreadPool</span>
+                    <a href="/tags/GPL/">
+                        <span class="chip bg-color">GPL</span>
                     </a>
                     
                 </div>
@@ -793,13 +849,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/14/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/">
+                <a href="/2022/04/02/dai-ma-zheng-ji-zhi-dao-nei-rong-gai-yao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/40.jpg" class="responsive-img" alt="Thread.sleep(0)的作用">
+                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="代码整洁之道内容概要">
                         
-                        <span class="card-title">Thread.sleep(0)的作用</span>
+                        <span class="card-title">代码整洁之道内容概要</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -810,14 +866,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" class="post-category">
+                                    编程规范
                                 </a>
                             
                             
@@ -827,8 +883,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sleep-0/">
-                        <span class="chip bg-color">sleep(0)</span>
+                    <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="chip bg-color">整洁代码</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="chip bg-color">重构</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%A7%84%E8%8C%83/">
+                        <span class="chip bg-color">规范</span>
                     </a>
                     
                 </div>

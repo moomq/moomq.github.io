@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="doxygen教程, c/c++">
-    <meta name="description" content="doxygen教程
-一．什么是Doxygen?
-​        Doxygen 是一个程序的文件产生工具，可将程序中的特定批注转换成为说明文件。通常我们在写程序时，或多或少都会写上批注，但是对于其它人而言，要直接探索程序里的批注，与打捞泰">
+    <meta name="keywords" content="开源许可协议 GNU GPL, qqmo">
+    <meta name="description" content="[TOC]
+​        在开源领域中，许可协议是指开源社区为了维护作者和贡献者的合法权利，保证软件不被一些商业机构或个人窃取，影响软件的发展而开发的协议。其中，GPL是开源许可协议中非常流行的许可协议之一。
+一、基本概念
+​     ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +22,7 @@
 
     
 
-    <title>doxygen教程 | qqmo&#39;s blog</title>
+    <title>开源许可协议 GNU GPL | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -314,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">doxygen教程</h1>
+                    <h1 class="description center-align post-title">开源许可协议 GNU GPL</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +436,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/doxygen/">
-                                <span class="chip bg-color">doxygen</span>
+                            <a href="/tags/GPL/">
+                                <span class="chip bg-color">GPL</span>
                             </a>
                         
                     </div>
@@ -447,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                编程笔记
+                            <a href="/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                开源协议
                             </a>
                         
                     </div>
@@ -460,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2022-04-04
                 </div>
                 
 
@@ -476,24 +477,31 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>doxygen教程</p>
-<p><strong>一．什么是Doxygen?</strong></p>
-<p>​        Doxygen 是一个程序的文件产生工具，可将程序中的特定批注转换成为说明文件。通常我们在写程序时，或多或少都会写上批注，但是对于其它人而言，要直接探索程序里的批注，与打捞泰坦尼克号同样的辛苦。大部分有用的批注都是属于针对函式，类别等等的说明。所以，如果能依据程序本身的结构，将批注经过处理重新整理成为一个纯粹的参考手册，对于后面利用您的程序代码的人而言将会减少许多的负担。不过，反过来说，整理文件的工作对于您来说，就是沉重的负担。Doxygen 就是在您写批注时，稍微<strong>按照一些它所制订的规则</strong>。接着，他就可以帮您产生出漂亮的文档了。</p>
-<p>​        因此，Doxygen 的使用可分为两大部分。首先是<strong>特定格式的批注撰写</strong>，第二便是<strong>利用Doxygen的工具来产生文档。</strong></p>
-<p>​        目前Doxygen可处理的程序语言包含：C/C++、 Java、IDL (Corba, Microsoft及KDE-DCOP类型)  ，而可产生出来的文档格式有：HTML、XML、LaTeX、RTF、Unix Man Page。而其中还可衍生出不少其它格式。HTML可以打包成<strong>CHM格式</strong>，而LaTeX可以透过一些工具产生出<strong>PS或是PDF文档</strong>。</p>
-<p><strong>二．安装Doxygen</strong></p>
-<p>1.1 安装 Doxygen  </p>
-<p>1.2 安装 graphviz  —&gt;</p>
-<p>​        graphviz 是一个由AT&amp;T实验室启动的开源工具包，用于绘制DOT语言脚本描述的图形。Doxygen 使用 graphviz 自动生成类之间和文件之间的调用关系图，如不需要此功能可不安装该工具包。</p>
-<p>1.3 安装 Windows Help Workshop  —&gt; </p>
-<p>​        Doxygen 使用这个工具可以生成 CHM 格式的文档。</p>
-<p><strong>三．Doxygen的配置</strong></p>
-<p>​        Doxygen 产生文档可以分为三个步骤。一是在程序代码中加上符合Doxygen所定义批注格式。二是使用Doxywizard进行配置。三是使用Doxygen来产生批注文档。</p>
+                <p>[TOC]</p>
+<p>​        在开源领域中，许可协议是指开源社区为了维护作者和贡献者的合法权利，保证软件不被一些商业机构或个人窃取，影响软件的发展而开发的协议。其中，GPL是开源许可协议中非常流行的许可协议之一。</p>
+<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a><strong>一、基本概念</strong></h2><p><img src="/2022/04/04/%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE-GNU-GPL/GPL.png"></p>
+<p>​                                                                   GPL标志</p>
+<p>​        GNU通用公共许可协议（英语：GNU General Public License，缩写GNU GPL 或 GPL），GPL是由理查德·斯托曼于1989年编写，最初提供给列入GNU项目的一些软件程序所使用。</p>
+<p>​        GPL是自由软件和开源软件的最流行许可证。到2004年4月，GPL已占Freshmeat上所列的自由软件的约75%，SourceForge的约68%。类似的，2001年一项关于Red Hat Linux 7.1的调查显示一般的代码都以GPL发布。</p>
+<h2 id="二、协议特点"><a href="#二、协议特点" class="headerlink" title="二、协议特点"></a><strong>二、协议特点</strong></h2><h3 id="2-1-传染性"><a href="#2-1-传染性" class="headerlink" title="2.1 传染性"></a><strong>2.1 传染性</strong></h3><p>​        GPL协议具有一个很显著的特点“传染性” ：即当具有GPL协议的软件与其它协议的软件相组合或者GPL的衍生产品，必须按照GPL的条款分发。“衍生产品”通常被解释为包含GPL代码或动态链接到GPL库的软件。GPL下所有衍生产品都必须属于GPL，许可证是根据著作权法运行的。</p>
+<h3 id="2-2-可商用"><a href="#2-2-可商用" class="headerlink" title="2.2 可商用"></a><strong>2.2 可商用</strong></h3><p>​        GPL软件可以用于盈利，可以以任何价格出售，可以作为创建专有软件的工具（例如：GPL协议的编译器）。</p>
+<h2 id="三、使用者的自由"><a href="#三、使用者的自由" class="headerlink" title="三、使用者的自由"></a><strong>三、使用者的自由</strong></h2><h3 id="1-自由运行"><a href="#1-自由运行" class="headerlink" title="1. 自由运行"></a><strong>1. 自由运行</strong></h3><p>​    可以按照自己的意愿运行软件；</p>
+<h3 id="2-自由修改"><a href="#2-自由修改" class="headerlink" title="2. 自由修改"></a><strong>2. 自由修改</strong></h3><p>可以按己的意愿修改软件；</p>
+<h3 id="3-自由复制"><a href="#3-自由复制" class="headerlink" title="3. 自由复制"></a><strong>3. 自由复制</strong></h3><p>可以自由分发软件副本；</p>
+<h3 id="4-自由分发"><a href="#4-自由分发" class="headerlink" title="4. 自由分发"></a><strong>4. 自由分发</strong></h3><p>可以将你修改过的软件版本再分发给其他人，从而回馈开源，促进开源；</p>
+<h2 id="四、符合GPL协议的软件"><a href="#四、符合GPL协议的软件" class="headerlink" title="四、符合GPL协议的软件"></a><strong>四、符合GPL协议的软件</strong></h2><p>著名的GPL自由软件包括EMACS，Linux内核（并非所有Linux发行版的内核都是开源的）和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=GCC&amp;spm=1001.2101.3001.7020">GCC</a>。</p>
+<h2 id="五、GPL发展阶段"><a href="#五、GPL发展阶段" class="headerlink" title="五、GPL发展阶段"></a><strong>五、GPL发展阶段</strong></h2><p><strong>GPLv1：</strong>解决了软件经销商只分发软件的二进制，而不提供软件源码的问题；要求符合GPL的软件与其它软件组合后的整体必须以GPLv1条款分发，限制了经销商增加许可证的限制；</p>
+<p><strong>GPLv2：</strong>规定被许可人只有在满足所有许可证的义务下才可以分发包含GPL许可的软件，就算有相互矛盾的义务，许可证的义务也可能不被切断，阻止任何一方使用专利侵权索赔或其他诉讼来损害用户在许可证下的自由；</p>
+<p>**GPLv3提高了与许多开放源代码软件许可证（如Apache许可证版本2.0）和GNU Affero通用公共许可证（GPLv2无法组合）的兼容性；比较有意思的是，林纳斯·托瓦兹（Linux内核的发明人及该计划的合作者）决定不采用GPLv3作为Linux内核的许可协议，仍然使用GPLv2许可。</p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>GPL 维护了代码所有者的合法权益，保证了代码以及其衍生产品的开源，从而促进了代码的开源，让众多的软件开发者不断地从中收益，同时也不断的回馈开源社区，让开源队伍越来越壮大！</p>
 
                 
             </div>
@@ -520,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/09/doxygen%E6%95%99%E7%A8%8B/">http://moomq.github.io/2022/04/09/doxygen%E6%95%99%E7%A8%8B/</a>
+                    <a href="http://moomq.github.io/2022/04/04/kai-yuan-xu-ke-xie-yi-gnu-gpl/">http://moomq.github.io/2022/04/04/kai-yuan-xu-ke-xie-yi-gnu-gpl/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -558,8 +566,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/doxygen/">
-                                    <span class="chip bg-color">doxygen</span>
+                                <a href="/tags/GPL/">
+                                    <span class="chip bg-color">GPL</span>
                                 </a>
                             
                         </div>
@@ -737,13 +745,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/10/GCC%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9/">
+                <a href="/2022/04/05/mian-xiang-dui-xiang-bian-cheng-de-li-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="GCC常用编译选项">
+                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="面向对象编程的理解">
                         
-                        <span class="card-title">GCC常用编译选项</span>
+                        <span class="card-title">面向对象编程的理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -754,7 +762,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-05
                         </span>
                         <span class="publish-author">
                             
@@ -771,12 +779,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/gcc/">
-                        <span class="chip bg-color">gcc</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E8%AF%91/">
-                        <span class="chip bg-color">编译</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">面向对象编程</span>
                     </a>
                     
                 </div>
@@ -790,13 +794,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/08/CMakeLists%E8%AF%AD%E6%B3%95/">
+                <a href="/2022/04/03/ji-chong-chang-jian-de-kai-yuan-xie-yi-jie-shao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="CMakeLists语法">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="几种常见的开源协议介绍">
                         
-                        <span class="card-title">CMakeLists语法</span>
+                        <span class="card-title">几种常见的开源协议介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -807,14 +811,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
+                            <a href="/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                    开源协议
                                 </a>
                             
                             
@@ -824,8 +828,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/cmakelists/">
-                        <span class="chip bg-color">cmakelists</span>
+                    <a href="/tags/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">开源协议</span>
                     </a>
                     
                 </div>

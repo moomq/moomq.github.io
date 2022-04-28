@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Thread.sleep(0)的作用, c/c++">
-    <meta name="description" content="Thread.sleep(0)的作用我们可能经常会用到 Thread.Sleep 函数来吧使线程挂起一段时间。那么你有没有正确的理解这个函数的用法呢？思考下面这两个问题：
-假设现在是 2008-4-7 12:00:00.000，如果我调用一">
+    <meta name="keywords" content="程序内存概念, qqmo">
+    <meta name="description" content="程序内存概念一 预备知识
+​        在区分一个程序的堆栈、bss、text段、RO、RW、ZI等概念时，首先区分一下程序进程和程序文件，然后了解一下哈弗结构和冯诺依曼结构。
+​        程序进程就是程序运行时的程序，程序文件是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +21,7 @@
 
     
 
-    <title>Thread.sleep(0)的作用 | qqmo&#39;s blog</title>
+    <title>程序内存概念 | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/40.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Thread.sleep(0)的作用</h1>
+                    <h1 class="description center-align post-title">程序内存概念</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +435,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/sleep-0/">
-                                <span class="chip bg-color">sleep(0)</span>
+                            <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="/tags/RAM/">
+                                <span class="chip bg-color">RAM</span>
                             </a>
                         
                     </div>
@@ -459,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-14
+                    2022-04-01
                 </div>
                 
 
@@ -475,35 +480,33 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Thread-sleep-0-的作用"><a href="#Thread-sleep-0-的作用" class="headerlink" title="Thread.sleep(0)的作用"></a>Thread.sleep(0)的作用</h1><p>我们可能经常会用到 Thread.Sleep 函数来吧使线程挂起一段时间。那么你有没有正确的理解这个函数的用法呢？<br>思考下面这两个问题：</p>
-<p>假设现在是 2008-4-7 12:00:00.000，如果我调用一下 Thread.Sleep(1000) ，在 2008-4-7 12:00:01.000 的时候，这个线程会不会被唤醒？</p>
-<p>某人的代码中用了一句看似莫明其妙的话：Thread.Sleep(0) 。既然是 Sleep 0 毫秒，那么他跟去掉这句代码相比，有啥区别么？</p>
-<p>我们先回顾一下操作系统原理。</p>
-<p>操作系统中，CPU竞争有很多种策略。Unix系统使用的是时间片算法，而Windows则属于抢占式的。</p>
-<p>在时间片算法中，所有的进程排成一个队列。操作系统按照他们的顺序，给每个进程分配一段时间，即该进程允许运行的时间。如果在时间片结束时进程还在运行，则CPU将被剥夺并分配给另一个进程。如果进程在时间片结束前阻塞或结束，则CPU当即进行切换。调度程 序所要做的就是维护一张就绪进程列表，当进程用完它的时间片后，它被移到队列的末尾。</p>
-<p>所谓抢占式操作系统，就是说如果一个进程得到了 CPU 时间，除非它自己放弃使用 CPU ，否则将完全霸占 CPU 。因此可以看出，在抢 占式操作系统中，操作系统假设所有的进程都是“人品很好”的，会主动退出 CPU 。</p>
-<p>在抢占式操作系统中，假设有若干进程，操作系统会根据他们的优先级、饥饿时间（已经多长时间没有使用过 CPU 了），给他们算出一 个总的优先级来。操作系统就会把 CPU 交给总优先级最高的这个进程。当进程执行完毕或者自己主动挂起后，操作系统就会重新计算一 次所有进程的总优先级，然后再挑一个优先级最高的把 CPU 控制权交给他。</p>
-<p>我们用分蛋糕的场景来描述这两种算法。假设有源源不断的蛋糕（源源不断的时间），一副刀叉（一个CPU），10个等待吃蛋糕的人（10 个进程）。</p>
-<p>如果是 Unix操作系统来负责分蛋糕，那么他会这样定规矩：每个人上来吃 1 分钟，时间到了换下一个。最后一个人吃完了就再从头开始。于是，不管这10个人是不是优先级不同、饥饿程度不同、饭量不同，每个人上来的时候都可以吃 1 分钟。当然，如果有人本来不太饿，或者饭量小，吃了30秒钟之后就吃饱了，那么他可以跟操作系统说：我已经吃饱了（挂起）。于是操作系统就会让下一个人接着来。</p>
-<p>如果是 Windows 操作系统来负责分蛋糕的，那么场面就很有意思了。他会这样定规矩：我会根据你们的优先级、饥饿程度去给你们每个人计算一个优先级。优先级最高的那个人，可以上来吃蛋糕——吃到你不想吃为止。等这个人吃完了，我再重新根据优先级、饥饿程度来计算每个人的优先级，然后再分给优先级最高的那个人。</p>
-<p>这样看来，这个场面就有意思了——可能有些人是PPMM，因此具有高优先级，于是她就可以经常来吃蛋糕。可能另外一个人是个丑男，而去很ws，所以优先级特别低，于是好半天了才轮到他一次（因为随着时间的推移，他会越来越饥饿，因此算出来的总优先级就会越来越高，因此总有一天会轮到他的）。而且，如果一不小心让一个大胖子得到了刀叉，因为他饭量大，可能他会霸占着蛋糕连续吃很久很久，导致旁边的人在那里咽口水。。。</p>
-<p>而且，还可能会有这种情况出现：操作系统现在计算出来的结果，5号PPMM总优先级最高，而且高出别人一大截。因此就叫5号来吃蛋糕。5号吃了一小会儿，觉得没那么饿了，于是说“我不吃了”（挂起）。，因此操作系统就会重新计算所有人的优先级。</p>
-<p>因为5号刚刚吃过，因此她的饥饿程度变小了，于是总优先级变小了；而其他人因为多等了一会儿，饥饿程度都变大了，所以总优先级也变大了。不过这时候仍然有可能5号的优先级比别的都高，只不过现在只比其他的高一点点——但她仍然是总优先级最高的啊。因此操作系统就会说：5号mm上来吃蛋糕……（5号mm心里郁闷，这不刚吃过嘛……人家要减肥……谁叫你长那么漂亮，获得了那么高的优先级）。</p>
-<p>那么，Thread.Sleep 函数是干吗的呢？还用刚才的分蛋糕的场景来描述。上面的场景里面，5号MM在吃了一次蛋糕之后，觉得已经有8分饱了，她觉得在未来的半个小时之内都不想再来吃蛋糕了，那么她就会跟操作系统说：在未来的半个小时之内不要再叫我上来吃蛋糕了。</p>
-<p>这样，操作系统在随后的半个小时里面重新计算所有人总优先级的时候，就会忽略5号mm。Sleep函数就是干这事的，他告诉操作系统“在未来的多少毫秒内我不参与CPU竞争”。</p>
-<p>看完了 Thread.Sleep 的作用，我们再来想想文章开头的两个问题。</p>
-<p>对于第一个问题，答案是：不一定。因为你只是告诉操作系统：在未来的1000毫秒内我不想再参与到CPU竞争。那么1000毫秒过去之后，这时候也许另外一个线程正在使用CPU，那么这时候操作系统是不会重新分配CPU的，直到那个线程挂起或结束；况且，即使这个时候恰巧轮到操作系统进行CPU 分配，那么当前线程也不一定就是总优先级最高的那个，CPU还是可能被其他线程抢占去。</p>
-<p>与此相似的，Thread有个Resume函数，是用来唤醒挂起的线程的。好像上面所说的一样，这个函数只是“告诉操作系统我从现在起开始参与CPU竞争了”，这个函数的调用并不能马上使得这个线程获得CPU控制权。</p>
-<p>对于第二个问题，答案是：有，而且区别很明显。假设我们刚才的分蛋糕场景里面，有另外一个PPMM 7号，她的优先级也非常非常高（因为非常非常漂亮），所以操作系统总是会叫道她来吃蛋糕。而且，7号也非常喜欢吃蛋糕，而且饭量也很大。不过，7号人品很好，她很善良，她没吃几口就会想：如果现在有别人比我更需要吃蛋糕，那么我就让给他。</p>
-<p>因此，她可以每吃几口就跟操作系统说：我们来重新计算一下所有人的总优先级吧。不过，操作系统不接受这个建议——因为操作系统不提供这个接口。于是7号mm就换了个说法：“在未来的0毫秒之内不要再叫我上来吃蛋糕了”。这个指令操作系统是接受的，于是此时操作系统就会重新计算大家的总优先级——注意这个时候是连7号一起计算的，因为“0毫秒已经过去了”嘛。因此如果没有比7号更需要吃蛋糕的人出现，那么下一次7号还是会被叫上来吃蛋糕。</p>
-<p>因此，Thread.Sleep(0)的作用，就是“触发操作系统立刻重新进行一次CPU竞争”。竞争的结果也许是当前线程仍然获得CPU控制权，也许会换成别的线程获得CPU控制权。这也是我们在大循环里面经常会写一句Thread.Sleep(0) ，因为这样就给了其他线程比如Paint线程获得CPU控制权的权力，这样界面就不会假死在那里。</p>
-<p>另外，虽然上面提到说“除非它自己放弃使用 CPU ，否则将完全霸占 CPU”，但这个行为仍然是受到制约的——操作系统会监控你霸占CPU的情况，如果发现某个线程长时间霸占CPU，会强制使这个线程挂起，因此在实际上不会出现“一个线程一直霸占着 CPU 不放”的情况。至于我们的大循环造成程序假死，并不是因为这个线程一直在霸占着CPU。</p>
-<p>实际上在这段时间操作系统已经进行过多次CPU竞争了，只不过其他线程在获得CPU控制权之后很短时间内马上就退出了，于是就又轮到了这个线程继续执行循环，于是就又用了很久才被操作系统强制挂起。。。因此反应到界面上，看起来就好像这个线程一直在霸占着CPU一样。</p>
+                <h1 id="程序内存概念"><a href="#程序内存概念" class="headerlink" title="程序内存概念"></a>程序内存概念</h1><p><strong>一 预备知识</strong></p>
+<p>​        在区分一个程序的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%A0%86%E6%A0%88&amp;spm=1001.2101.3001.7020">堆栈</a>、bss、text段、RO、RW、ZI等概念时，首先区分一下程序进程和程序文件，然后了解一下哈弗结构和冯诺依曼结构。</p>
+<p>​        程序进程就是程序运行时的程序，程序文件是编译后生成的可执行程序，比如.bin文件等，这两个概念很好区分，特别强调一下，分开表达主要是怕读者在阅读过程中混淆了。</p>
+<p>​        哈佛结构和冯诺依曼结构的主要区别就是处理器能不能实现取指令和取数据的并发进行。嵌入式芯片中主要是哈佛结构，PC机上是冯诺依曼结构。</p>
+<p><strong>经典的哈佛结构</strong><br>        程序存储器和数据存储器是各自独立的存储器。处理器应该有两套总线，一套是程序存储器的数据和地址总线，一套是数据存储器的数据和地址总线。取指令和取数据能并发进行。51的程序进程的逻辑代码段放在ROM中，而变量部分则放在RAM中，取ROM中的指令和RAM中的变量是两套总线。</p>
+<p><strong>改进型哈佛结构</strong><br>        程序存储器和数据存储器是各自独立的存储器。处理器只有一套总线，分时访问程序存储器和数据存储器，但是在处理器中有icache和dcache将程序和数据分开，所以处理器仍然可以并步执行取指令和取数据。从ARM9开始以后所有的ARM处理器内核都是改进型的哈佛结构。ARM的逻辑代码和变量都是存放在RAM中的，但是，它在内存中划分了两部分的空间，其中一部分放逻辑代码，另一部分存放变量，之间不会相互干扰。</p>
+<p><strong>冯诺依曼结构</strong>：<br>        没有程序存储空间和数据存储空间之分。处理器只有一套总线，取指令和取数据是不能同时进行的。程序进程全部在RAM中，他们之间一般是按照代码的执行顺序依次存储。由于全部在RAM中，运行速度快，所需的RAM多。</p>
+<p><strong>二 程序文件中的分区</strong></p>
+<p>备注：只针对嵌入式，pc程序文件没有探究过。小标题“程序文件中的分区”其实不是很恰当，不知道该如何形容，此部分概念通常出现在一个程序编译完成后的大小统计，请自行理解。</p>
+<p>​    相关概念：Code，RO_data，RW_data，ZI_data，RO，RW，常出现在嵌入式程序编译完成后的统计，例如MDK，IAR，ARM GCC。</p>
+<p>有些技术文章中会直接使用RO，请注意区分RO和RO-data的区别。 </p>
+<p><strong>Code</strong>：即代码域，它指的是编译器生成的机器指令。<br><strong>RO_data</strong>：ReadOnly data，即只读数据域，它指程序中用到的只读数据，全局变量，例如C语言中const关键字定义的全局变量就是典型的RO-data。<br><strong>RW_data</strong>：ReadWrite data，即可读写数据域，它指初始化为“非0值”的可读写数据，程序刚运行时，这些数据具有非0的初始值，且运行的时候它们会常驻在RAM区，因而应用程序可以修改其内容。例如全局变量或者静态变量，且定义时赋予“非0值”给该变量进行初始化。<br><strong>ZI_data</strong>：ZeroInitialie data，即0初始化数据，它指初始化为“0值”的可读写数据域，它与RW_data的区别是程序刚运行时这些数据初始值全都为0，而后续运行过程与RW-data的性质一样，它们也常驻在RAM区，因而应用程序可以更改其内容。包括未初始化的全局变量，和初始化为0的全局变量。<br><strong>RO</strong>：只读区域，包括RO_data和code。 </p>
+<p>当程序存储在ROM中时，所占用的大小为Code + RO_data + RW_data 。<br>当程序执行时， RW_data和 ZI_data在RAM中，RO_data和code视cpu架构（51、arm、x86）不同处于ROM或者RAM中。其中ZI_data对应了BSS段，RW_data对应数据段，code对应代码段， RO_data对应数据段。</p>
+<p><strong>三 程序进程中的分区</strong></p>
+<p> <strong>三 程序进程中的分区</strong>：</p>
+<p>相关概念：堆(heap)，栈(stack)，BSS段，数据段(data)，代码段( code /text)，全局静态区，文字常量区，程序代码区。<br> <strong>BSS段</strong>：BSS段（bss segment）通常是指用来存放程序中未初始化的全局变量的一块内存区域。<br> <strong>数据段</strong>：数据段（data segment）通常是指用来存放程序中已初始化的全局变量的一块内存区域。<br> <strong>代码段</strong>：代码段（code segment/text segment）通常是指用来存放程序执行代码的一块内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域通常属于只读, 某些架构也允许代码段为可写，即允许修改程序。在代码段中，也有可能包含一些只读的常数变量，例如字符串常量等。<br> <strong>堆（heap）</strong>：堆是用于存放进程运行中被动态分配的内存段，它的大小并不固定，可动态扩张或缩减。当进程调用malloc等函数分配内存时，新分配的内存就被动态添加到堆上（堆被扩张）；当利用free等函数释放内存时，被释放的内存从堆中被剔除（堆被缩减）。<br> **栈(stack)**：栈又称堆栈，用户存放程序临时创建的局部变量。在函数被调用时，其参数也会被压入发起调用的进程栈中，并且待到调用结束后，函数的返回值也会被存放回栈中。由于栈的后进先出特点，所以栈特别方便用来保存/恢复调用现场。</p>
+<p> 全局静态区，文字常量区，程序代码区是从内存地址分配的角度来描述的。<br><strong>全局区（静态区）（static）</strong>—，全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。</p>
+<p><strong>文字常量区</strong>—常量字符串就是放在这里的。<br><strong>程序代码区</strong>—存放函数体的二进制代码。</p>
+<p><img src="/2022/04/01/%E7%A8%8B%E5%BA%8F%E5%86%85%E5%AD%98%E6%A6%82%E5%BF%B5/code_ram.jpg"></p>
 
                 
             </div>
@@ -530,7 +533,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/14/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/">http://moomq.github.io/2022/04/14/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/</a>
+                    <a href="http://moomq.github.io/2022/04/01/cheng-xu-nei-cun-gai-nian/">http://moomq.github.io/2022/04/01/cheng-xu-nei-cun-gai-nian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,8 +571,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/sleep-0/">
-                                    <span class="chip bg-color">sleep(0)</span>
+                                <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="/tags/RAM/">
+                                    <span class="chip bg-color">RAM</span>
                                 </a>
                             
                         </div>
@@ -747,13 +754,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/15/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8MinGW%E7%BC%96%E8%AF%91boost%E5%BA%93/">
+                <a href="/2022/04/02/dai-ma-zheng-ji-zhi-dao-nei-rong-gai-yao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/37.jpg" class="responsive-img" alt="Windows下使用MinGW编译boost库">
+                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="代码整洁之道内容概要">
                         
-                        <span class="card-title">Windows下使用MinGW编译boost库</span>
+                        <span class="card-title">代码整洁之道内容概要</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -764,14 +771,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-02
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" class="post-category">
+                                    编程规范
                                 </a>
                             
                             
@@ -781,12 +788,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/boost/">
-                        <span class="chip bg-color">boost</span>
+                    <a href="/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/">
+                        <span class="chip bg-color">整洁代码</span>
                     </a>
                     
-                    <a href="/tags/MinGW/">
-                        <span class="chip bg-color">MinGW</span>
+                    <a href="/tags/%E9%87%8D%E6%9E%84/">
+                        <span class="chip bg-color">重构</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%A7%84%E8%8C%83/">
+                        <span class="chip bg-color">规范</span>
                     </a>
                     
                 </div>
@@ -800,13 +815,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/13/Protocol%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">
+                <a href="/2021/10/27/my-first-blog/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="Protocol Buffers">
+                        <img src="/medias/featureimages/26.png" class="responsive-img" alt="my first blog">
                         
-                        <span class="card-title">Protocol Buffers</span>
+                        <span class="card-title">my first blog</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -817,27 +832,15 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-27
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            qqmo
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Protocol/">
-                        <span class="chip bg-color">Protocol</span>
-                    </a>
-                    
                 </div>
                 
             </div>

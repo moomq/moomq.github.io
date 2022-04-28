@@ -4,9 +4,32 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Protocol Buffers, c/c++">
-    <meta name="description" content="Protocol Buffers - Google’s data interchange formatCopyright 2008 Google Inc.
-https://developers.google.com/protocol-buf">
+    <meta name="keywords" content="位运算, qqmo">
+    <meta name="description" content="位运算[TOC]
+位操作符基本的位操作符有与、或、异或、取反、左移、右移这6种:
+
+
+
+符号
+描述
+运算规则
+
+
+
+&amp;amp;
+与
+两个bit都为1，才为1
+
+
+|
+或
+两个bit都为0，才为0
+
+
+^
+异或
+两个bit相同为0，不同为1
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +43,7 @@ https://developers.google.com/protocol-buf">
 
     
 
-    <title>Protocol Buffers | qqmo&#39;s blog</title>
+    <title>位运算 | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -318,7 +341,7 @@ https://developers.google.com/protocol-buf">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Protocol Buffers</h1>
+                    <h1 class="description center-align post-title">位运算</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +457,8 @@ https://developers.google.com/protocol-buf">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Protocol/">
-                                <span class="chip bg-color">Protocol</span>
+                            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                                <span class="chip bg-color">位运算</span>
                             </a>
                         
                     </div>
@@ -459,7 +482,7 @@ https://developers.google.com/protocol-buf">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-13
+                    2022-04-06
                 </div>
                 
 
@@ -475,120 +498,265 @@ https://developers.google.com/protocol-buf">
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Protocol-Buffers-Google’s-data-interchange-format"><a href="#Protocol-Buffers-Google’s-data-interchange-format" class="headerlink" title="Protocol Buffers - Google’s data interchange format"></a>Protocol Buffers - Google’s data interchange format</h1><p>Copyright 2008 Google Inc.</p>
-<p><a target="_blank" rel="noopener" href="https://developers.google.com/protocol-buffers/">https://developers.google.com/protocol-buffers/</a></p>
-<h2 id="C-Installation-Unix"><a href="#C-Installation-Unix" class="headerlink" title="C++ Installation - Unix"></a>C++ Installation - Unix</h2><p>To build protobuf from source, the following tools are needed:</p>
-<ul>
-<li>autoconf</li>
-<li>automake</li>
-<li>libtool</li>
-<li>make</li>
-<li>g++</li>
-<li>unzip</li>
-</ul>
-<p>On Ubuntu/Debian, you can install them with:</p>
-<pre><code>sudo apt-get install autoconf automake libtool curl make g++ unzip
-</code></pre>
-<p>On other platforms, please use the corresponding package managing tool to<br>install them before proceeding.</p>
-<p>To get the source, download one of the release .tar.gz or .zip packages in the<br>release page:</p>
-<pre><code>https://github.com/protocolbuffers/protobuf/releases/latest
-</code></pre>
-<p>For example: if you only need C++, download <code>protobuf-cpp-[VERSION].tar.gz</code>; if<br>you need C++ and Java, download <code>protobuf-java-[VERSION].tar.gz</code> (every package<br>contains C++ source already); if you need C++ and multiple other languages,<br>download <code>protobuf-all-[VERSION].tar.gz</code>.</p>
-<p>You can also get the source by “git clone” our git repository. Make sure you<br>have also cloned the submodules and generated the configure script (skip this<br>if you are using a release .tar.gz or .zip package):</p>
-<pre><code>git clone https://github.com/protocolbuffers/protobuf.git
-cd protobuf
-git submodule update --init --recursive
-./autogen.sh
-</code></pre>
-<p>To build and install the C++ Protocol Buffer runtime and the Protocol<br>Buffer compiler (protoc) execute the following:</p>
-<pre><code> ./configure
- make
- make check
- sudo make install
- sudo ldconfig # refresh shared library cache.
-</code></pre>
-<p>If “make check” fails, you can still install, but it is likely that<br>some features of this library will not work correctly on your system.<br>Proceed at your own risk.</p>
-<p>For advanced usage information on configure and make, please refer to the<br>autoconf documentation:</p>
-<pre><code>http://www.gnu.org/software/autoconf/manual/autoconf.html#Running-configure-Scripts
-</code></pre>
-<p><strong>Hint on install location</strong></p>
-<p>By default, the package will be installed to /usr/local.  However,<br>on many platforms, /usr/local/lib is not part of LD_LIBRARY_PATH.<br>You can add it, but it may be easier to just install to /usr<br>instead.  To do this, invoke configure as follows:</p>
-<pre><code>./configure --prefix=/usr
-</code></pre>
-<p>If you already built the package with a different prefix, make sure<br>to run “make clean” before building again.</p>
-<p><strong>Compiling dependent packages</strong></p>
-<p>To compile a package that uses Protocol Buffers, you need to pass<br>various flags to your compiler and linker.  As of version 2.2.0,<br>Protocol Buffers integrates with pkg-config to manage this.  If you<br>have pkg-config installed, then you can invoke it to get a list of<br>flags like so:</p>
-<pre><code>pkg-config --cflags protobuf         # print compiler flags
-pkg-config --libs protobuf           # print linker flags
-pkg-config --cflags --libs protobuf  # print both
-</code></pre>
-<p>For example:</p>
-<pre><code>c++ my_program.cc my_proto.pb.cc `pkg-config --cflags --libs protobuf`
-</code></pre>
-<p>Note that packages written prior to the 2.2.0 release of Protocol<br>Buffers may not yet integrate with pkg-config to get flags, and may<br>not pass the correct set of flags to correctly link against<br>libprotobuf.  If the package in question uses autoconf, you can<br>often fix the problem by invoking its configure script like:</p>
-<pre><code>configure CXXFLAGS="$(pkg-config --cflags protobuf)" \
-          LIBS="$(pkg-config --libs protobuf)"
-</code></pre>
-<p>This will force it to use the correct flags.</p>
-<p>If you are writing an autoconf-based package that uses Protocol<br>Buffers, you should probably use the PKG_CHECK_MODULES macro in your<br>configure script like:</p>
-<pre><code>PKG_CHECK_MODULES([protobuf], [protobuf])
-</code></pre>
-<p>See the pkg-config man page for more info.</p>
-<p>If you only want protobuf-lite, substitute “protobuf-lite” in place<br>of “protobuf” in these examples.</p>
-<p><strong>Note for Mac users</strong></p>
-<p>For a Mac system, Unix tools are not available by default. You will first need<br>to install Xcode from the Mac AppStore and then run the following command from<br>a terminal:</p>
-<pre><code>sudo xcode-select --install
-</code></pre>
-<p>To install Unix tools, you can install “port” following the instructions at<br><a target="_blank" rel="noopener" href="https://www.macports.org/">https://www.macports.org</a> . This will reside in /opt/local/bin/port for most<br>Mac installations.</p>
-<pre><code>sudo /opt/local/bin/port install autoconf automake libtool
-</code></pre>
-<p>Then follow the Unix instructions above.</p>
-<p><strong>Note for cross-compiling</strong></p>
-<p>The makefiles normally invoke the protoc executable that they just<br>built in order to build tests.  When cross-compiling, the protoc<br>executable may not be executable on the host machine.  In this case,<br>you must build a copy of protoc for the host machine first, then use<br>the –with-protoc option to tell configure to use it instead.  For<br>example:</p>
-<pre><code>./configure --with-protoc=protoc
-</code></pre>
-<p>This will use the installed protoc (found in your $PATH) instead of<br>trying to execute the one built during the build process.  You can<br>also use an executable that hasn’t been installed.  For example, if<br>you built the protobuf package for your host machine in ../host,<br>you might do:</p>
-<pre><code>./configure --with-protoc=../host/src/protoc
-</code></pre>
-<p>Either way, you must make sure that the protoc executable you use<br>has the same version as the protobuf source code you are trying to<br>use it with.</p>
-<p><strong>Note for Solaris users</strong></p>
-<p>Solaris 10 x86 has a bug that will make linking fail, complaining<br>about libstdc++.la being invalid.  We have included a work-around<br>in this package.  To use the work-around, run configure as follows:</p>
-<pre><code>./configure LDFLAGS=-L$PWD/src/solaris
-</code></pre>
-<p>See src/solaris/libstdc++.la for more info on this bug.</p>
-<p><strong>Note for HP C++ Tru64 users</strong></p>
-<p>To compile invoke configure as follows:</p>
-<pre><code>./configure CXXFLAGS="-O -std ansi -ieee -D__USE_STD_IOSTREAM"
-</code></pre>
-<p>Also, you will need to use gmake instead of make.</p>
-<p><strong>Note for AIX users</strong></p>
-<p>Compile using the IBM xlC C++ compiler as follows:</p>
-<pre><code>./configure CXX=xlC
-</code></pre>
-<p>Also, you will need to use GNU <code>make</code> (<code>gmake</code>) instead of AIX <code>make</code>.</p>
-<h2 id="C-Installation-Windows"><a href="#C-Installation-Windows" class="headerlink" title="C++ Installation - Windows"></a>C++ Installation - Windows</h2><p>If you only need the protoc binary, you can download it from the release<br>page:</p>
-<pre><code>https://github.com/protocolbuffers/protobuf/releases/latest
-</code></pre>
-<p>In the downloads section, download the zip file protoc-$VERSION-win32.zip.<br>It contains the protoc binary as well as public proto files of protobuf<br>library.</p>
-<p>Protobuf and its dependencies can be installed directly by using <code>vcpkg</code>:</p>
-<pre><code>&gt;vcpkg install protobuf protobuf:x64-windows
-</code></pre>
-<p>If zlib support is desired, you’ll also need to install the zlib feature:</p>
-<pre><code>&gt;vcpkg install protobuf[zlib] protobuf[zlib]:x64-windows
-</code></pre>
-<p>See <a target="_blank" rel="noopener" href="https://github.com/Microsoft/vcpkg">https://github.com/Microsoft/vcpkg</a> for more information.</p>
-<p>To build from source using Microsoft Visual C++, see <a href="../cmake/README.md">cmake/README.md</a>.</p>
-<p>To build from source using Cygwin or MinGW, follow the Unix installation<br>instructions, above.</p>
-<h2 id="Binary-Compatibility-Warning"><a href="#Binary-Compatibility-Warning" class="headerlink" title="Binary Compatibility Warning"></a>Binary Compatibility Warning</h2><p>Due to the nature of C++, it is unlikely that any two versions of the<br>Protocol Buffers C++ runtime libraries will have compatible ABIs.<br>That is, if you linked an executable against an older version of<br>libprotobuf, it is unlikely to work with a newer version without<br>re-compiling.  This problem, when it occurs, will normally be detected<br>immediately on startup of your app.  Still, you may want to consider<br>using static linkage.  You can configure this package to install<br>static libraries only using:</p>
-<pre><code>./configure --disable-shared
-</code></pre>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>The complete documentation for Protocol Buffers is available via the<br>web at:</p>
-<p><a target="_blank" rel="noopener" href="https://developers.google.com/protocol-buffers/">https://developers.google.com/protocol-buffers/</a></p>
+                <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>[TOC]</p>
+<h2 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h2><p>基本的位操作符有与、或、异或、取反、左移、右移这6种:</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;</td>
+<td>与</td>
+<td>两个bit都为1，才为1</td>
+</tr>
+<tr>
+<td>|</td>
+<td>或</td>
+<td>两个bit都为0，才为0</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>两个bit相同为0，不同为1</td>
+</tr>
+<tr>
+<td>~</td>
+<td>取反</td>
+<td>0变1，1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>左移若干位，高位丢弃，低位补0</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>右移若干位，无符号数高位补0，有符号数不同编译器处理不同，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+</tr>
+</tbody></table>
+<h2 id="位运算示例操作"><a href="#位运算示例操作" class="headerlink" title="位运算示例操作"></a>位运算示例操作</h2><table>
+<thead>
+<tr>
+<th>位运算</th>
+<th>功能</th>
+<th>示例</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x &gt;&gt; 1</td>
+<td>去掉最后一位</td>
+<td>101101-&gt;10110</td>
+<td></td>
+</tr>
+<tr>
+<td>x &lt;&lt; 1</td>
+<td>在最后加一个0</td>
+<td>101101-&gt;1011010</td>
+<td></td>
+</tr>
+<tr>
+<td>x &lt;&lt; 1</td>
+<td>在最后加一个1</td>
+<td>101101-&gt;1011011</td>
+<td></td>
+</tr>
+<tr>
+<td>x\</td>
+<td>1</td>
+<td>把最后一位变成1</td>
+<td>101100-&gt;101101</td>
+</tr>
+<tr>
+<td>x &amp; -2</td>
+<td>把最后一位变成0</td>
+<td>101101-&gt;101100</td>
+<td></td>
+</tr>
+<tr>
+<td>x ^ 1</td>
+<td>最后一位取反</td>
+<td>101101-&gt;101100</td>
+<td></td>
+</tr>
+<tr>
+<td>x \</td>
+<td>(1 &lt;&lt; (k-1))</td>
+<td>把右数第k位变成1</td>
+<td>101001-&gt;101101,k=3</td>
+</tr>
+<tr>
+<td>x &amp; ~ (1 &lt;&lt; (k-1))</td>
+<td>把右数第k位变成0</td>
+<td>101101-&gt;101001,k=3</td>
+<td></td>
+</tr>
+<tr>
+<td>x ^(1 &lt;&lt;(k-1))</td>
+<td>右数第k位取反</td>
+<td>101001-&gt;101101,k=3</td>
+<td></td>
+</tr>
+<tr>
+<td>x &amp; 7</td>
+<td>取末三位</td>
+<td>1101101-&gt;101</td>
+<td></td>
+</tr>
+<tr>
+<td>x &amp; (1 &lt;&lt; k-1)</td>
+<td>取末k位</td>
+<td>1101101-&gt;1101,k=5</td>
+<td></td>
+</tr>
+<tr>
+<td>x &gt;&gt; (k-1) &amp; 1</td>
+<td>取右数第k位</td>
+<td>1101101-&gt;1,k=4</td>
+<td></td>
+</tr>
+<tr>
+<td>x \</td>
+<td>((1 &lt;&lt; k)-1)</td>
+<td>把末k位变成1</td>
+<td>101001-&gt;101111,k=4</td>
+</tr>
+<tr>
+<td>x ^ (1 &lt;&lt; k-1)</td>
+<td>末k位取反</td>
+<td>101001-&gt;100110,k=4</td>
+<td></td>
+</tr>
+<tr>
+<td>x &amp; (x+1)</td>
+<td>把右边连续的1变成0</td>
+<td>100101111-&gt;100100000</td>
+<td></td>
+</tr>
+<tr>
+<td>x \</td>
+<td>(x+1)</td>
+<td>把右起第一个0变成1</td>
+<td>100101111-&gt;100111111</td>
+</tr>
+<tr>
+<td>x \</td>
+<td>(x-1)</td>
+<td>把右边连续的0变成1</td>
+<td>11011000-&gt;11011111</td>
+</tr>
+<tr>
+<td>(x ^ (x+1)) &gt;&gt; 1</td>
+<td>取右边连续的1</td>
+<td>100101111-&gt;1111</td>
+<td></td>
+</tr>
+<tr>
+<td>x &amp; -x</td>
+<td>去掉右起第一个1的左边</td>
+<td>100101000-&gt;1000</td>
+<td></td>
+</tr>
+<tr>
+<td>x&amp;0x7F</td>
+<td>取末7位</td>
+<td>100101000-&gt;101000</td>
+<td></td>
+</tr>
+<tr>
+<td>x&amp; ~0x7F</td>
+<td>是否小于127</td>
+<td>001111111 &amp; ~0x7F-&gt;0</td>
+<td></td>
+</tr>
+<tr>
+<td>x &amp; 1</td>
+<td>判断奇偶</td>
+<td>00000111&amp;1-&gt;1</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>使用位运算的两点注意事项：</p>
+<ol>
+<li>位操作只能用于整形数据，对float和double类型进行位操作会被编译器报错。</li>
+<li>位操作符的运算优先级比较低，因为尽量使用括号来确保运算顺序</li>
+</ol>
+<h3 id="1-判断一个数值是不是2的整数次方"><a href="#1-判断一个数值是不是2的整数次方" class="headerlink" title="1. 判断一个数值是不是2的整数次方"></a>1. 判断一个数值是不是2的整数次方</h3><p>解题思路：</p>
+<p>2的整数次方对应的二进制的最高位上只有一个1，如：8，二进制为 1000； 4，二进制为 0100，</p>
+<p>那么将该数字减去1再与该数字进行与运算，减去1 后得到二进制：7，二进制为 0111；3，二进制为 0011，可以看出 8&amp;7 为0，</p>
+<p>4&amp;3 为0</p>
+<p>所以，如果 n 是2的整数次方，那么 n &amp; ( n - 1 )结果一定为0:</p>
+<p>n 的数值要大于 0 </p>
+<h3 id="2-使用位运算交换两个数字【不使用中间变量】"><a href="#2-使用位运算交换两个数字【不使用中间变量】" class="headerlink" title="2. 使用位运算交换两个数字【不使用中间变量】"></a>2. 使用位运算交换两个数字【不使用中间变量】</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n ^= m;</span><br><span class="line">6.          m ^= n;</span><br><span class="line">7.          n ^= m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如： a = 13, b = 6:<br>a的二进制为 13 = 8 + 4 + 1 = 1101(二进制)<br>b的二进制为 6 = 4 + 2 = 110(二进制)</p>
+<ol>
+<li>a ^= b a = 1101 ^ 110 = 1011;</li>
+<li>b ^= a b = 110 ^ 1011 = 1101; 即b == 13</li>
+<li>a ^= b a = 1011 ^ 1101 = 110; 即a == 6</li>
+</ol>
+<p>其他方法，<strong>使用加减法</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n = n + m;</span><br><span class="line">6.          m = n - m;</span><br><span class="line">7.          n = n - m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-计算在一个-32-位的整数的二进制表示中有多少个-1"><a href="#3-计算在一个-32-位的整数的二进制表示中有多少个-1" class="headerlink" title="3. 计算在一个 32 位的整数的二进制表示中有多少个 1"></a>3. 计算在一个 32 位的整数的二进制表示中有多少个 1</h3><p>循环使用x &amp; (x-1)消去最后一位1，计算总共消去了多少次即可。如：</p>
+<p>13： 1101</p>
+<p>12： 1100</p>
+<p>相与：1100， 消去最后一位</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          // 计算在一个 32 位的整数的二进制表示中有多少个 1</span><br><span class="line">5.          int m = 13, num = 0;</span><br><span class="line">6.          while (true){</span><br><span class="line">7.              if (m == 0) break;</span><br><span class="line">8.              m &amp;= (m-1); </span><br><span class="line">9.              num ++; </span><br><span class="line">10.          }</span><br><span class="line">11.          System.out.println(num);</span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-正数变成负数，或者负数变成正数"><a href="#4-正数变成负数，或者负数变成正数" class="headerlink" title="4. 正数变成负数，或者负数变成正数"></a>4. 正数变成负数，或者负数变成正数</h3><p><strong>变换符号只需要取反后加1即可</strong></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) { </span><br><span class="line">5.          int m = -13; </span><br><span class="line">6.          int changeM = ~m + 1; </span><br><span class="line">7.          System.out.println(changeM);</span><br><span class="line">8.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-判断一个数值的奇偶"><a href="#5-判断一个数值的奇偶" class="headerlink" title="5. 判断一个数值的奇偶"></a>5. 判断一个数值的奇偶</h3><p>只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数，所以只需要与 1 相与。</p>
+<p>因此可以用if ((a &amp; 1) == 0)代替if (a % 2 == 0)来判断a是不是偶数。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int m = -14;</span><br><span class="line">6.          if ((m &amp; 1) == 1){</span><br><span class="line">7.              System.out.println("ji");</span><br><span class="line">8.          }else{</span><br><span class="line">9.              System.out.println("ou"); </span><br><span class="line">10.          }  </span><br><span class="line">11.      }</span><br><span class="line">13.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-乘以2-的m次方操作"><a href="#6-乘以2-的m次方操作" class="headerlink" title="6. 乘以2 的m次方操作"></a>6. 乘以2 的m次方操作</h3><p>乘以2的操作，即2的1次方，左移 1 位</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;1);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>推导扩展，乘以2的m次方：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;2); // 乘以 2的2次方，相当于乘以 4 </span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="7-除以2运算-负奇数的运算不可用"><a href="#7-除以2运算-负奇数的运算不可用" class="headerlink" title="7.除以2运算(负奇数的运算不可用)"></a>7.除以2运算(负奇数的运算不可用)</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&gt;&gt;1);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="8-转换成绝对值"><a href="#8-转换成绝对值" class="headerlink" title="8. 转换成绝对值"></a>8. 转换成绝对值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int n = 12;</span><br><span class="line">6.          System.out.println(0 &gt;&gt; 31); // 0 </span><br><span class="line">7.          System.out.println(10 &gt;&gt; 31);  // 0  </span><br><span class="line">8.          System.out.println(-10 &gt;&gt; 31);  // -1</span><br><span class="line">10.          System.out.println((n ^ (n &gt;&gt; 31)) - (n &gt;&gt; 31));  // 12 </span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<p>1.首先：n&gt;&gt;31 取得n的符号</p>
+<p>若n为正数，n&gt;&gt;31等于0；若n为负数，n&gt;&gt;31等于-1 若n为正数 n^0-0数不变；</p>
+<ol>
+<li>若 n 为负数 n^-1 需要计算 n 和 -1 的补码，异或后再取补码， 结果n变号并且绝对值减1，再减去-1就是绝对值</li>
+</ol>
+<h3 id="9-判断两数符号是否相同"><a href="#9-判断两数符号是否相同" class="headerlink" title="9.判断两数符号是否相同"></a>9.判断两数符号是否相同</h3><p>true 表示 x和y有相同的符号， false表示x，y有相反的符号。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a ^ b) &gt; 0);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="10-求两个整数（int）的平均数"><a href="#10-求两个整数（int）的平均数" class="headerlink" title="10. 求两个整数（int）的平均数"></a>10. 求两个整数（int）的平均数</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a+b) &gt;&gt; 1);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="11-求两个整数的最大值"><a href="#11-求两个整数的最大值" class="headerlink" title="11. 求两个整数的最大值"></a>11. 求两个整数的最大值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int max(int a,int b){</span><br><span class="line">2.      return b &amp; ((a-b) &gt;&gt; 31) | a &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="12-求两个整数的最小值"><a href="#12-求两个整数的最小值" class="headerlink" title="12.求两个整数的最小值"></a>12.求两个整数的最小值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int min(int a,int b){</span><br><span class="line">2.      return a &amp; ((a-b) &gt;&gt; 31) | b &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="13-两个整数的加法运算"><a href="#13-两个整数的加法运算" class="headerlink" title="13. 两个整数的加法运算"></a>13. <strong>两个整数的加法运算</strong></h3><p>使用 <code>^</code> 和 <code>&amp;</code> 将两个整数相加</p>
+<ol>
+<li>两个数异或：相当于两个数相加，而不考虑进位；</li>
+<li>两个数相与，并左移一位：相当于求得进位；</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">13+11 = ？;</span><br><span class="line">13 的二进制      1 1 0 1                     -----a        13</span><br><span class="line">11 的二进制      1 0 1 1                     -----b        11  </span><br><span class="line"> (a&amp;b) &lt;&lt;1  -&gt;   1 0 0 1 0                         -----d         18</span><br><span class="line">          a^b  -&gt;     0 1 1 0                   -----e          6</span><br><span class="line"> (d&amp;e) &lt;&lt;1  -&gt;   0 0 1 0 0                       ------f         4</span><br><span class="line">          d^e  -&gt;  1 0 1 0 0                  -----g        20</span><br><span class="line"> (f&amp;g) &lt;&lt;1  -&gt;   0 1 0 0 0                       ------h        8</span><br><span class="line">          f^g  -&gt;  1 0 0 0 0                   ------i           16</span><br><span class="line"> (h&amp;i) &lt;&lt;1  -&gt;   0 0 0 0 0                      ------h        0       ---- -------- 没有进位了， 则退出循环</span><br><span class="line">          h^i  -&gt;  1 1 0 0 0                  ------i           24</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  private static int getSum(int a, int b) {</span><br><span class="line">2.      if (a == 0) return b;</span><br><span class="line">3.      if (b == 0) return a;</span><br><span class="line">4.      while (b != 0) {</span><br><span class="line">5.          int carry = a &amp; b; // 得到有进位的位置</span><br><span class="line">6.          a = a ^ b; // 直接相加，但是没有进位</span><br><span class="line">7.          b = carry &lt;&lt; 1; // 得到进位</span><br><span class="line">8.      }</span><br><span class="line">9.      return a;</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
+
 
                 
             </div>
@@ -615,7 +783,7 @@ pkg-config --cflags --libs protobuf  # print both
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/13/Protocol%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">http://moomq.github.io/2022/04/13/Protocol%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</a>
+                    <a href="http://moomq.github.io/2022/04/06/wei-yun-suan/">http://moomq.github.io/2022/04/06/wei-yun-suan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -653,8 +821,8 @@ pkg-config --cflags --libs protobuf  # print both
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Protocol/">
-                                    <span class="chip bg-color">Protocol</span>
+                                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                                    <span class="chip bg-color">位运算</span>
                                 </a>
                             
                         </div>
@@ -832,13 +1000,13 @@ pkg-config --cflags --libs protobuf  # print both
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/14/Thread.sleep(0)%E7%9A%84%E4%BD%9C%E7%94%A8/">
+                <a href="/2022/04/07/base64-de-bian-ma-yuan-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/40.jpg" class="responsive-img" alt="Thread.sleep(0)的作用">
+                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="Base64的编码原理">
                         
-                        <span class="card-title">Thread.sleep(0)的作用</span>
+                        <span class="card-title">Base64的编码原理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -849,7 +1017,7 @@ pkg-config --cflags --libs protobuf  # print both
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-07
                         </span>
                         <span class="publish-author">
                             
@@ -866,8 +1034,8 @@ pkg-config --cflags --libs protobuf  # print both
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/sleep-0/">
-                        <span class="chip bg-color">sleep(0)</span>
+                    <a href="/tags/Base64/">
+                        <span class="chip bg-color">Base64</span>
                     </a>
                     
                 </div>
@@ -881,13 +1049,13 @@ pkg-config --cflags --libs protobuf  # print both
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/12/note-hexo/">
+                <a href="/2022/04/05/mian-xiang-dui-xiang-bian-cheng-de-li-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/31.jpg" class="responsive-img" alt="Hexo">
+                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="面向对象编程的理解">
                         
-                        <span class="card-title">Hexo</span>
+                        <span class="card-title">面向对象编程的理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -898,7 +1066,7 @@ pkg-config --cflags --libs protobuf  # print both
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-05
                             </span>
                         <span class="publish-author">
                             
@@ -915,8 +1083,8 @@ pkg-config --cflags --libs protobuf  # print both
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">面向对象编程</span>
                     </a>
                     
                 </div>

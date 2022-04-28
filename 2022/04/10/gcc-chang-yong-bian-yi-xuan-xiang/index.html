@@ -4,32 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="位运算, c/c++">
-    <meta name="description" content="位运算[TOC]
-位操作符基本的位操作符有与、或、异或、取反、左移、右移这6种:
-
-
-
-符号
-描述
-运算规则
-
-
-
-&amp;amp;
-与
-两个bit都为1，才为1
-
-
-|
-或
-两个bit都为0，才为0
-
-
-^
-异或
-两个bit相同为0，不同为1
-">
+    <meta name="keywords" content="GCC常用编译选项, qqmo">
+    <meta name="description" content="GCC常用编译选项​        
+[TOC]
+​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -43,7 +21,7 @@
 
     
 
-    <title>位运算 | qqmo&#39;s blog</title>
+    <title>GCC常用编译选项 | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -336,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/36.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">位运算</h1>
+                    <h1 class="description center-align post-title">GCC常用编译选项</h1>
                 </div>
             </div>
         </div>
@@ -457,8 +435,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                <span class="chip bg-color">位运算</span>
+                            <a href="/tags/gcc/">
+                                <span class="chip bg-color">gcc</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E8%AF%91/">
+                                <span class="chip bg-color">编译</span>
                             </a>
                         
                     </div>
@@ -482,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-06
+                    2022-04-10
                 </div>
                 
 
@@ -498,262 +480,129 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>[TOC]</p>
-<h2 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h2><p>基本的位操作符有与、或、异或、取反、左移、右移这6种:</p>
+                <h1 id="GCC常用编译选项"><a href="#GCC常用编译选项" class="headerlink" title="GCC常用编译选项"></a>GCC常用编译选项</h1><p>​        </p>
+<p>[TOC]</p>
+<p>​        GCC有很多编译选项，有一些常用的选项可以作为检查代码质量的辅助手段，有的则可以让编译器对代码和编译目标文件进行优化，还有的是专门为了调试代码设计的，熟悉这些编译选项可以让开发者在使用GCC时更加游刃有余。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CFLAGS := -Wall -Wundef -Wshadow -Wconversion -Werror=return-type \</span><br><span class="line">    -Werror=implicit-function-declaration -Werror=unused-variable \</span><br><span class="line">    -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \</span><br><span class="line">    -Wno-trigraphs -Os</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于调试版本，将<code>-Os</code>替换为<code>-g -Og</code>。</p>
+<h2 id="一-警告选项"><a href="#一-警告选项" class="headerlink" title="一 警告选项"></a>一 警告选项</h2><p>​        GCC编译器支持对代码进行诊断，<strong>针对代码本身不是错误但是疑似错误或者可能存在风险的地方发出警告</strong>，而警告编译选项就是用于<strong>控制需要告警的警告类型</strong>的。一般启用特定类型警告的格式为<code>-Wxxx</code>，而排除特定类型的警告的格式则一般为<code>-Wno-xxx</code>。</p>
+<h3 id="1-Wall"><a href="#1-Wall" class="headerlink" title="1 -Wall"></a>1 -Wall</h3><p>​        这是一个非常常用的编译选项，用于启用一批<strong>比较常见且易于修改的警告</strong>，这些选项都是对代码进行基本的检查，比如下面这些：</p>
 <table>
 <thead>
 <tr>
-<th>符号</th>
-<th>描述</th>
-<th>运算规则</th>
+<th>选项</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>&amp;</td>
-<td>与</td>
-<td>两个bit都为1，才为1</td>
+<td>-Waddress</td>
+<td>检查是否存在可疑的内存地址使用</td>
 </tr>
 <tr>
-<td>|</td>
-<td>或</td>
-<td>两个bit都为0，才为0</td>
+<td>-Wformat</td>
+<td>检查标准库函数的使用格式是否正确，比如printf的格式化字符串中的格式符和对应的参数是否匹配</td>
 </tr>
 <tr>
-<td>^</td>
-<td>异或</td>
-<td>两个bit相同为0，不同为1</td>
+<td>-Wunused-function</td>
+<td>对已声明但是未定义的静态函数和未被使用的非内联静态函数发出警告</td>
 </tr>
 <tr>
-<td>~</td>
-<td>取反</td>
-<td>0变1，1变0</td>
+<td>-Wswitch</td>
+<td>当用switch用于枚举类型时，判断分支是否包含所有枚举值，否则发出警告</td>
 </tr>
 <tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>左移若干位，高位丢弃，低位补0</td>
+<td>-Wunused-variable</td>
+<td>对声明但未被使用的变量发出警告</td>
 </tr>
 <tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>右移若干位，无符号数高位补0，有符号数不同编译器处理不同，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+<td>-Wunused-but-set-variable</td>
+<td>对声明且被赋值但未被使用的变量发出警告</td>
+</tr>
+<tr>
+<td>-Warray-bounds=1</td>
+<td>数组越界检查，需启用选项-ftree-vrp</td>
 </tr>
 </tbody></table>
-<h2 id="位运算示例操作"><a href="#位运算示例操作" class="headerlink" title="位运算示例操作"></a>位运算示例操作</h2><table>
+<p>​        当需要排除某些类型的警告时，记得使用<code>-Wno-xxx</code>, 比如使用<code>-Wall -Wno-unused-variable</code>可以从<code>-Wall</code>中排除<code>-Wunused-variable</code>。</p>
+<p>​        完整的列表参见链接**<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html">Warning-Options</a>**。</p>
+<h3 id="2-Wextra"><a href="#2-Wextra" class="headerlink" title="2 -Wextra"></a>2 -Wextra</h3><p>​        单单只有<code>-Wall</code>可能还不够严格，GCC还有<code>-Wextra</code>作为补充，包括另外一些没有被<code>-Wall</code>包含的警告类型，比如笔者比较喜欢的几个：</p>
+<table>
 <thead>
 <tr>
-<th>位运算</th>
-<th>功能</th>
-<th>示例</th>
-<th></th>
+<th>选项</th>
+<th>作用</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>x &gt;&gt; 1</td>
-<td>去掉最后一位</td>
-<td>101101-&gt;10110</td>
-<td></td>
+<td>-Wcast-function-type</td>
+<td>当函数被强转为不兼容的函数指针时发出警告</td>
 </tr>
 <tr>
-<td>x &lt;&lt; 1</td>
-<td>在最后加一个0</td>
-<td>101101-&gt;1011010</td>
-<td></td>
+<td>-Wempty-body</td>
+<td>当存在空的if、else或者do while语句时发出警告</td>
 </tr>
 <tr>
-<td>x &lt;&lt; 1</td>
-<td>在最后加一个1</td>
-<td>101101-&gt;1011011</td>
-<td></td>
+<td>-Wunused-parameter</td>
+<td>当函数有未被使用的参数时发出警告，需配合-Wall</td>
 </tr>
 <tr>
-<td>x\</td>
-<td>1</td>
-<td>把最后一位变成1</td>
-<td>101100-&gt;101101</td>
+<td>-Wunused-but-set-parameter</td>
+<td>当存在被设置但是未被使用的参数发出警告，需配合-Wall</td>
 </tr>
 <tr>
-<td>x &amp; -2</td>
-<td>把最后一位变成0</td>
-<td>101101-&gt;101100</td>
-<td></td>
-</tr>
-<tr>
-<td>x ^ 1</td>
-<td>最后一位取反</td>
-<td>101101-&gt;101100</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(1 &lt;&lt; (k-1))</td>
-<td>把右数第k位变成1</td>
-<td>101001-&gt;101101,k=3</td>
-</tr>
-<tr>
-<td>x &amp; ~ (1 &lt;&lt; (k-1))</td>
-<td>把右数第k位变成0</td>
-<td>101101-&gt;101001,k=3</td>
-<td></td>
-</tr>
-<tr>
-<td>x ^(1 &lt;&lt;(k-1))</td>
-<td>右数第k位取反</td>
-<td>101001-&gt;101101,k=3</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; 7</td>
-<td>取末三位</td>
-<td>1101101-&gt;101</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; (1 &lt;&lt; k-1)</td>
-<td>取末k位</td>
-<td>1101101-&gt;1101,k=5</td>
-<td></td>
-</tr>
-<tr>
-<td>x &gt;&gt; (k-1) &amp; 1</td>
-<td>取右数第k位</td>
-<td>1101101-&gt;1,k=4</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>((1 &lt;&lt; k)-1)</td>
-<td>把末k位变成1</td>
-<td>101001-&gt;101111,k=4</td>
-</tr>
-<tr>
-<td>x ^ (1 &lt;&lt; k-1)</td>
-<td>末k位取反</td>
-<td>101001-&gt;100110,k=4</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; (x+1)</td>
-<td>把右边连续的1变成0</td>
-<td>100101111-&gt;100100000</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(x+1)</td>
-<td>把右起第一个0变成1</td>
-<td>100101111-&gt;100111111</td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(x-1)</td>
-<td>把右边连续的0变成1</td>
-<td>11011000-&gt;11011111</td>
-</tr>
-<tr>
-<td>(x ^ (x+1)) &gt;&gt; 1</td>
-<td>取右边连续的1</td>
-<td>100101111-&gt;1111</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; -x</td>
-<td>去掉右起第一个1的左边</td>
-<td>100101000-&gt;1000</td>
-<td></td>
-</tr>
-<tr>
-<td>x&amp;0x7F</td>
-<td>取末7位</td>
-<td>100101000-&gt;101000</td>
-<td></td>
-</tr>
-<tr>
-<td>x&amp; ~0x7F</td>
-<td>是否小于127</td>
-<td>001111111 &amp; ~0x7F-&gt;0</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; 1</td>
-<td>判断奇偶</td>
-<td>00000111&amp;1-&gt;1</td>
-<td></td>
+<td>-Wsign-compare</td>
+<td>当比较有符号和无符号值时发出警告</td>
 </tr>
 </tbody></table>
-<p>使用位运算的两点注意事项：</p>
+<p>对于不同语言，<code>-Wall</code>和<code>-Wextra</code>启用的选项可能略有差异</p>
+<h3 id="3-Werror"><a href="#3-Werror" class="headerlink" title="3 -Werror"></a>3 -Werror</h3><p><code>-Werror</code>用于将所有警告视为错误。</p>
+<p>​        如果不希望某些类型的警告被视为错误可以使用<code>-Wno-error=&lt;警告类型&gt;</code>，比如<code>-Wno-error=switch</code>；而使用<code>-Werror=&lt;警告类型&gt;</code>则可以将指定警告类型视为错误，比如<code>-Werror=switch</code>。</p>
+<p>​        当代码量变得比较大的时候，同时启用<code>-Wall -Wextra -Werror</code>是比较严苛的，可能存在一些不准确的警告，这时可以将<code>-Werror</code>替换为只将某些警告视为错误，在自动化编译构建的时候提前报错终止提示开发者进行改进。</p>
+<p>​        对于大部分<code>-Wunused-</code>类警告选项，其实都是<strong>让开发者明确知道定义的变量或者参数是不是必须的</strong>，是多余的还是忘记使用了，对于反思代码逻辑和简化代码都是很有帮助的，所以建议将这些警告视为错误。</p>
+<h3 id="4-Wpedantic"><a href="#4-Wpedantic" class="headerlink" title="4 -Wpedantic"></a>4 -Wpedantic</h3><p>对于所有不符合<code>ISO C/ISO C++</code>语言标准的源代码发出警告，等价于<code>-pedantic</code>。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-pedantic-errors`参数将这些警告视为错误，等同于`-Werror=pedantic</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-Wshadow"><a href="#5-Wshadow" class="headerlink" title="5 -Wshadow"></a>5 -Wshadow</h3><p>当局部变量屏蔽（shadow）已有已有变量时发出警告。比如以下代码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int ret = 0;</span><br><span class="line">for (int i = 0; i &lt; 10; ++i) {</span><br><span class="line">    int ret = i;  //  warning: declaration shadows a local variable</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="6-Wconversion"><a href="#6-Wconversion" class="headerlink" title="6 -Wconversion"></a>6 -Wconversion</h3><p>​        在<strong>隐式转换可能导致值变化的时候</strong>发出警告。在隐式转换的时候，如果值发生变化，那么结果可能就不是预料中的，所以最好使用显式转换。</p>
+<h2 id="二-优化选项"><a href="#二-优化选项" class="headerlink" title="二 优化选项"></a>二 优化选项</h2><p>​        优化选项用于控制编译器对代码的优化等级。比较常用的是<code>-O2</code>和<code>-Os</code>。详细的介绍请查看官网**<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html">Optimize-Options</a>**。</p>
+<h3 id="1-O0-Og"><a href="#1-O0-Og" class="headerlink" title="1 -O0/-Og"></a>1 -O0/-Og</h3><p>​        <code>-O0</code>是默认选项，不执行任何优化。在编译调试版本的时候，一般使用<code>-O0</code>，可以确保调试执行过程完全和代码一致（如果使用优化选项，根据源文件设定的断点和经过优化编译得到的程序可能对不上，所以不能准确停在预期的地方）。</p>
+<p>​        <code>-Og</code>是针对调试的优化选项，它会启用<code>-O1</code>的优化指令，除了那么可能会干扰调试的优化选项，同时可获取到更多的调试信息，提供更好好的编译体验，</p>
+<h3 id="2-O-O1"><a href="#2-O-O1" class="headerlink" title="2 -O/-O1"></a>2 -O/-O1</h3><p>​        执行级别1的优化，尝试减少代码大小和提高性能，但是不包括需要花费大量编译时间的优化选项。</p>
+<p>比如：</p>
 <ol>
-<li>位操作只能用于整形数据，对float和double类型进行位操作会被编译器报错。</li>
-<li>位操作符的运算优先级比较低，因为尽量使用括号来确保运算顺序</li>
+<li><code>-fdce</code>：移除不可能执行到的代码</li>
+<li><code>-fif-conversion</code>：尝试简化if语句。使用更少的分支、转化成标志位等操作</li>
+<li><code>-fmerge-constants</code>：尝试合并相同的常量</li>
 </ol>
-<h3 id="1-判断一个数值是不是2的整数次方"><a href="#1-判断一个数值是不是2的整数次方" class="headerlink" title="1. 判断一个数值是不是2的整数次方"></a>1. 判断一个数值是不是2的整数次方</h3><p>解题思路：</p>
-<p>2的整数次方对应的二进制的最高位上只有一个1，如：8，二进制为 1000； 4，二进制为 0100，</p>
-<p>那么将该数字减去1再与该数字进行与运算，减去1 后得到二进制：7，二进制为 0111；3，二进制为 0011，可以看出 8&amp;7 为0，</p>
-<p>4&amp;3 为0</p>
-<p>所以，如果 n 是2的整数次方，那么 n &amp; ( n - 1 )结果一定为0:</p>
-<p>n 的数值要大于 0 </p>
-<h3 id="2-使用位运算交换两个数字【不使用中间变量】"><a href="#2-使用位运算交换两个数字【不使用中间变量】" class="headerlink" title="2. 使用位运算交换两个数字【不使用中间变量】"></a>2. 使用位运算交换两个数字【不使用中间变量】</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n ^= m;</span><br><span class="line">6.          m ^= n;</span><br><span class="line">7.          n ^= m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如： a = 13, b = 6:<br>a的二进制为 13 = 8 + 4 + 1 = 1101(二进制)<br>b的二进制为 6 = 4 + 2 = 110(二进制)</p>
+<h3 id="3-O2"><a href="#3-O2" class="headerlink" title="3 -O2"></a>3 -O2</h3><p>​        执行<code>-O1</code>所有优化选项，同时额外执行<strong>几乎全部不需要在空间和性能之间平衡</strong>的优化选项。</p>
+<p>比如：</p>
 <ol>
-<li>a ^= b a = 1101 ^ 110 = 1011;</li>
-<li>b ^= a b = 110 ^ 1011 = 1101; 即b == 13</li>
-<li>a ^= b a = 1011 ^ 1101 = 110; 即a == 6</li>
+<li><code>-fgcse</code>：优化全局公共表达式、常量的传递</li>
+<li><code>-fcode-hoisting</code>：将所有分支都需要执行的表达式尽早执行（对于优化代码大小很有用，同时也提升性能）</li>
+<li><code>-finline-functions</code>：考虑将所有函数变成内联函数（即使没有被声明为inline）</li>
 </ol>
-<p>其他方法，<strong>使用加减法</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n = n + m;</span><br><span class="line">6.          m = n - m;</span><br><span class="line">7.          n = n - m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="3-计算在一个-32-位的整数的二进制表示中有多少个-1"><a href="#3-计算在一个-32-位的整数的二进制表示中有多少个-1" class="headerlink" title="3. 计算在一个 32 位的整数的二进制表示中有多少个 1"></a>3. 计算在一个 32 位的整数的二进制表示中有多少个 1</h3><p>循环使用x &amp; (x-1)消去最后一位1，计算总共消去了多少次即可。如：</p>
-<p>13： 1101</p>
-<p>12： 1100</p>
-<p>相与：1100， 消去最后一位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          // 计算在一个 32 位的整数的二进制表示中有多少个 1</span><br><span class="line">5.          int m = 13, num = 0;</span><br><span class="line">6.          while (true){</span><br><span class="line">7.              if (m == 0) break;</span><br><span class="line">8.              m &amp;= (m-1); </span><br><span class="line">9.              num ++; </span><br><span class="line">10.          }</span><br><span class="line">11.          System.out.println(num);</span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="4-正数变成负数，或者负数变成正数"><a href="#4-正数变成负数，或者负数变成正数" class="headerlink" title="4. 正数变成负数，或者负数变成正数"></a>4. 正数变成负数，或者负数变成正数</h3><p><strong>变换符号只需要取反后加1即可</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) { </span><br><span class="line">5.          int m = -13; </span><br><span class="line">6.          int changeM = ~m + 1; </span><br><span class="line">7.          System.out.println(changeM);</span><br><span class="line">8.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="5-判断一个数值的奇偶"><a href="#5-判断一个数值的奇偶" class="headerlink" title="5. 判断一个数值的奇偶"></a>5. 判断一个数值的奇偶</h3><p>只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数，所以只需要与 1 相与。</p>
-<p>因此可以用if ((a &amp; 1) == 0)代替if (a % 2 == 0)来判断a是不是偶数。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int m = -14;</span><br><span class="line">6.          if ((m &amp; 1) == 1){</span><br><span class="line">7.              System.out.println("ji");</span><br><span class="line">8.          }else{</span><br><span class="line">9.              System.out.println("ou"); </span><br><span class="line">10.          }  </span><br><span class="line">11.      }</span><br><span class="line">13.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="6-乘以2-的m次方操作"><a href="#6-乘以2-的m次方操作" class="headerlink" title="6. 乘以2 的m次方操作"></a>6. 乘以2 的m次方操作</h3><p>乘以2的操作，即2的1次方，左移 1 位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;1);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>推导扩展，乘以2的m次方：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;2); // 乘以 2的2次方，相当于乘以 4 </span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="7-除以2运算-负奇数的运算不可用"><a href="#7-除以2运算-负奇数的运算不可用" class="headerlink" title="7.除以2运算(负奇数的运算不可用)"></a>7.除以2运算(负奇数的运算不可用)</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&gt;&gt;1);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="8-转换成绝对值"><a href="#8-转换成绝对值" class="headerlink" title="8. 转换成绝对值"></a>8. 转换成绝对值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int n = 12;</span><br><span class="line">6.          System.out.println(0 &gt;&gt; 31); // 0 </span><br><span class="line">7.          System.out.println(10 &gt;&gt; 31);  // 0  </span><br><span class="line">8.          System.out.println(-10 &gt;&gt; 31);  // -1</span><br><span class="line">10.          System.out.println((n ^ (n &gt;&gt; 31)) - (n &gt;&gt; 31));  // 12 </span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<p>1.首先：n&gt;&gt;31 取得n的符号</p>
-<p>若n为正数，n&gt;&gt;31等于0；若n为负数，n&gt;&gt;31等于-1 若n为正数 n^0-0数不变；</p>
-<ol>
-<li>若 n 为负数 n^-1 需要计算 n 和 -1 的补码，异或后再取补码， 结果n变号并且绝对值减1，再减去-1就是绝对值</li>
-</ol>
-<h3 id="9-判断两数符号是否相同"><a href="#9-判断两数符号是否相同" class="headerlink" title="9.判断两数符号是否相同"></a>9.判断两数符号是否相同</h3><p>true 表示 x和y有相同的符号， false表示x，y有相反的符号。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a ^ b) &gt; 0);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="10-求两个整数（int）的平均数"><a href="#10-求两个整数（int）的平均数" class="headerlink" title="10. 求两个整数（int）的平均数"></a>10. 求两个整数（int）的平均数</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a+b) &gt;&gt; 1);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="11-求两个整数的最大值"><a href="#11-求两个整数的最大值" class="headerlink" title="11. 求两个整数的最大值"></a>11. 求两个整数的最大值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int max(int a,int b){</span><br><span class="line">2.      return b &amp; ((a-b) &gt;&gt; 31) | a &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="12-求两个整数的最小值"><a href="#12-求两个整数的最小值" class="headerlink" title="12.求两个整数的最小值"></a>12.求两个整数的最小值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int min(int a,int b){</span><br><span class="line">2.      return a &amp; ((a-b) &gt;&gt; 31) | b &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="13-两个整数的加法运算"><a href="#13-两个整数的加法运算" class="headerlink" title="13. 两个整数的加法运算"></a>13. <strong>两个整数的加法运算</strong></h3><p>使用 <code>^</code> 和 <code>&amp;</code> 将两个整数相加</p>
-<ol>
-<li>两个数异或：相当于两个数相加，而不考虑进位；</li>
-<li>两个数相与，并左移一位：相当于求得进位；</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">13+11 = ？;</span><br><span class="line">13 的二进制      1 1 0 1                     -----a        13</span><br><span class="line">11 的二进制      1 0 1 1                     -----b        11  </span><br><span class="line"> (a&amp;b) &lt;&lt;1  -&gt;   1 0 0 1 0                         -----d         18</span><br><span class="line">          a^b  -&gt;     0 1 1 0                   -----e          6</span><br><span class="line"> (d&amp;e) &lt;&lt;1  -&gt;   0 0 1 0 0                       ------f         4</span><br><span class="line">          d^e  -&gt;  1 0 1 0 0                  -----g        20</span><br><span class="line"> (f&amp;g) &lt;&lt;1  -&gt;   0 1 0 0 0                       ------h        8</span><br><span class="line">          f^g  -&gt;  1 0 0 0 0                   ------i           16</span><br><span class="line"> (h&amp;i) &lt;&lt;1  -&gt;   0 0 0 0 0                      ------h        0       ---- -------- 没有进位了， 则退出循环</span><br><span class="line">          h^i  -&gt;  1 1 0 0 0                  ------i           24</span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  private static int getSum(int a, int b) {</span><br><span class="line">2.      if (a == 0) return b;</span><br><span class="line">3.      if (b == 0) return a;</span><br><span class="line">4.      while (b != 0) {</span><br><span class="line">5.          int carry = a &amp; b; // 得到有进位的位置</span><br><span class="line">6.          a = a ^ b; // 直接相加，但是没有进位</span><br><span class="line">7.          b = carry &lt;&lt; 1; // 得到进位</span><br><span class="line">8.      }</span><br><span class="line">9.      return a;</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="4-Os"><a href="#4-Os" class="headerlink" title="4 -Os"></a>4 -Os</h3><p>​        这是专门用于优化代码大小的优化级别，执行<code>-O2</code>所有优化选项，排除那些可能导致程序大小增加的优化选项。</p>
+<h3 id="5-O3"><a href="#5-O3" class="headerlink" title="5 -O3"></a>5 -O3</h3><p>​        最高优化等级。该优化级别较高，执行的优化不会很直观，所以可能也会出现一些问题，需要看实际情况选择是否需要使用<code>-O3</code>。在使用<code>-O3</code>优化级别时，<strong>小概率出现代码执行一段时间后出现了一些不符合预期的现象</strong>，在降低优化等级时则没有问题。</p>
+<h3 id="6-ffunction-sections-fdata-sections-Wl-–gc-sections"><a href="#6-ffunction-sections-fdata-sections-Wl-–gc-sections" class="headerlink" title="6 -ffunction-sections/-fdata-sections/-Wl,–gc-sections"></a>6 -ffunction-sections/-fdata-sections/-Wl,–gc-sections</h3><p>​        在开发过程中，可能会实现一些实际并不会用到的函数或者对外有多个接口，并不是所有的接口都需要用到所有的模块和函数，但是默认情况下，GCC会把整个静态库链接到目标可执行文件，所以会增加可执行文件的大小。</p>
+<p>​        GCC在链接的时候以<code>section</code>为单元处理，所以可以尝试使用<code>-ffunction-sections/-fdata-sections</code>将每个函数或者符号创建成独立的<code>section</code>，然后结合选项<code>-Wl,--gc-sections</code>让链接器忽略用不到的<code>section</code>，这样就可以减少目标可执行程序的大小。其中<code>-Wl</code>表示将后面的参数传递给链接器，所以也可以直接设置链接器选项。</p>
+<p>​        注意这个并不是所有的链接器都支持的，大多数支持编译ELF目标文件的工具链都是支持的，<strong>一般嵌入式开发会比较常用</strong>的。</p>
+<h2 id="三-代码生成选项"><a href="#三-代码生成选项" class="headerlink" title="三 代码生成选项"></a>三 代码生成选项</h2><p>​        最常用的就只有<code>-fPIC</code>，该选项用于生成**位置无关代码(PIC，position-independent code)**，主要是为了生成共享库。此类代码通过全局偏移表 (GOT) 访问所有常量地址，在程序启动的时候，动态加载器会确定需要使用的共享库的GOT。</p>
+<p><code>-fPIE</code>和<code>-fPIC</code>是类似的，但<code>-fPIE</code>产生的位置无关代码只能用于链接可执行文件。</p>
+<p>另外可能还会偶尔用到<code>-fpic</code>和<code>-fpie</code>，它们和全大写的区别只在于系统对GOT大小有一定限制。</p>
+<h2 id="四-调试选项"><a href="#四-调试选项" class="headerlink" title="四 调试选项"></a>四 调试选项</h2><p>​        一般情况下是为了能够正常使用调试器调试程序，必须要让编译器给编译目标添加额外的调试信息。最常使用的是<code>-g</code>，一般可以满足需求。但是如果为了提升一些调试程序的性能，可以配合使用针对调试的优化选项<code>-Og</code>。（添加的调试信息可以使用<code>strip</code>工具移除，一般对于需要release的程序代码可以都通过此工具移除一些敏感信息，同时也能够减少目标文件的大小。）</p>
+<p>​        GCC的编译选项还有很多，对于常用的就是上面这一些，在开发阶段，最重要还是通过一些有用的警告选项排查常见的代码bug，提高代码的鲁棒性。</p>
 
                 
             </div>
@@ -780,7 +629,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/">http://moomq.github.io/2022/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</a>
+                    <a href="http://moomq.github.io/2022/04/10/gcc-chang-yong-bian-yi-xuan-xiang/">http://moomq.github.io/2022/04/10/gcc-chang-yong-bian-yi-xuan-xiang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -818,8 +667,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                    <span class="chip bg-color">位运算</span>
+                                <a href="/tags/gcc/">
+                                    <span class="chip bg-color">gcc</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E8%AF%91/">
+                                    <span class="chip bg-color">编译</span>
                                 </a>
                             
                         </div>
@@ -997,13 +850,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/07/Base64%E7%9A%84%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">
+                <a href="/2022/04/11/git/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="Base64的编码原理">
+                        <img src="/medias/featureimages/45.png" class="responsive-img" alt="Git常用指令">
                         
-                        <span class="card-title">Base64的编码原理</span>
+                        <span class="card-title">Git常用指令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1014,7 +867,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
                         </span>
                         <span class="publish-author">
                             
@@ -1031,8 +884,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Base64/">
-                        <span class="chip bg-color">Base64</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
@@ -1046,13 +899,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/">
+                <a href="/2022/04/09/doxygen-jiao-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="面向对象编程的理解">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="doxygen教程">
                         
-                        <span class="card-title">面向对象编程的理解</span>
+                        <span class="card-title">doxygen教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1063,7 +916,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-09
                             </span>
                         <span class="publish-author">
                             
@@ -1080,8 +933,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">面向对象编程</span>
+                    <a href="/tags/doxygen/">
+                        <span class="chip bg-color">doxygen</span>
                     </a>
                     
                 </div>
