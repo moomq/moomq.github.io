@@ -1,0 +1,1349 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="CMakeLists语法, c/c++">
+    <meta name="description" content="CMakeLists.txt 语法一、Cmake 示例123456789101112131415161718192021222324252627282930313233343536cmake_minimum_required(VERSION">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>CMakeLists语法 | qqmo&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/medias/pig.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="qqmo's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/pig.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">qqmo&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/pig.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">qqmo&#39;s blog</div>
+        <div class="logo-desc">
+            
+            a blog sie for qqmo,work and learning note
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/moomq" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/moomq" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">CMakeLists语法</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/cmakelists/">
+                                <span class="chip bg-color">cmakelists</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                编程笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-04-08
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="CMakeLists-txt-语法"><a href="#CMakeLists-txt-语法" class="headerlink" title="CMakeLists.txt 语法"></a>CMakeLists.txt 语法</h1><h2 id="一、Cmake-示例"><a href="#一、Cmake-示例" class="headerlink" title="一、Cmake 示例"></a>一、Cmake 示例</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.16)</span><br><span class="line">project(easylogging)</span><br><span class="line"></span><br><span class="line">set(CMAKE_CXX_STANDARD 11)</span><br><span class="line"></span><br><span class="line">MESSAGE(STATUS "This is make for easylogging++ lib " ${PROJECT_BINARY_DIR})</span><br><span class="line"></span><br><span class="line">set(LIB_DIR ${PROJECT_SOURCE_DIR}/SDK/lib/easylogging++)</span><br><span class="line"></span><br><span class="line">include_directories(${LIB_DIR})</span><br><span class="line">include_directories(SDK/include/CRC)</span><br><span class="line">include_directories(mongoose)</span><br><span class="line">include_directories(SDK/include)</span><br><span class="line"></span><br><span class="line">set(SRC_LIST</span><br><span class="line">        mongoose/mongoose.c</span><br><span class="line">#        test.cpp</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">add_executable(${PROJECT_NAME} main.cpp ${SRC_LIST})</span><br><span class="line"></span><br><span class="line"># link the new hello_library target with the hello_binary target</span><br><span class="line">target_link_libraries( ${PROJECT_NAME}</span><br><span class="line">        PRIVATE</span><br><span class="line">        ${LIB_DIR}/libeasylogging.a</span><br><span class="line">        ws2_32</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">##########################Install##################################</span><br><span class="line">set(BUILD_DIR ${PROJECT_SOURCE_DIR}/../bin)</span><br><span class="line"></span><br><span class="line"># Binaries</span><br><span class="line">install (TARGETS ${PROJECT_NAME} DESTINATION ${BUILD_DIR})</span><br><span class="line"></span><br><span class="line"># Header files</span><br><span class="line">install(DIRECTORY ${PROJECT_BINARY_DIR}/tinyxml2 DESTINATION ${BUILD_DIR}/include)</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="二、常用命令"><a href="#二、常用命令" class="headerlink" title="二、常用命令"></a><strong>二、常用命令</strong></h2><h4 id="1-指定-cmake-的最小版本"><a href="#1-指定-cmake-的最小版本" class="headerlink" title="1.指定 cmake 的最小版本"></a>1.指定 cmake 的最小版本</h4><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION <span class="number">3.4</span><span class="number">.1</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​        这行命令是可选的，我们可以不写这句话，但在有些情况下，如果 CMakeLists.txt 文件中使用了一些高版本 cmake 特有的一些命令的时候，就需要加上这样一行，提醒用户升级到该版本之后再执行 cmake。</p>
+<h4 id="2-设置项目名称"><a href="#2-设置项目名称" class="headerlink" title="2.设置项目名称"></a>2.设置项目名称</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project(demo VERSION 1.0.0 LANGUAGES C CXX)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​        这个命令不是强制性的，但最好都加上。它会引入两个变量 demo_BINARY_DIR 和 demo_SOURCE_DIR，同时，cmake 自动定义了两个等价的变量 PROJECT_BINARY_DIR 和 PROJECT_SOURCE_DIR。</p>
+<p>​        第一个字段是项目名称；通过<code>VERSION</code>指定版本号，格式为<code>main.minor.patch.tweak</code>，并且CMake会将对应的值分别赋值给以下变量（如果没有设置，则为空字符串）：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PROJECT_VERSION, &lt;PROJECT-NAME&gt;_VERSION</span><br><span class="line">PROJECT_VERSION_MAJOR, &lt;PROJECT-NAME&gt;_VERSION_MAJOR</span><br><span class="line">PROJECT_VERSION_MINOR, &lt;PROJECT-NAME&gt;_VERSION_MINOR</span><br><span class="line">PROJECT_VERSION_PATCH, &lt;PROJECT-NAME&gt;_VERSION_PATCH</span><br><span class="line">PROJECT_VERSION_TWEAK, &lt;PROJECT-NAME&gt;_VERSION_TWEAK</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-指定编程语言版本"><a href="#3-指定编程语言版本" class="headerlink" title="3.指定编程语言版本"></a>3.指定编程语言版本</h4><p>为了在不同机器上编译更加统一，最好指定语言的版本，比如声明C使用<code>c99</code>标准，C++使用<code>c++11</code>标准：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_C_STANDARD 99)</span><br><span class="line">set(CMAKE_CXX_STANDARD 11)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4-配置编译选项"><a href="#4-配置编译选项" class="headerlink" title="4.配置编译选项"></a>4.配置编译选项</h4><p>通过命令<code>add_compile_options</code>命令可以为所有编译器配置编译选项（同时对多个编译器生效）； 通过设置变量<code>CMAKE_C_FLAGS</code>可以配置c编译器的编译选项； 而设置变量<code>CMAKE_CXX_FLAGS</code>可配置针对c++编译器的编译选项。 比如：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add_compile_options(-Wall -Wextra -pedantic -Werror)</span><br><span class="line">set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pipe -std=c99")</span><br><span class="line">set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe -std=c++11")</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-设置编译类型"><a href="#3-设置编译类型" class="headerlink" title="3.设置编译类型"></a>3.设置编译类型</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_BUILD_TYPE Debug)</span><br><span class="line">add_executable(demo demo.cpp) # 生成可执行文件</span><br><span class="line">add_library(common STATIC util.cpp) # 生成静态库</span><br><span class="line">add_library(common SHARED util.cpp) # 生成动态库或共享库</span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过设置变量<code>CMAKE_BUILD_TYPE</code>来配置编译类型，可设置为：<code>Debug</code>、<code>Release</code>、<code>RelWithDebInfo</code>、<code>MinSizeRel</code>等，比如：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_BUILD_TYPE Debug)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可以针对不同的编译类型设置不同的编译选项，比如对于<code>Debug</code>版本，开启调试信息，不进行代码优化：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -g -O0")</span><br><span class="line">set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于<code>Release</code>版本，不包含调试信息，优化等级设置为2：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")</span><br><span class="line">set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")</span><br></pre></td></tr></tbody></table></figure>
+
+<p>add_library 默认生成是静态库，通过以上命令生成文件名字，<br>在 Linux 下是：<br>demo<br>libcommon.a<br>libcommon.so<br>在 Windows 下是：<br>demo.exe<br>common.lib<br>common.dll</p>
+<h4 id="4-指定编译包含的源文件"><a href="#4-指定编译包含的源文件" class="headerlink" title="4.指定编译包含的源文件"></a>4.指定编译包含的源文件</h4><h5 id="4-1-明确指定包含哪些源文件"><a href="#4-1-明确指定包含哪些源文件" class="headerlink" title="4.1 明确指定包含哪些源文件"></a>4.1 明确指定包含哪些源文件</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_library(demo demo.cpp test.cpp util.cpp)</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="4-2-搜索所有的-cpp-文件"><a href="#4-2-搜索所有的-cpp-文件" class="headerlink" title="4.2 搜索所有的 cpp 文件"></a>4.2 搜索所有的 cpp 文件</h5><p>aux_source_directory(dir VAR) 发现一个目录下所有的源代码文件并将列表存储在一个变量中。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aux_source_directory(. SRC_LIST) # 搜索当前目录下的所有.cpp文件</span><br><span class="line">add_library(demo ${SRC_LIST})</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="4-3-自定义搜索规则"><a href="#4-3-自定义搜索规则" class="headerlink" title="4.3 自定义搜索规则"></a>4.3 自定义搜索规则</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">file(GLOB SRC_LIST "*.cpp" "protocol/*.cpp")</span><br><span class="line">add_library(demo ${SRC_LIST})</span><br><span class="line"># 或者</span><br><span class="line">file(GLOB SRC_LIST "*.cpp")</span><br><span class="line">file(GLOB SRC_PROTOCOL_LIST "protocol/*.cpp")</span><br><span class="line">add_library(demo ${SRC_LIST} ${SRC_PROTOCOL_LIST})</span><br><span class="line"># 或者</span><br><span class="line">file(GLOB_RECURSE SRC_LIST "*.cpp") #递归搜索</span><br><span class="line">FILE(GLOB SRC_PROTOCOL RELATIVE "protocol" "*.cpp") # 相对protocol目录下搜索</span><br><span class="line">add_library(demo ${SRC_LIST} ${SRC_PROTOCOL_LIST})</span><br><span class="line"># 或者</span><br><span class="line">aux_source_directory(. SRC_LIST)</span><br><span class="line">aux_source_directory(protocol SRC_PROTOCOL_LIST)</span><br><span class="line">add_library(demo ${SRC_LIST} ${SRC_PROTOCOL_LIST})</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="5-查找指定的库文件"><a href="#5-查找指定的库文件" class="headerlink" title="5.查找指定的库文件"></a>5.查找指定的库文件</h4><p>​        find_library(VAR name path)查找到指定的预编译库，并将它的路径存储在变量中。默认的搜索路径为 cmake 包含的系统库，因此如果是 NDK 的公共库只需要指定库的 name 即可。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">find_library( # Sets the name of the path variable.</span><br><span class="line">              log-lib</span><br><span class="line"> </span><br><span class="line">              # Specifies the name of the NDK library that</span><br><span class="line">              # you want CMake to locate.</span><br><span class="line">              log )</span><br></pre></td></tr></tbody></table></figure>
+
+<p>类似的命令还有 find_file()、find_path()、find_program()、find_package()。</p>
+<h4 id="6-设置包含的目录"><a href="#6-设置包含的目录" class="headerlink" title="6.设置包含的目录"></a>6.设置包含的目录</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">include_directories(</span><br><span class="line">    ${CMAKE_CURRENT_SOURCE_DIR}</span><br><span class="line">    ${CMAKE_CURRENT_BINARY_DIR}</span><br><span class="line">    ${CMAKE_CURRENT_SOURCE_DIR}/include</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Linux 下还可以通过如下方式设置包含的目录</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I${CMAKE_CURRENT_SOURCE_DIR}")</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="7-设置链接库搜索目录"><a href="#7-设置链接库搜索目录" class="headerlink" title="7.设置链接库搜索目录"></a>7.设置链接库搜索目录</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">link_directories(</span><br><span class="line">    ${CMAKE_CURRENT_SOURCE_DIR}/libs</span><br><span class="line">)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Linux 下还可以通过如下方式设置包含的目录</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_CURRENT_SOURCE_DIR}/libs")</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="8-设置-target-需要链接的库"><a href="#8-设置-target-需要链接的库" class="headerlink" title="8.设置 target 需要链接的库"></a>8.设置 target 需要链接的库</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries( # 目标库</span><br><span class="line">                       demo</span><br><span class="line"> </span><br><span class="line">                       # 目标库需要链接的库</span><br><span class="line">                       # log-lib 是上面 find_library 指定的变量名</span><br><span class="line">                       ${log-lib} )</span><br></pre></td></tr></tbody></table></figure>
+
+<p>​        在 Windows 下，系统会根据链接库目录，搜索xxx.lib 文件，Linux 下会搜索 xxx.so 或者 xxx.a 文件，如果都存在会优先链接动态库（so 后缀）。</p>
+<h5 id="8-1-指定链接动态库或静态库"><a href="#8-1-指定链接动态库或静态库" class="headerlink" title="8.1 指定链接动态库或静态库"></a>8.1 指定链接动态库或静态库</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(demo libface.a) # 链接libface.a</span><br><span class="line">target_link_libraries(demo libface.so) # 链接libface.so</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="8-2-指定全路径"><a href="#8-2-指定全路径" class="headerlink" title="8.2 指定全路径"></a>8.2 指定全路径</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(demo ${CMAKE_CURRENT_SOURCE_DIR}/libs/libface.a)</span><br><span class="line">target_link_libraries(demo ${CMAKE_CURRENT_SOURCE_DIR}/libs/libface.so)</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="8-3-指定链接多个库"><a href="#8-3-指定链接多个库" class="headerlink" title="8.3 指定链接多个库"></a>8.3 指定链接多个库</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">target_link_libraries(demo</span><br><span class="line">    ${CMAKE_CURRENT_SOURCE_DIR}/libs/libface.a</span><br><span class="line">    boost_system.a</span><br><span class="line">    boost_thread</span><br><span class="line">    pthread)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="9-设置变量"><a href="#9-设置变量" class="headerlink" title="9.设置变量"></a>9.设置变量</h4><h5 id="9-1-set-直接设置变量的值"><a href="#9-1-set-直接设置变量的值" class="headerlink" title="9.1 set 直接设置变量的值"></a>9.1 set 直接设置变量的值</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set(SRC_LIST main.cpp test.cpp)</span><br><span class="line">add_executable(demo ${SRC_LIST})</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="9-2-set-追加设置变量的值"><a href="#9-2-set-追加设置变量的值" class="headerlink" title="9.2 set 追加设置变量的值"></a>9.2 set 追加设置变量的值</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set(SRC_LIST main.cpp)</span><br><span class="line">set(SRC_LIST ${SRC_LIST} test.cpp)</span><br><span class="line">add_executable(demo ${SRC_LIST})</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="9-3-list-追加或者删除变量的值"><a href="#9-3-list-追加或者删除变量的值" class="headerlink" title="9.3 list 追加或者删除变量的值"></a>9.3 list 追加或者删除变量的值</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set(SRC_LIST main.cpp)</span><br><span class="line">list(APPEND SRC_LIST test.cpp)</span><br><span class="line">list(REMOVE_ITEM SRC_LIST main.cpp)</span><br><span class="line">add_executable(demo ${SRC_LIST})</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="10-条件控制"><a href="#10-条件控制" class="headerlink" title="10.条件控制"></a>10.条件控制</h4><h5 id="10-1-if…elseif…else…endif"><a href="#10-1-if…elseif…else…endif" class="headerlink" title="10.1 if…elseif…else…endif"></a>10.1 if…elseif…else…endif</h5><p><strong>逻辑判断和比较：</strong><br>if (expression)：expression 不为空（0,N,NO,OFF,FALSE,NOTFOUND）时为真<br>if (not exp)：与上面相反<br>if (var1 AND var2)<br>if (var1 OR var2)<br>if (COMMAND cmd)：如果 cmd 确实是命令并可调用为真<br>if (EXISTS dir) if (EXISTS file)：如果目录或文件存在为真<br>if (file1 IS_NEWER_THAN file2)：当 file1 比 file2 新，或 file1/file2 中有一个不存在时为真，文件名需使用全路径<br>if (IS_DIRECTORY dir)：当 dir 是目录时为真<br>if (DEFINED var)：如果变量被定义为真<br>if (var MATCHES regex)：给定的变量或者字符串能够匹配正则表达式 regex 时为真，此处 var 可以用 var 名，也可以用 ${var}<br>if (string MATCHES regex)</p>
+<p><strong>数字比较：</strong><br>if (variable LESS number)：LESS 小于<br>if (string LESS number)<br>if (variable GREATER number)：GREATER 大于<br>if (string GREATER number)<br>if (variable EQUAL number)：EQUAL 等于<br>if (string EQUAL number)</p>
+<p><strong>字母表顺序比较：</strong><br>if (variable STRLESS string)<br>if (string STRLESS string)<br>if (variable STRGREATER string)<br>if (string STRGREATER string)<br>if (variable STREQUAL string)<br>if (string STREQUAL string)</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">if(MSVC)</span><br><span class="line">    set(LINK_LIBS common)</span><br><span class="line">else()</span><br><span class="line">    set(boost_thread boost_log.a boost_system.a)</span><br><span class="line">endif()</span><br><span class="line">target_link_libraries(demo ${LINK_LIBS})</span><br><span class="line"># 或者</span><br><span class="line">if(UNIX)</span><br><span class="line">    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fpermissive -g")</span><br><span class="line">else()</span><br><span class="line">    add_definitions(-D_SCL_SECURE_NO_WARNINGS</span><br><span class="line">    D_CRT_SECURE_NO_WARNINGS</span><br><span class="line">    -D_WIN32_WINNT=0x601</span><br><span class="line">    -D_WINSOCK_DEPRECATED_NO_WARNINGS)</span><br><span class="line">endif()</span><br><span class="line"> </span><br><span class="line">if(${CMAKE_BUILD_TYPE} MATCHES "debug")</span><br><span class="line">    ...</span><br><span class="line">else()</span><br><span class="line">    ...</span><br><span class="line">endif()</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="10-2-while…endwhile"><a href="#10-2-while…endwhile" class="headerlink" title="10.2 while…endwhile"></a>10.2 while…endwhile</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(condition)</span><br><span class="line">    ...</span><br><span class="line">endwhile()</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="10-3-foreach…endforeach"><a href="#10-3-foreach…endforeach" class="headerlink" title="10.3 foreach…endforeach"></a>10.3 foreach…endforeach</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foreach(loop_var RANGE start stop [step])</span><br><span class="line">    ...</span><br><span class="line">endforeach(loop_var)</span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>start 表示起始数，stop 表示终止数，step 表示步长，示例：
+</code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foreach(i RANGE 1 9 2)</span><br><span class="line">    message(${i})</span><br><span class="line">endforeach(i)</span><br><span class="line"># 输出：13579</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="11-打印信息"><a href="#11-打印信息" class="headerlink" title="11.打印信息"></a>11.打印信息</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">message(${PROJECT_SOURCE_DIR})</span><br><span class="line">message("build with debug mode")</span><br><span class="line">message(WARNING "this is warnning message")</span><br><span class="line">message(FATAL_ERROR "this build has many error") # FATAL_ERROR 会导致编译失败</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="12-包含其它-cmake-文件"><a href="#12-包含其它-cmake-文件" class="headerlink" title="12.包含其它 cmake 文件"></a>12.包含其它 cmake 文件</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include(./common.cmake) # 指定包含文件的全路径</span><br><span class="line">include(def) # 在搜索路径中搜索def.cmake文件</span><br><span class="line">set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake) # 设置include的搜索路径</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="三、常用变量"><a href="#三、常用变量" class="headerlink" title="三、常用变量"></a>三、常用变量</h2><h4 id="1-预定义变量"><a href="#1-预定义变量" class="headerlink" title="1.预定义变量"></a>1.预定义变量</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PROJECT_SOURCE_DIR：工程的根目录</span><br><span class="line">PROJECT_BINARY_DIR：运行 cmake 命令的目录，通常是 ${PROJECT_SOURCE_DIR}/build</span><br><span class="line">PROJECT_NAME：返回通过 project 命令定义的项目名称</span><br><span class="line">CMAKE_CURRENT_SOURCE_DIR：当前处理的 CMakeLists.txt 所在的路径</span><br><span class="line">CMAKE_CURRENT_BINARY_DIR：target 编译目录</span><br><span class="line">CMAKE_CURRENT_LIST_DIR：CMakeLists.txt 的完整路径</span><br><span class="line">CMAKE_CURRENT_LIST_LINE：当前所在的行</span><br><span class="line">CMAKE_MODULE_PATH：定义自己的 cmake 模块所在的路径，SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)，然后可以用INCLUDE命令来调用自己的模块</span><br><span class="line">EXECUTABLE_OUTPUT_PATH：重新定义目标二进制可执行文件的存放位置</span><br><span class="line">LIBRARY_OUTPUT_PATH：重新定义目标链接库文件的存放位置</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><p>使用环境变量</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ENV{Name}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>写入环境变量</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(ENV{Name} value) # 这里没有“$”符号</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-系统信息"><a href="#3-系统信息" class="headerlink" title="3.系统信息"></a>3.系统信息</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CMAKE_MAJOR_VERSION：cmake 主版本号，比如 3.4.1 中的 3</span><br><span class="line">CMAKE_MINOR_VERSION：cmake 次版本号，比如 3.4.1 中的 4</span><br><span class="line">CMAKE_PATCH_VERSION：cmake 补丁等级，比如 3.4.1 中的 1</span><br><span class="line">CMAKE_SYSTEM：系统名称，比如 Linux-2.6.22</span><br><span class="line">CMAKE_SYSTEM_NAME：不包含版本的系统名，比如 Linux</span><br><span class="line">CMAKE_SYSTEM_VERSION：系统版本，比如 2.6.22</span><br><span class="line">CMAKE_SYSTEM_PROCESSOR：处理器名称，比如 i686</span><br><span class="line">UNIX：在所有的类 UNIX 平台下该值为 TRUE，包括 OS X 和 cygwin</span><br><span class="line">WIN32：在所有的 win32 平台下该值为 TRUE，包括 cygwin</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4-主要开关选项"><a href="#4-主要开关选项" class="headerlink" title="4.主要开关选项"></a>4.主要开关选项</h4><p>​        BUILD_SHARED_LIBS：这个开关用来控制默认的库编译方式，如果不进行设置，使用 add_library 又没有指定库类型的情况下，默认编译生成的库都是静态库。如果 set(BUILD_SHARED_LIBS ON) 后，默认生成的为动态库<br>CMAKE_C_FLAGS：设置 C 编译选项，也可以通过指令 add_definitions() 添加<br>CMAKE_CXX_FLAGS：设置 C++ 编译选项，也可以通过指令 add_definitions() 添加</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add_definitions(-DENABLE_DEBUG -DABC) # 参数之间用空格分隔</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="5-自定义编译选项"><a href="#5-自定义编译选项" class="headerlink" title="5.自定义编译选项"></a>5.自定义编译选项</h4><p>​        cmake 允许为项目增加编译选项，从而可以根据用户的环境和需求选择最合适的编译方案。例如，可以将 MathFunctions 库设为一个可选的库，如果该选项为 ON ，就使用该库定义的数学函数来进行运算，否则就调用标准库中的数学函数库。修改根目录下的 CMakeLists.txt 文件如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># CMake 最低版本号要求</span><br><span class="line">cmake_minimum_required (VERSION 2.8)</span><br><span class="line"># 项目信息</span><br><span class="line">project (Demo)</span><br><span class="line"># 加入一个配置头文件，用于处理 CMake 对源码的设置</span><br><span class="line">configure_file (</span><br><span class="line">    "${PROJECT_SOURCE_DIR}/config.h.in"</span><br><span class="line">    "${PROJECT_BINARY_DIR}/config.h"</span><br><span class="line">    )</span><br><span class="line"># 是否使用自己的 MathFunctions 库</span><br><span class="line">option (USE_MYMATH</span><br><span class="line">        "Use provided math implementation" ON)</span><br><span class="line"># 是否加入 MathFunctions 库</span><br><span class="line">if (USE_MYMATH)</span><br><span class="line">    include_directories ("${PROJECT_SOURCE_DIR}/math")</span><br><span class="line">    add_subdirectory (math)</span><br><span class="line">    set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)</span><br><span class="line">endif (USE_MYMATH)</span><br><span class="line"># 查找当前目录下的所有源文件</span><br><span class="line"># 并将名称保存到 DIR_SRCS 变量</span><br><span class="line">aux_source_directory(. DIR_SRCS)</span><br><span class="line"># 指定生成目标</span><br><span class="line">add_executable(Demo ${DIR_SRCS})</span><br><span class="line">target_link_libraries (Demo ${EXTRA_LIBS})</span><br></pre></td></tr></tbody></table></figure>
+
+
+<ul>
+<li>configure_file 命令用于加入一个配置头文件 config.h ，这个文件由 cmake 从 config.h.in 生成，通过这样的机制，将可以通过预定义一些参数和变量来控制代码的生成。</li>
+<li>option 命令添加了一个 USE_MYMATH 选项，并且默认值为 ON 。根据 USE_MYMATH 变量的值来决定是否使用我们自己编写的 MathFunctions 库。修改 main.cc 文件，让其根据 USE_MYMATH 的预定义值来决定是否调用标准库还是MathFunctions 库：</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include "config.h"</span><br><span class="line">#ifdef USE_MYMATH</span><br><span class="line">    #include "math/MathFunctions.h"</span><br><span class="line">#else</span><br><span class="line">    #include &lt;math.h&gt;</span><br><span class="line">#endif</span><br><span class="line"> </span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">{</span><br><span class="line">    if (argc &lt; 3){</span><br><span class="line">        printf("Usage: %s base exponent \n", argv[0]);</span><br><span class="line">        return 1;</span><br><span class="line">    }</span><br><span class="line">    double base = atof(argv[1]);</span><br><span class="line">    int exponent = atoi(argv[2]);</span><br><span class="line"> </span><br><span class="line">#ifdef USE_MYMATH</span><br><span class="line">    printf("Now we use our own Math library. \n");</span><br><span class="line">    double result = power(base, exponent);</span><br><span class="line">#else</span><br><span class="line">    printf("Now we use the standard library. \n");</span><br><span class="line">    double result = pow(base, exponent);</span><br><span class="line">#endif</span><br><span class="line">    printf("%g ^ %d is %g\n", base, exponent, result);</span><br><span class="line">    return 0;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>编写 config.h.in 文件<br>        注意 main.cc 的第一行，这里引用了一个 config.h 文件，这个文件预定义了 USE_MYMATH 的值。但我们并不直接编写这个文件，为了方便从 CMakeLists.txt 中导入配置，我们编写一个 config.h.in 文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#cmakedefine USE_MYMATH</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样 cmake 会自动根据 CMakeLists.txt 配置文件中的设置自动生成 config.h 文件。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">qqmo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://moomq.github.io/2022/04/08/CMakeLists%E8%AF%AD%E6%B3%95/">http://moomq.github.io/2022/04/08/CMakeLists%E8%AF%AD%E6%B3%95/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">qqmo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/cmakelists/">
+                                    <span class="chip bg-color">cmakelists</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechatpay.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/04/09/doxygen%E6%95%99%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="doxygen教程">
+                        
+                        <span class="card-title">doxygen教程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/doxygen/">
+                        <span class="chip bg-color">doxygen</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/04/07/Base64%E7%9A%84%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="Base64的编码原理">
+                        
+                        <span class="card-title">Base64的编码原理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Base64/">
+                        <span class="chip bg-color">Base64</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">qqmo</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/moomq" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1228819490@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1228819490" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1228819490" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
