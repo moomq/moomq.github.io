@@ -4,32 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="位运算, c/c++">
-    <meta name="description" content="位运算[TOC]
-位操作符基本的位操作符有与、或、异或、取反、左移、右移这6种:
-
-
-
-符号
-描述
-运算规则
-
-
-
-&amp;amp;
-与
-两个bit都为1，才为1
-
-
-|
-或
-两个bit都为0，才为0
-
-
-^
-异或
-两个bit相同为0，不同为1
-">
+    <meta name="keywords" content="ThreadPool, c/c++">
+    <meta name="description" content="ThreadPool一、背景：​        手动创建多个线程，会消耗过多内存且耗时长，最重要的是，频繁创建线程，在任务执行完毕之后被回收，对GC也有一定的压力。
+​        线程池：创建线程变成了从线程池获取空闲的线程，关闭线程变">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -43,7 +20,7 @@
 
     
 
-    <title>位运算 | qqmo&#39;s blog</title>
+    <title>ThreadPool | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/bird.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -341,7 +318,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">位运算</h1>
+                    <h1 class="description center-align post-title">ThreadPool</h1>
                 </div>
             </div>
         </div>
@@ -457,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                <span class="chip bg-color">位运算</span>
+                            <a href="/tags/ThreadPool/">
+                                <span class="chip bg-color">ThreadPool</span>
                             </a>
                         
                     </div>
@@ -482,7 +459,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-06
+                    2022-04-28
                 </div>
                 
 
@@ -503,257 +480,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>[TOC]</p>
-<h2 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h2><p>基本的位操作符有与、或、异或、取反、左移、右移这6种:</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>描述</th>
-<th>运算规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&amp;</td>
-<td>与</td>
-<td>两个bit都为1，才为1</td>
-</tr>
-<tr>
-<td>|</td>
-<td>或</td>
-<td>两个bit都为0，才为0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>异或</td>
-<td>两个bit相同为0，不同为1</td>
-</tr>
-<tr>
-<td>~</td>
-<td>取反</td>
-<td>0变1，1变0</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>左移若干位，高位丢弃，低位补0</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>右移若干位，无符号数高位补0，有符号数不同编译器处理不同，有的补符号位（算术右移），有的补0（逻辑右移）</td>
-</tr>
-</tbody></table>
-<h2 id="位运算示例操作"><a href="#位运算示例操作" class="headerlink" title="位运算示例操作"></a>位运算示例操作</h2><table>
-<thead>
-<tr>
-<th>位运算</th>
-<th>功能</th>
-<th>示例</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>x &gt;&gt; 1</td>
-<td>去掉最后一位</td>
-<td>101101-&gt;10110</td>
-<td></td>
-</tr>
-<tr>
-<td>x &lt;&lt; 1</td>
-<td>在最后加一个0</td>
-<td>101101-&gt;1011010</td>
-<td></td>
-</tr>
-<tr>
-<td>x &lt;&lt; 1</td>
-<td>在最后加一个1</td>
-<td>101101-&gt;1011011</td>
-<td></td>
-</tr>
-<tr>
-<td>x\</td>
-<td>1</td>
-<td>把最后一位变成1</td>
-<td>101100-&gt;101101</td>
-</tr>
-<tr>
-<td>x &amp; -2</td>
-<td>把最后一位变成0</td>
-<td>101101-&gt;101100</td>
-<td></td>
-</tr>
-<tr>
-<td>x ^ 1</td>
-<td>最后一位取反</td>
-<td>101101-&gt;101100</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(1 &lt;&lt; (k-1))</td>
-<td>把右数第k位变成1</td>
-<td>101001-&gt;101101,k=3</td>
-</tr>
-<tr>
-<td>x &amp; ~ (1 &lt;&lt; (k-1))</td>
-<td>把右数第k位变成0</td>
-<td>101101-&gt;101001,k=3</td>
-<td></td>
-</tr>
-<tr>
-<td>x ^(1 &lt;&lt;(k-1))</td>
-<td>右数第k位取反</td>
-<td>101001-&gt;101101,k=3</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; 7</td>
-<td>取末三位</td>
-<td>1101101-&gt;101</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; (1 &lt;&lt; k-1)</td>
-<td>取末k位</td>
-<td>1101101-&gt;1101,k=5</td>
-<td></td>
-</tr>
-<tr>
-<td>x &gt;&gt; (k-1) &amp; 1</td>
-<td>取右数第k位</td>
-<td>1101101-&gt;1,k=4</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>((1 &lt;&lt; k)-1)</td>
-<td>把末k位变成1</td>
-<td>101001-&gt;101111,k=4</td>
-</tr>
-<tr>
-<td>x ^ (1 &lt;&lt; k-1)</td>
-<td>末k位取反</td>
-<td>101001-&gt;100110,k=4</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; (x+1)</td>
-<td>把右边连续的1变成0</td>
-<td>100101111-&gt;100100000</td>
-<td></td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(x+1)</td>
-<td>把右起第一个0变成1</td>
-<td>100101111-&gt;100111111</td>
-</tr>
-<tr>
-<td>x \</td>
-<td>(x-1)</td>
-<td>把右边连续的0变成1</td>
-<td>11011000-&gt;11011111</td>
-</tr>
-<tr>
-<td>(x ^ (x+1)) &gt;&gt; 1</td>
-<td>取右边连续的1</td>
-<td>100101111-&gt;1111</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; -x</td>
-<td>去掉右起第一个1的左边</td>
-<td>100101000-&gt;1000</td>
-<td></td>
-</tr>
-<tr>
-<td>x&amp;0x7F</td>
-<td>取末7位</td>
-<td>100101000-&gt;101000</td>
-<td></td>
-</tr>
-<tr>
-<td>x&amp; ~0x7F</td>
-<td>是否小于127</td>
-<td>001111111 &amp; ~0x7F-&gt;0</td>
-<td></td>
-</tr>
-<tr>
-<td>x &amp; 1</td>
-<td>判断奇偶</td>
-<td>00000111&amp;1-&gt;1</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>使用位运算的两点注意事项：</p>
+                <h1 id="ThreadPool"><a href="#ThreadPool" class="headerlink" title="ThreadPool"></a>ThreadPool</h1><h3 id="一、背景："><a href="#一、背景：" class="headerlink" title="一、背景："></a><strong>一、背景：</strong></h3><p>​        手动创建多个线程，会消耗过多内存且耗时长，最重要的是，频繁创建线程，在任务执行完毕之后被回收，对GC也有一定的压力。</p>
+<p>​        线程池：创建线程变成了从线程池获取空闲的线程，关闭线程变成了向池子中归还线程。合理地使用线程池能够带来三个好处：</p>
+<p>(1)降低内存资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</p>
+<p>(2)提高响应速度。在线程池中的线程都是已经被创建好的，我们的任务直接获取一个空闲的线程就能够被执行了。</p>
+<p>(3)提高线程的可管理性。使用线程池可以进行统一分配、调优和监控。线程是稀缺资源，如果无限制地创建，不仅会消耗系统资源，还会降低系统的稳定性。</p>
+<h3 id="二、进程和线程"><a href="#二、进程和线程" class="headerlink" title="二、进程和线程"></a>二、<strong>进程和线程</strong></h3><p><strong>进程</strong>：在操作系统中能够独立运行，并且作为资源分配的基本单位，是应用程序的可执行单元(*.exe文件)  。一个应用程序可以有多个进程,每个进程都有独立的运行内存空间。系统运行一个应用程序就是一个进程从创建、运行到消亡的过程。</p>
+<p><strong>线程</strong>：是一个比进程更小的执行单位，<strong>是进程的可执行单元</strong>, 也被称为轻量级进程。</p>
+<p>一个进程可以有多个线程,每个线程都有独立的运行内存空间</p>
+<h3 id="三、并行和并发"><a href="#三、并行和并发" class="headerlink" title="三、并行和并发"></a>三、<strong>并行和并发</strong></h3><p><strong>并行</strong>：指两个或多个事件在<strong>同一时刻</strong>发生（<strong>同时执行</strong>）。</p>
+<p><strong>并发</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生(<strong>交替执行</strong>)。</p>
+<h3 id="四、线程池Thread-Pool"><a href="#四、线程池Thread-Pool" class="headerlink" title="四、线程池Thread Pool"></a>四、线程池Thread Pool</h3><p>​        线程池做的工作主要是控制运行的线程的数量，处理过程中将任务放入队列，然后在线程创建后 启动这些任务，如果线程数量超过了最大数量   超出数量的线程排队等候   ，等其它线程执行完毕， 再从队列中取出任务来执行。  </p>
+<p>   他的主要特点为：线程复用；控制最大并发数；管理线程   。  </p>
+<p>  一般的线程池主要分为以下 4 个组成部分： </p>
 <ol>
-<li>位操作只能用于整形数据，对float和double类型进行位操作会被编译器报错。</li>
-<li>位操作符的运算优先级比较低，因为尽量使用括号来确保运算顺序</li>
+<li>线程池管理器：用于创建并管理线程池  </li>
+<li>工作线程：线程池中的线程  </li>
+<li>任务接口：每个任务必须实现的接口，用于工作线程调度其运行  </li>
+<li>任务队列：用于存放待处理的任务，提供一种缓冲机制 </li>
 </ol>
-<h3 id="1-判断一个数值是不是2的整数次方"><a href="#1-判断一个数值是不是2的整数次方" class="headerlink" title="1. 判断一个数值是不是2的整数次方"></a>1. 判断一个数值是不是2的整数次方</h3><p>解题思路：</p>
-<p>2的整数次方对应的二进制的最高位上只有一个1，如：8，二进制为 1000； 4，二进制为 0100，</p>
-<p>那么将该数字减去1再与该数字进行与运算，减去1 后得到二进制：7，二进制为 0111；3，二进制为 0011，可以看出 8&amp;7 为0，</p>
-<p>4&amp;3 为0</p>
-<p>所以，如果 n 是2的整数次方，那么 n &amp; ( n - 1 )结果一定为0:</p>
-<p>n 的数值要大于 0 </p>
-<h3 id="2-使用位运算交换两个数字【不使用中间变量】"><a href="#2-使用位运算交换两个数字【不使用中间变量】" class="headerlink" title="2. 使用位运算交换两个数字【不使用中间变量】"></a>2. 使用位运算交换两个数字【不使用中间变量】</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n ^= m;</span><br><span class="line">6.          m ^= n;</span><br><span class="line">7.          n ^= m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如： a = 13, b = 6:<br>a的二进制为 13 = 8 + 4 + 1 = 1101(二进制)<br>b的二进制为 6 = 4 + 2 = 110(二进制)</p>
+<p>线程池作用：限制系统中执行线程的数量</p>
+<h3 id="五、线程池作用"><a href="#五、线程池作用" class="headerlink" title="五、线程池作用"></a>五、线程池作用</h3><p>线程池主要作用为限制系统中执行线程的数量</p>
 <ol>
-<li>a ^= b a = 1101 ^ 110 = 1011;</li>
-<li>b ^= a b = 110 ^ 1011 = 1101; 即b == 13</li>
-<li>a ^= b a = 1011 ^ 1101 = 110; 即a == 6</li>
+<li><strong>降低资源消耗</strong>。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
+<li><strong>提高响应速度</strong>。当任务到达时，任务可以不需要的等到线程创建就能立即执行。</li>
+<li><strong>提高线程的可管理性</strong>。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。 </li>
 </ol>
-<p>其他方法，<strong>使用加减法</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          int n = 8, m = 10;</span><br><span class="line">5.          n = n + m;</span><br><span class="line">6.          m = n - m;</span><br><span class="line">7.          n = n - m;</span><br><span class="line">8.          System.out.println(n + ", " + m);</span><br><span class="line">9.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="3-计算在一个-32-位的整数的二进制表示中有多少个-1"><a href="#3-计算在一个-32-位的整数的二进制表示中有多少个-1" class="headerlink" title="3. 计算在一个 32 位的整数的二进制表示中有多少个 1"></a>3. 计算在一个 32 位的整数的二进制表示中有多少个 1</h3><p>循环使用x &amp; (x-1)消去最后一位1，计算总共消去了多少次即可。如：</p>
-<p>13： 1101</p>
-<p>12： 1100</p>
-<p>相与：1100， 消去最后一位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {</span><br><span class="line">4.          // 计算在一个 32 位的整数的二进制表示中有多少个 1</span><br><span class="line">5.          int m = 13, num = 0;</span><br><span class="line">6.          while (true){</span><br><span class="line">7.              if (m == 0) break;</span><br><span class="line">8.              m &amp;= (m-1); </span><br><span class="line">9.              num ++; </span><br><span class="line">10.          }</span><br><span class="line">11.          System.out.println(num);</span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="4-正数变成负数，或者负数变成正数"><a href="#4-正数变成负数，或者负数变成正数" class="headerlink" title="4. 正数变成负数，或者负数变成正数"></a>4. 正数变成负数，或者负数变成正数</h3><p><strong>变换符号只需要取反后加1即可</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) { </span><br><span class="line">5.          int m = -13; </span><br><span class="line">6.          int changeM = ~m + 1; </span><br><span class="line">7.          System.out.println(changeM);</span><br><span class="line">8.      }</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="5-判断一个数值的奇偶"><a href="#5-判断一个数值的奇偶" class="headerlink" title="5. 判断一个数值的奇偶"></a>5. 判断一个数值的奇偶</h3><p>只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数，所以只需要与 1 相与。</p>
-<p>因此可以用if ((a &amp; 1) == 0)代替if (a % 2 == 0)来判断a是不是偶数。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int m = -14;</span><br><span class="line">6.          if ((m &amp; 1) == 1){</span><br><span class="line">7.              System.out.println("ji");</span><br><span class="line">8.          }else{</span><br><span class="line">9.              System.out.println("ou"); </span><br><span class="line">10.          }  </span><br><span class="line">11.      }</span><br><span class="line">13.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="6-乘以2-的m次方操作"><a href="#6-乘以2-的m次方操作" class="headerlink" title="6. 乘以2 的m次方操作"></a>6. 乘以2 的m次方操作</h3><p>乘以2的操作，即2的1次方，左移 1 位</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;1);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>推导扩展，乘以2的m次方：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&lt;&lt;2); // 乘以 2的2次方，相当于乘以 4 </span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="7-除以2运算-负奇数的运算不可用"><a href="#7-除以2运算-负奇数的运算不可用" class="headerlink" title="7.除以2运算(负奇数的运算不可用)"></a>7.除以2运算(负奇数的运算不可用)</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(10&gt;&gt;1);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="8-转换成绝对值"><a href="#8-转换成绝对值" class="headerlink" title="8. 转换成绝对值"></a>8. 转换成绝对值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  public class Main {</span><br><span class="line">3.      public static void main(String[] args) {  </span><br><span class="line">4.          int n = 12;</span><br><span class="line">6.          System.out.println(0 &gt;&gt; 31); // 0 </span><br><span class="line">7.          System.out.println(10 &gt;&gt; 31);  // 0  </span><br><span class="line">8.          System.out.println(-10 &gt;&gt; 31);  // -1</span><br><span class="line">10.          System.out.println((n ^ (n &gt;&gt; 31)) - (n &gt;&gt; 31));  // 12 </span><br><span class="line">12.      }</span><br><span class="line">14.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<p>1.首先：n&gt;&gt;31 取得n的符号</p>
-<p>若n为正数，n&gt;&gt;31等于0；若n为负数，n&gt;&gt;31等于-1 若n为正数 n^0-0数不变；</p>
-<ol>
-<li>若 n 为负数 n^-1 需要计算 n 和 -1 的补码，异或后再取补码， 结果n变号并且绝对值减1，再减去-1就是绝对值</li>
-</ol>
-<h3 id="9-判断两数符号是否相同"><a href="#9-判断两数符号是否相同" class="headerlink" title="9.判断两数符号是否相同"></a>9.判断两数符号是否相同</h3><p>true 表示 x和y有相同的符号， false表示x，y有相反的符号。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a ^ b) &gt; 0);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="10-求两个整数（int）的平均数"><a href="#10-求两个整数（int）的平均数" class="headerlink" title="10. 求两个整数（int）的平均数"></a>10. 求两个整数（int）的平均数</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println((a+b) &gt;&gt; 1);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="11-求两个整数的最大值"><a href="#11-求两个整数的最大值" class="headerlink" title="11. 求两个整数的最大值"></a>11. 求两个整数的最大值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int max(int a,int b){</span><br><span class="line">2.      return b &amp; ((a-b) &gt;&gt; 31) | a &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="12-求两个整数的最小值"><a href="#12-求两个整数的最小值" class="headerlink" title="12.求两个整数的最小值"></a>12.求两个整数的最小值</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.  int min(int a,int b){</span><br><span class="line">2.      return a &amp; ((a-b) &gt;&gt; 31) | b &amp; (~(a-b) &gt;&gt; 31);</span><br><span class="line">3.      /*如果a&gt;=b,(a-b)&gt;&gt;31为0，否则为-1*/</span><br><span class="line">4.  }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="13-两个整数的加法运算"><a href="#13-两个整数的加法运算" class="headerlink" title="13. 两个整数的加法运算"></a>13. <strong>两个整数的加法运算</strong></h3><p>使用 <code>^</code> 和 <code>&amp;</code> 将两个整数相加</p>
-<ol>
-<li>两个数异或：相当于两个数相加，而不考虑进位；</li>
-<li>两个数相与，并左移一位：相当于求得进位；</li>
-</ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">13+11 = ？;</span><br><span class="line">13 的二进制      1 1 0 1                     -----a        13</span><br><span class="line">11 的二进制      1 0 1 1                     -----b        11  </span><br><span class="line"> (a&amp;b) &lt;&lt;1  -&gt;   1 0 0 1 0                         -----d         18</span><br><span class="line">          a^b  -&gt;     0 1 1 0                   -----e          6</span><br><span class="line"> (d&amp;e) &lt;&lt;1  -&gt;   0 0 1 0 0                       ------f         4</span><br><span class="line">          d^e  -&gt;  1 0 1 0 0                  -----g        20</span><br><span class="line"> (f&amp;g) &lt;&lt;1  -&gt;   0 1 0 0 0                       ------h        8</span><br><span class="line">          f^g  -&gt;  1 0 0 0 0                   ------i           16</span><br><span class="line"> (h&amp;i) &lt;&lt;1  -&gt;   0 0 0 0 0                      ------h        0       ---- -------- 没有进位了， 则退出循环</span><br><span class="line">          h^i  -&gt;  1 1 0 0 0                  ------i           24</span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.  private static int getSum(int a, int b) {</span><br><span class="line">2.      if (a == 0) return b;</span><br><span class="line">3.      if (b == 0) return a;</span><br><span class="line">4.      while (b != 0) {</span><br><span class="line">5.          int carry = a &amp; b; // 得到有进位的位置</span><br><span class="line">6.          a = a ^ b; // 直接相加，但是没有进位</span><br><span class="line">7.          b = carry &lt;&lt; 1; // 得到进位</span><br><span class="line">8.      }</span><br><span class="line">9.      return a;</span><br><span class="line">10.  }</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="六、线程池工作的四种情况"><a href="#六、线程池工作的四种情况" class="headerlink" title="六、线程池工作的四种情况"></a><strong>六、线程池工作的四种情况</strong></h3><h4 id="1-主程序当前没有任务要执行，线程池中的任务队列为空闲状态"><a href="#1-主程序当前没有任务要执行，线程池中的任务队列为空闲状态" class="headerlink" title="1.主程序当前没有任务要执行，线程池中的任务队列为空闲状态"></a>1.<strong>主程序当前没有任务要执行，线程池中的任务队列为空闲状态</strong></h4><p>此情况下所有工作线程处于空闲的等待状态，任务缓冲队列为空</p>
+<p><img src="/2022/04/28/ThreadPool/1.png"></p>
+<h4 id="2、主程序添加小于等于线程池中线程数量的任务"><a href="#2、主程序添加小于等于线程池中线程数量的任务" class="headerlink" title="2、主程序添加小于等于线程池中线程数量的任务."></a>2、主程序添加小于等于线程池中线程数量的任务.</h4><p>此情况基于情形1，所有工作线程已处在等待状态，主线程开始添加三个任务，添加后通知(notif())唤醒线程池中的线程开始取(take())任务执行. 此时的任务缓冲队列还是空。</p>
+<p><img src="/2022/04/28/ThreadPool/2.png"></p>
+<h4 id="3、主程序添加任务数量大于当前线程池中线程数量的任务"><a href="#3、主程序添加任务数量大于当前线程池中线程数量的任务" class="headerlink" title="3、主程序添加任务数量大于当前线程池中线程数量的任务."></a>3、主程序添加任务数量大于当前线程池中线程数量的任务.</h4><p>此情况发生情形2后面，所有工作线程都在工作中，主线程开始添加第四个任务，添加后发现现在线程池中的线程用完了,于是存入任务缓冲队列。工作线程空闲后主动从任务队列取任务执行.</p>
+<p><img src="/2022/04/28/ThreadPool/3.png"></p>
+<h4 id="4、主程序添加任务数量大于当前线程池中线程数量的任务-且任务缓冲队列已满"><a href="#4、主程序添加任务数量大于当前线程池中线程数量的任务-且任务缓冲队列已满" class="headerlink" title="4、主程序添加任务数量大于当前线程池中线程数量的任务,且任务缓冲队列已满."></a>4、主程序添加任务数量大于当前线程池中线程数量的任务,且任务缓冲队列已满.</h4><p>此情况发生情形3且设置了任务缓冲队列大小后面，主程序添加第N个任务，添加后发现池子中的线程用完了，任务缓冲队列也满了，于是进入等待状态、等待任务缓冲队列中的任务腾空通知。<br>但是要注意这种情形会阻塞主线程,本篇暂不限制任务队列大小,必要时再来优化.</p>
+<p><img src="/2022/04/28/ThreadPool/4.png"></p>
 
                 
             </div>
@@ -780,7 +540,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/">http://moomq.github.io/2022/04/06/%E4%BD%8D%E8%BF%90%E7%AE%97/</a>
+                    <a href="http://moomq.github.io/2022/04/28/ThreadPool/">http://moomq.github.io/2022/04/28/ThreadPool/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -818,8 +578,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">
-                                    <span class="chip bg-color">位运算</span>
+                                <a href="/tags/ThreadPool/">
+                                    <span class="chip bg-color">ThreadPool</span>
                                 </a>
                             
                         </div>
@@ -993,17 +753,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/04/07/Base64%E7%9A%84%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86/">
+                <a href="/2022/04/28/ThreadPool/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="Base64的编码原理">
+                        <img src="/medias/featureimages/36.jpg" class="responsive-img" alt="ThreadPool">
                         
-                        <span class="card-title">Base64的编码原理</span>
+                        <span class="card-title">ThreadPool</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1013,9 +774,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1028,11 +789,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Base64/">
-                        <span class="chip bg-color">Base64</span>
+                    <a href="/tags/ThreadPool/">
+                        <span class="chip bg-color">ThreadPool</span>
                     </a>
                     
                 </div>
@@ -1046,13 +808,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3/">
+                <a href="/2022/04/15/Windows%E4%B8%8B%E4%BD%BF%E7%94%A8MinGW%E7%BC%96%E8%AF%91boost%E5%BA%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.png" class="responsive-img" alt="面向对象编程的理解">
+                        <img src="/medias/featureimages/37.jpg" class="responsive-img" alt="Windows下使用MinGW编译boost库">
                         
-                        <span class="card-title">面向对象编程的理解</span>
+                        <span class="card-title">Windows下使用MinGW编译boost库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1063,7 +825,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
                             </span>
                         <span class="publish-author">
                             
@@ -1080,8 +842,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">面向对象编程</span>
+                    <a href="/tags/boost/">
+                        <span class="chip bg-color">boost</span>
+                    </a>
+                    
+                    <a href="/tags/MinGW/">
+                        <span class="chip bg-color">MinGW</span>
                     </a>
                     
                 </div>
