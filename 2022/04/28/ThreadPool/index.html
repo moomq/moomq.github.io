@@ -313,7 +313,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/76.svg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/76.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -525,13 +525,13 @@
 <li><strong>提高线程的可管理性</strong>。可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。 </li>
 </ol>
 <h3 id="六、线程池工作的四种情况"><a href="#六、线程池工作的四种情况" class="headerlink" title="六、线程池工作的四种情况"></a><strong>六、线程池工作的四种情况</strong></h3><h4 id="1-主程序当前没有任务要执行，线程池中的任务队列为空闲状态"><a href="#1-主程序当前没有任务要执行，线程池中的任务队列为空闲状态" class="headerlink" title="1.主程序当前没有任务要执行，线程池中的任务队列为空闲状态"></a>1.<strong>主程序当前没有任务要执行，线程池中的任务队列为空闲状态</strong></h4><p>此情况下所有工作线程处于空闲的等待状态，任务缓冲队列为空</p>
-<p><img src="/2022/04/28/threadpool/1.png"></p>
+<p><img src="/2022/04/28/threadpool/1.png" alt="任务队列和工作线程组空闲"></p>
 <h4 id="2、主程序添加小于等于线程池中线程数量的任务"><a href="#2、主程序添加小于等于线程池中线程数量的任务" class="headerlink" title="2、主程序添加小于等于线程池中线程数量的任务."></a>2、主程序添加小于等于线程池中线程数量的任务.</h4><p>此情况基于情形1，所有工作线程已处在等待状态，主线程开始添加三个任务，添加后通知(notif())唤醒线程池中的线程开始取(take())任务执行. 此时的任务缓冲队列还是空。</p>
-<p><img src="/2022/04/28/threadpool/2.png"></p>
+<p><img src="/2022/04/28/threadpool/2.png" alt="任务队列空，任务线程组非空"></p>
 <h4 id="3、主程序添加任务数量大于当前线程池中线程数量的任务"><a href="#3、主程序添加任务数量大于当前线程池中线程数量的任务" class="headerlink" title="3、主程序添加任务数量大于当前线程池中线程数量的任务."></a>3、主程序添加任务数量大于当前线程池中线程数量的任务.</h4><p>此情况发生情形2后面，所有工作线程都在工作中，主线程开始添加第四个任务，添加后发现现在线程池中的线程用完了,于是存入任务缓冲队列。工作线程空闲后主动从任务队列取任务执行.</p>
-<p><img src="/2022/04/28/threadpool/3.png"></p>
+<p><img src="/2022/04/28/threadpool/3.png" alt="工作线程组busy,任务队列阻塞"></p>
 <h4 id="4、主程序添加任务数量大于当前线程池中线程数量的任务-且任务缓冲队列已满"><a href="#4、主程序添加任务数量大于当前线程池中线程数量的任务-且任务缓冲队列已满" class="headerlink" title="4、主程序添加任务数量大于当前线程池中线程数量的任务,且任务缓冲队列已满."></a>4、主程序添加任务数量大于当前线程池中线程数量的任务,且任务缓冲队列已满.</h4><p>此情况发生情形3且设置了任务缓冲队列大小后面，主程序添加第N个任务，添加后发现池子中的线程用完了，任务缓冲队列也满了，于是进入等待状态、等待任务缓冲队列中的任务腾空通知。<br>但是要注意这种情形会阻塞主线程,本篇暂不限制任务队列大小,必要时再来优化.</p>
-<p><img src="/2022/04/28/threadpool/4.png"></p>
+<p><img src="/2022/04/28/threadpool/4.png" alt="任务队列和线程组均busy"></p>
 
                 
             </div>
@@ -780,7 +780,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/76.svg" class="responsive-img" alt="ThreadPool">
+                        <img src="/medias/featureimages/76.jpg" class="responsive-img" alt="ThreadPool">
                         
                         <span class="card-title">ThreadPool</span>
                     </div>

@@ -505,12 +505,12 @@
 <h3 id="2-2-安装-graphviz"><a href="#2-2-安装-graphviz" class="headerlink" title="2.2 安装 graphviz"></a>2.2 安装 graphviz</h3><p>​        graphviz 是一个由AT&amp;T实验室启动的开源工具包，用于绘制DOT语言脚本描述的图形。Doxygen 使用 graphviz 自动生成类之间和文件之间的调用关系图，如不需要此功能可不安装该工具包。</p>
 <h3 id="2-3-安装-Windows-Help-Workshop"><a href="#2-3-安装-Windows-Help-Workshop" class="headerlink" title="2.3 安装 Windows Help Workshop"></a>2.3 安装 Windows Help Workshop</h3><p>​        Doxygen 使用这个工具可以生成 CHM 格式的文档。</p>
 <h2 id="三、基本使用"><a href="#三、基本使用" class="headerlink" title="三、基本使用"></a><strong>三、基本使用</strong></h2><h3 id="1-基本配置"><a href="#1-基本配置" class="headerlink" title="1.基本配置"></a>1.基本配置</h3><p>图形工具的基本使用如下图所示，有非常多的配置选项，这里我们只填入必要的配置，其它配置都用默认值。</p>
-<p><img src="/2022/04/09/doxygen-jiao-cheng/doxygen教程/1.png" alt="1"></p>
-<p><img src="/2022/04/09/doxygen-jiao-cheng/.%5Cdoxygen%E6%95%99%E7%A8%8B%5C2.png" alt="2"></p>
+<p><img src="/2022/04/09/doxygen-jiao-cheng/doxygen教程/1.png" alt="基本配置"></p>
+<p><img src="/2022/04/09/doxygen-jiao-cheng/.%5Cdoxygen%E6%95%99%E7%A8%8B%5C2.png" alt="生成文档"></p>
 <h3 id="2-生成文档"><a href="#2-生成文档" class="headerlink" title="2.生成文档"></a>2.生成文档</h3><p>Doxygen生成的HTML会放到<code>out</code>目录下，生成的HTML如下图所示。</p>
-<p><img src="/2022/04/09/doxygen-jiao-cheng/3.png" alt="3"></p>
+<p><img src="/2022/04/09/doxygen-jiao-cheng/3.png" alt="文档效果"></p>
 <h3 id="3、保存配置"><a href="#3、保存配置" class="headerlink" title="3、保存配置"></a><strong>3、保存配置</strong></h3><p>上面我们配置了一些选项，也成功生成了HTML文档。我们希望下次代码改动后能够继续沿用上次配置，那么我们可以把这些配置保存成Doxyfile文件，如下图所示</p>
-<p><img src="/2022/04/09/doxygen-jiao-cheng/4.png" alt="4"></p>
+<p><img src="/2022/04/09/doxygen-jiao-cheng/4.png" alt="保存配置"></p>
 <h3 id="4、命令行运行Doxygen"><a href="#4、命令行运行Doxygen" class="headerlink" title="4、命令行运行Doxygen"></a><strong>4、命令行运行Doxygen</strong></h3><p>有了配置文件后我们完全可以通过命令行来生成API文档，假设配置文件名为Doxyfile，那么我们只需要执行doxygen /path/to/Doxyfile即可生成API文档。</p>
 <p>通过命令行生成文档有许多好处，其中最主要的好处就是：能够集成到持续集成之类的自动化系统中。</p>
 <h2 id="四、为代码编写注释"><a href="#四、为代码编写注释" class="headerlink" title="四、为代码编写注释"></a><strong>四、为代码编写注释</strong></h2><h3 id="1-识别的注释"><a href="#1-识别的注释" class="headerlink" title="1.识别的注释"></a>1.识别的注释</h3><p>Doxygen能识别这几种风格的注释：</p>
