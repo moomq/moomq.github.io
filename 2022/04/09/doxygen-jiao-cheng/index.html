@@ -467,14 +467,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    996
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -505,6 +505,21 @@
 <h3 id="2-2-安装-graphviz"><a href="#2-2-安装-graphviz" class="headerlink" title="2.2 安装 graphviz"></a>2.2 安装 graphviz</h3><p>​        graphviz 是一个由AT&amp;T实验室启动的开源工具包，用于绘制DOT语言脚本描述的图形。Doxygen 使用 graphviz 自动生成类之间和文件之间的调用关系图，如不需要此功能可不安装该工具包。</p>
 <h3 id="2-3-安装-Windows-Help-Workshop"><a href="#2-3-安装-Windows-Help-Workshop" class="headerlink" title="2.3 安装 Windows Help Workshop"></a>2.3 安装 Windows Help Workshop</h3><p>​        Doxygen 使用这个工具可以生成 CHM 格式的文档。</p>
 <h2 id="三、基本使用"><a href="#三、基本使用" class="headerlink" title="三、基本使用"></a><strong>三、基本使用</strong></h2><h3 id="1-基本配置"><a href="#1-基本配置" class="headerlink" title="1.基本配置"></a>1.基本配置</h3><p>图形工具的基本使用如下图所示，有非常多的配置选项，这里我们只填入必要的配置，其它配置都用默认值。</p>
+<pre class="line-numbers language-none"><code class="language-none">（1）Wizard--&gt;Project--&gt;DOXYFILE_ENCODING  Doxygen  文件的编码方式默认为UTF-，若希望支持中文，最好设置为GB2312。
+ （2）Wizard--&gt;Project--&gt;PROJECT_NAME 项目名项目    的名字，以一个单词为主，多个单词请使用双引号括住。
+*（3）Wizard--&gt;Project--&gt;Scan recursively ：yes 递归扫描
+（4）Wozard--&gt;Project--&gt;Source code directory 源代码目录
+（5）Wizard--&gt;Project--&gt;Destination directory 输出Html页面的目录
+（6）Wizard--&gt;Mode --&gt; All Entities 
+（7）Wizard--&gt;Mode --&gt; Include cross-referenced
+（8）Wizard--&gt;Diagrams --&gt; Use dot tool from the GraphViz package 全选(使用GraphViz画图，需要安装GraphViz）
+（9）Expert--&gt;Project--&gt;OUTPUT_LANGUAGE--&gt;Chinese  输出语言
+（10）Expert--&gt;Dot--&gt;CLASS_DIAGRAMS            yes
+（11）Expert--&gt;Dot--&gt;UML_LOOK                           yes         显示UML图
+（12）Expert--&gt;Dot--&gt;CALL_GRAPH                      yes
+（13）Expert--&gt;Dot--&gt;CALLER_GRAPH                  yes
+（14）Expert--&gt;Dot--&gt;DOT_ATH           D:\Program Files (x86)\Graphviz2.38\bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="/2022/04/09/doxygen-jiao-cheng/doxygen教程/1.png" alt="基本配置"></p>
 <p><img src="/2022/04/09/doxygen-jiao-cheng/.%5Cdoxygen%E6%95%99%E7%A8%8B%5C2.png" alt="生成文档"></p>
 <h3 id="2-生成文档"><a href="#2-生成文档" class="headerlink" title="2.生成文档"></a>2.生成文档</h3><p>Doxygen生成的HTML会放到<code>out</code>目录下，生成的HTML如下图所示。</p>
@@ -1062,7 +1077,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">38.6k</span>
+                        class="white-color">46.2k</span>
             
             
             

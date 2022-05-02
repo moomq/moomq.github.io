@@ -1,0 +1,1915 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="shell, qqmo">
+    <meta name="description" content="shell 脚本1. 变量定义1.1 脚本变量类型(1) 局部变量：局部变量在脚本或命令中定义，仅在当前 shell 实例中有效，其他 shell 启动的程序不能访问局部变量；
+(2) 环境变量：所有的程序，包括 shell 启动的程序，都">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>shell | qqmo&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="qqmo's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/featureimages/26.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">qqmo&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/featureimages/26.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">qqmo&#39;s blog</div>
+        <div class="logo-desc">
+            
+            a blog sie for qqmo,work and learning note
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/moomq" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/moomq" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/29.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">shell</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/bash/">
+                                <span class="chip bg-color">bash</span>
+                            </a>
+                        
+                            <a href="/tags/shell/">
+                                <span class="chip bg-color">shell</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                编程笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="shell-脚本"><a href="#shell-脚本" class="headerlink" title="shell 脚本"></a>shell 脚本</h1><h3 id="1-变量定义"><a href="#1-变量定义" class="headerlink" title="1. 变量定义"></a><strong>1. 变量定义</strong></h3><h4 id="1-1-脚本变量类型"><a href="#1-1-脚本变量类型" class="headerlink" title="1.1 脚本变量类型"></a>1.1 <strong>脚本变量类型</strong></h4><p><strong>(1) 局部变量</strong>：局部变量在脚本或命令中定义，仅在当前 shell 实例中有效，其他 shell 启动的程序不能访问局部变量；</p>
+<p><strong>(2) 环境变量</strong>：所有的程序，包括 shell 启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候 shell 脚本也可以定义环境变量；</p>
+<p><strong>(3) shell 变量</strong>：shell 变量是由 shell 程序设置的特殊变量。shell 变量中有一部分是环境变量，有一部分是局部变量。</p>
+<h4 id="1-2-定义变量和使用变量"><a href="#1-2-定义变量和使用变量" class="headerlink" title="1.2 定义变量和使用变量"></a>1.2 <strong>定义变量和使用变量</strong></h4><p>在定义和使用变量时，应遵循如下描述：</p>
+<p><strong>(1)</strong> 定义变量：<code>name=value</code> 需要注意，等号两侧不能有空格；</p>
+<p><strong>(2)</strong> 使用变量：<code>echo $name 或 echo ${name}</code> ；</p>
+<p><strong>(3)</strong> 定义局部变量：<code>local name="test"</code> ；</p>
+<p><strong>(4)</strong> 定义只读变量：<code>readonly name</code>；</p>
+<p><strong>(5)</strong> 删除变量：<code>unset name</code>。</p>
+<h4 id="1-3-Bash-字符串"><a href="#1-3-Bash-字符串" class="headerlink" title="1.3 Bash 字符串"></a>1.3 <strong>Bash 字符串</strong></h4><p>在 Bash 中，字符串可以是单引号或双引号，二者的区别如下：</p>
+<ul>
+<li><p>单引号：单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；单引号字串中不能出现单独一个的单引号，但可以成对出现，作为字符串拼接使用；</p>
+</li>
+<li><p>双引号：双引号里可以有变量且可以出现转义字符。</p>
+</li>
+</ul>
+<h3 id="2-Bash-脚本传递参数"><a href="#2-Bash-脚本传递参数" class="headerlink" title="2. Bash 脚本传递参数"></a><strong>2. Bash 脚本传递参数</strong></h3><p>在使用 Bash 脚本时，我们可以传递一些参数给 Bash 脚本，方便 Bash 脚本执行相应操作。具体的参数使用说明如下：</p>
+<h4 id="2-1-Bash-中的参数"><a href="#2-1-Bash-中的参数" class="headerlink" title="2.1 Bash 中的参数"></a>2.1 <strong>Bash 中的参数</strong></h4><p>在 Bash 中使用参数时，具体定义如下：</p>
+<p>⚫ Bash 中的参数按照数字顺序定义；</p>
+<p>⚫ Bash 脚本内获取参数的格式为：**$n**。</p>
+<h4 id="2-2-几个特殊参数"><a href="#2-2-几个特殊参数" class="headerlink" title="2.2 几个特殊参数"></a>2.2 <strong>几个特殊参数</strong></h4><p>Bash 中除了正常的顺序参数以外，还有一些特殊参数：</p>
+<p>⚫ <strong>$0</strong>：文件名；</p>
+<p>⚫ **$#**：传递到脚本的参数的个数；</p>
+<p>⚫ **$***：以一个单字符串显示所有向脚本传递的参数。</p>
+<h3 id="3-Bash-脚本定义数组"><a href="#3-Bash-脚本定义数组" class="headerlink" title="3. Bash 脚本定义数组"></a><strong>3. Bash 脚本定义数组</strong></h3><h4 id="3-1-定义数组"><a href="#3-1-定义数组" class="headerlink" title="3.1 定义数组"></a>3.1 <strong>定义数组</strong></h4><p>定义数组：<code>myArray=(value0 value1 value2)</code>。</p>
+<h4 id="3-2-使用数组"><a href="#3-2-使用数组" class="headerlink" title="3.2 使用数组"></a>3.2 <strong>使用数组</strong></h4><p>使用数组：<code>${数组名[下标]}</code>。</p>
+<h4 id="3-3-获取数组所有元素"><a href="#3-3-获取数组所有元素" class="headerlink" title="3.3 获取数组所有元素"></a>3.3 <strong>获取数组所有元素</strong></h4><p><code>${my_array[*]}</code> 或者 <code>${my_array[@]}</code> 可以获得数组的所有元素。</p>
+<h4 id="3-4-获取数组长度"><a href="#3-4-获取数组长度" class="headerlink" title="3.4 获取数组长度"></a>3.4 <strong>获取数组长度</strong></h4><p><code>${#array_name[@]}</code> 或者 <code>${#array_name[*]}</code> <code>可以获得数组长度</code>。</p>
+<h3 id="4-Bash-脚本运算符"><a href="#4-Bash-脚本运算符" class="headerlink" title="4. Bash 脚本运算符"></a><strong>4. Bash 脚本运算符</strong></h3><h4 id="4-1-Bash-中的算数运算符"><a href="#4-1-Bash-中的算数运算符" class="headerlink" title="4.1 Bash 中的算数运算符"></a>4.1 <strong>Bash 中的算数运算符</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">加法</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减法</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">乘法</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">除法</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">取余</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="center">赋值</td>
+</tr>
+<tr>
+<td align="center">==</td>
+<td align="center">相等</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">不相等</td>
+</tr>
+</tbody></table>
+<h4 id="4-2-关系运算符"><a href="#4-2-关系运算符" class="headerlink" title="4.2 关系运算符"></a>4.2 <strong>关系运算符</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-eq</td>
+<td align="left">检测两个数是否相等，相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">-ne</td>
+<td align="left">检测两个数是否不相等，不相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">-gt</td>
+<td align="left">检测左边的数是否大于右边的，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-lt</td>
+<td align="left">检测左边的数是否小于右边的，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-ge</td>
+<td align="left">检测左边的数是否大于等于右边的，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-le</td>
+<td align="left">检测左边的数是否小于等于右边的，如果是，则返回 true。</td>
+</tr>
+</tbody></table>
+<h4 id="4-3-布尔运算符"><a href="#4-3-布尔运算符" class="headerlink" title="4.3 布尔运算符"></a>4.3 <strong>布尔运算符</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+</tr>
+</tbody></table>
+<h4 id="4-4-逻辑运算符"><a href="#4-4-逻辑运算符" class="headerlink" title="4.4 逻辑运算符"></a>4.4 <strong>逻辑运算符</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;&amp;</td>
+<td align="center">逻辑的 AND</td>
+</tr>
+<tr>
+<td align="center">||</td>
+<td align="center">逻辑的 OR</td>
+</tr>
+</tbody></table>
+<h4 id="4-5-字符串运算符"><a href="#4-5-字符串运算符" class="headerlink" title="4.5 字符串运算符"></a>4.5 <strong>字符串运算符</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">=</td>
+<td>检测两个字符串是否相等，相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td>检测两个字符串是否不相等，不相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">-z</td>
+<td>检测字符串长度是否为 0，为 0 返回 true。</td>
+</tr>
+<tr>
+<td align="center">-n</td>
+<td>检测字符串长度是否不为 0，不为 0 返回 true。</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td>检测字符串是否为空，不为空返回 true。</td>
+</tr>
+</tbody></table>
+<h4 id="4-6-文件测试运算符"><a href="#4-6-文件测试运算符" class="headerlink" title="4.6 文件测试运算符"></a>4.6 <strong>文件测试运算符</strong></h4><table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b file</td>
+<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>检测文件是否是目录，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>检测文件是否是有名管道，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>检测文件是否可读，如果是，则返回 true。</td>
+</tr>
+</tbody></table>
+<h3 id="5-Bash-脚本流程控制"><a href="#5-Bash-脚本流程控制" class="headerlink" title="5. Bash 脚本流程控制"></a><strong>5. Bash 脚本流程控制</strong></h3><h4 id="5-1-if-语句"><a href="#5-1-if-语句" class="headerlink" title="5.1 if 语句"></a>5.1 <strong>if 语句</strong></h4><pre class="line-numbers language-none"><code class="language-none">if condition
+then
+ command1 
+ command2
+ ...
+ commandN 
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">if condition
+then
+ command1 
+ command2
+ ...
+ commandN
+else
+ command
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">if condition1
+then
+ command1
+elif condition2 
+then 
+ command2
+else
+ commandN
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-2-For-循环"><a href="#5-2-For-循环" class="headerlink" title="5.2 For 循环"></a>5.2 <strong>For 循环</strong></h4><pre class="line-numbers language-none"><code class="language-none">for var in item1 item2 ... itemN
+do
+ command1
+ command2
+ ...
+ commandN
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-3-While-循环"><a href="#5-3-While-循环" class="headerlink" title="5.3 While 循环"></a>5.3 <strong>While 循环</strong></h4><pre class="line-numbers language-none"><code class="language-none">while condition
+do
+ command
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">#无限循环
+# 写法 1 
+while :
+do
+ command
+done
+# 写法 2 
+while true
+do
+ command
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-4-Until-循环"><a href="#5-4-Until-循环" class="headerlink" title="5.4 Until 循环"></a>5.4 <strong>Until 循环</strong></h4><pre class="line-numbers language-none"><code class="language-none">until condition
+do
+ command
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-5-Case-Switch-控制"><a href="#5-5-Case-Switch-控制" class="headerlink" title="5.5 Case (Switch) 控制"></a>5.5 <strong>Case (Switch) 控制</strong></h4><pre class="line-numbers language-none"><code class="language-none">case 值 in
+value1)
+ command1
+ command2
+ ...
+ commandN
+ ;;
+value2）
+ command1
+ command2
+ ...
+ commandN
+ ;;
+esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5-6-跳出循环"><a href="#5-6-跳出循环" class="headerlink" title="5.6 跳出循环"></a>5.6 <strong>跳出循环</strong></h4><p>⚫ 跳出循环使用 <code>break</code>； </p>
+<p>⚫ 跳过当前循环使用 <code>continue</code>。</p>
+<h3 id="6-Bash-脚本输出"><a href="#6-Bash-脚本输出" class="headerlink" title="6. Bash 脚本输出"></a><strong>6. Bash 脚本输出</strong></h3><h4 id="6-1-echo输出"><a href="#6-1-echo输出" class="headerlink" title="6.1 echo输出"></a>6.1 echo输出</h4><pre class="line-numbers language-none"><code class="language-none">echo "It is Linux.CN" # 输出普通字符串
+echo "\"It is Linux.CN\"" # 输出转义字符串
+echo "$name is best Linux Distro"。# 输出变量
+echo -e "Show me your code! \n" # 输出换行符，其中 -e 用于开启转义。
+echo `date` # 输出命令执行结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6-2-printf格式化输出"><a href="#6-2-printf格式化输出" class="headerlink" title="6.2 printf格式化输出"></a>6.2 printf<strong>格式化输出</strong></h4><table>
+<thead>
+<tr>
+<th><strong>printf 支持</strong>的格式字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\a</td>
+<td>警告字符，通常为 ASCII 的 BEL 字符</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>后退</td>
+</tr>
+<tr>
+<td>\c</td>
+<td>抑制（不显示）输出结果中任何结尾的换行字符（只在%b 格式指示符控制下的参数字符串中有效），而且，任何留在参数里的字符、任何接下来的参数以及任何留在格式字符串中的字符，都被忽略</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页（formfeed）</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车（Carriage return）</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\</td>
+<td>一个字面上的反斜杠字符</td>
+</tr>
+<tr>
+<td>\ddd</td>
+<td>表示 1 到 3 位数八进制值的字符。仅在格式字符串中有效</td>
+</tr>
+<tr>
+<td>\0ddd</td>
+<td>表示 1 到 3 位的八进制值字符</td>
+</tr>
+</tbody></table>
+<h3 id="7-Bash-脚本测试"><a href="#7-Bash-脚本测试" class="headerlink" title="7. Bash 脚本测试"></a><strong>7. Bash 脚本测试</strong></h3><p>借助测试参数，你可以判断 Bash 中某些语句是否符合特定的条件，比如文件是否存在、</p>
+<p>字符串长度是否为 0 。测试参数可以帮助你完成更加复杂的 Bash 脚本。</p>
+<h4 id="7-1-数值测试"><a href="#7-1-数值测试" class="headerlink" title="7.1 数值测试"></a>7.1 <strong>数值测试</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th align="left"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-eq</td>
+<td align="left">相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">-ne</td>
+<td align="left">不相等返回 true。</td>
+</tr>
+<tr>
+<td align="center">-gt</td>
+<td align="left">大于返回 true。</td>
+</tr>
+<tr>
+<td align="center">-lt</td>
+<td align="left">小于返回 true。</td>
+</tr>
+<tr>
+<td align="center">-ge</td>
+<td align="left">大于等于返回 true。</td>
+</tr>
+<tr>
+<td align="center">-le</td>
+<td align="left">小于等于返回 true。</td>
+</tr>
+</tbody></table>
+<h4 id="7-2-字符测试"><a href="#7-2-字符测试" class="headerlink" title="7.2 字符测试"></a>7.2 <strong>字符测试</strong></h4><table>
+<thead>
+<tr>
+<th align="center"><strong>运算符</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+</tr>
+<tr>
+<td align="center">-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+</tr>
+</tbody></table>
+<p>7.3 文件测试</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b file</td>
+<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>检测文件是否是目录，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>检测文件是否是有名管道，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>检测文件是否可读，如果是，则返回 true。</td>
+</tr>
+</tbody></table>
+<h3 id="8-Bash-脚本函数"><a href="#8-Bash-脚本函数" class="headerlink" title="8 Bash 脚本函数"></a><strong>8 Bash 脚本函数</strong></h3><h4 id="8-1-函数定义结构"><a href="#8-1-函数定义结构" class="headerlink" title="8.1 函数定义结构"></a>8.1 <strong>函数定义结构</strong></h4><pre class="line-numbers language-none"><code class="language-none">[ function ] funname [()]
+{
+ action;
+ [return int;]
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中</p>
+<p>⚫ function 关键词可带可不带；</p>
+<p>⚫ funcname 根据实际需要定义；</p>
+<p>⚫ return int 根据需要加入。</p>
+<h4 id="8-2-函数参数"><a href="#8-2-函数参数" class="headerlink" title="8.2 函数参数"></a>8.2 <strong>函数参数</strong></h4><p>⚫ 调用函数时传递的参数可以在函数中以 <code>$1、$2</code> 的方式获取；</p>
+<p>⚫ 使用 <code>$1</code> 的方式获取参数仅可用于前 10 个参数，超出需要使用 $n 获取；</p>
+<p>⚫ 特殊参数处理如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数处理</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$#</td>
+<td>传递到脚本或函数的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以一个单字符串显示所有向脚本传递的参数</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本运行的当前进程 ID 号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>后台运行的最后一个进程的 ID 号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>与$*相同，但是使用时加引号，并在引号中返回每个参数。</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>显示 Shell 使用的当前选项，与 set 命令功能相同。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>显示最后命令的退出状态。0 表示没有错误，其他任何值表明有错误。</td>
+</tr>
+</tbody></table>
+<h4 id="8-4-Bash-脚本输出输入重定向"><a href="#8-4-Bash-脚本输出输入重定向" class="headerlink" title="8.4 Bash 脚本输出输入重定向"></a><strong>8.4 Bash 脚本输出输入重定向</strong></h4><p><strong>Bash 输入输出重定向</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将输出重定向到 file。</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将输入重定向到 file。</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将输出以追加的方式重定向到 file</td>
+</tr>
+<tr>
+<td>n &gt; file</td>
+<td>将文件描述符为 n 的文件重定向到 file。</td>
+</tr>
+<tr>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为 n 的文件以追加的方式重定向到 file</td>
+</tr>
+<tr>
+<td>n &gt;&amp; m</td>
+<td>将输出文件 m 和 n 合并</td>
+</tr>
+<tr>
+<td>n &lt;&amp; m</td>
+<td>将输入文件 m 和 n 合并</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记 tag 和结束标记 tag 之间的内容作为输入。</td>
+</tr>
+<tr>
+<td><strong>/dev/null</strong></td>
+<td>如果不希望看到输出，可以将输出重定向到 /dev/null。</td>
+</tr>
+</tbody></table>
+<h4 id="8-5-Bash-文件包含"><a href="#8-5-Bash-文件包含" class="headerlink" title="8.5 Bash 文件包含"></a><strong>8.5 Bash 文件包含</strong></h4><p><strong>包含文件</strong></p>
+<pre class="line-numbers language-none"><code class="language-none"># 写法 1
+. filename # 注意点号(.)和文件名中间有一空格
+# 写法 2
+source filename<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9-Bash-编写常用命令"><a href="#9-Bash-编写常用命令" class="headerlink" title="9 Bash 编写常用命令"></a>9 Bash 编写常用命令</h3><h4 id="9-1-pwd"><a href="#9-1-pwd" class="headerlink" title="9.1 pwd"></a><strong>9.1 pwd</strong></h4><p>pwd 命令是用来获取当前目录的，可以用于基于当前目录进行文件/文件夹操作。</p>
+<pre class="line-numbers language-none"><code class="language-none">pwd #输出当前所在目录；
+pwd -P #输出当前所在命令，并展示所有的软连接指向。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="9-2-sort"><a href="#9-2-sort" class="headerlink" title="9.2 sort"></a><strong>9.2 sort</strong></h4><p>sort 命令是用来对内容进行排序的，可以将文本、数字进行排序。</p>
+<pre class="line-numbers language-none"><code class="language-none">sort path/to/file # 对文件内容进行升序排列；
+sort --reverse path/to/file # 对文件内容进行降序排列；
+sort --ignore-case path/to/file # 对文件内容进行忽略大小写的升序排列；
+sort --numeric-sort path/to/file # 对文件内容进行按数字顺序排列；
+sort --unique path/to/file # 对文件内容进行唯一排列；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="9-3-echo"><a href="#9-3-echo" class="headerlink" title="9.3 echo"></a><strong>9.3 echo</strong></h4><p>echo 命令是用来输出内容的，可以配合格式编码输出特定颜色/风格的文字。</p>
+<pre class="line-numbers language-none"><code class="language-none">echo "message" # 输出信息；
+echo "my path is $PATH" # 输出包含有环境变量的信息；
+echo "Hello World" &gt;&gt; {{file.txt}} # 在文件尾部追加内容；
+echo "Hello World" &gt; {{file.txt}} # 移除当前文件内容，并替换为新的内容。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="9-4-read"><a href="#9-4-read" class="headerlink" title="9.4 read"></a><strong>9.4 read</strong></h4><p>read 命令是用来获取用户输入内容，即标准输入设备(键盘)输入内容。</p>
+<pre class="line-numbers language-none"><code class="language-none">read $variable #读入数据，并设置给变量；
+read -p "Enter your input here: " $variable #展示提示，并读入数据，设置给变量；
+while read line; do echo "$line"; done #按行读取内容，并执行命令。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="9-5-shift"><a href="#9-5-shift" class="headerlink" title="9.5 shift"></a><strong>9.5 shift</strong></h4><p>shift 可以用于将函数的参数移除，其他参数向前移动。</p>
+<pre class="line-numbers language-none"><code class="language-none">shift 3 shift 后可以跟一个数字参数，表示移除相应数量的参数，其他参数向前移动。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="10-Bash-公共库"><a href="#10-Bash-公共库" class="headerlink" title="10 Bash 公共库"></a>10 Bash 公共库</h3><h4 id="10-1-Bash-Shell-Function-Library"><a href="#10-1-Bash-Shell-Function-Library" class="headerlink" title="10.1 Bash Shell Function Library"></a><strong>10.1 Bash Shell Function Library</strong></h4><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/SkypLabs/bsfl">https://github.com/SkypLabs/bsfl</a></p>
+<p>​        Bash Shell Function Library 是一个短小精炼的 Bash 公共库，他提供了诸如数组操作、命令执行、文件管理、日志记录、信息提醒、网络检测、字符操作、时间操作、变量操作等功能。此外，Bash Shell Function Library 还提供了一个完整的<a target="_blank" rel="noopener" href="https://skyplabs.github.io/bsfl/modules.html">在线文档</a>，帮助了解函数库中提供的重要函数</p>
+<h4 id="10-2-Bash-Lib"><a href="#10-2-Bash-Lib" class="headerlink" title="10.2 Bash Lib"></a><strong>10.2 Bash Lib</strong></h4><p>项目地址：<a target="_blank" rel="noopener" href="http://aks.github.io/bash-lib/">http://aks.github.io/bash-lib/</a></p>
+<p>​        Bash Lib 是一个原子化的公共库，你可以根据自己的实际需要，引入所需的公共库分组，</p>
+<p>使用相应的内容，降低整个项目的大小。</p>
+<p>Bash Lib 提供了诸多原子库，你选择需要使用的引入即可：</p>
+<pre class="line-numbers language-none"><code class="language-none">⚫ 参数处理：arg-utils
+⚫ 日历处理： calendar-utils
+⚫ 日期处理：date-utils
+⚫ Hash 处理：hash-utils
+⚫ 帮助处理：help-util
+⚫ 列表处理：list-utils
+⚫ 交互处理：prompt-colors
+⚫ 文字处理：text-utils
+⚫ 测试处理：test-utils
+⚫ 时间处理：time-utils
+⚫ ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>使用方法</strong></p>
+<p>从 <a target="_blank" rel="noopener" href="https://github.com/aks/bash-lib">https://github.com/aks/bash-lib</a> 下载仓库，并选择你需要引入的脚本，复制到项目</p>
+<p>目录下，并进行引用即可。</p>
+<p><strong>示例代码</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">#!/usr/bin/env bash
+source text-utils.sh
+lowercase "HELLOWORLD"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>other</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/awesome-lists/awesome-bash">https://github.com/awesome-lists/awesome-bash</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">qqmo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://moomq.github.io/2022/05/01/shell-jiao-ben/">http://moomq.github.io/2022/05/01/shell-jiao-ben/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">qqmo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/bash/">
+                                    <span class="chip bg-color">bash</span>
+                                </a>
+                            
+                                <a href="/tags/shell/">
+                                    <span class="chip bg-color">shell</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechatpay.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/05/02/bash-guide/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/39.jpg" class="responsive-img" alt="bash guide">
+                        
+                        <span class="card-title">bash guide</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/bash/">
+                        <span class="chip bg-color">bash</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/01/ini-wen-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/37.jpg" class="responsive-img" alt="程序内存概念">
+                        
+                        <span class="card-title">程序内存概念</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ini/">
+                        <span class="chip bg-color">ini</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">qqmo</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">46.2k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "4";
+                        var startDate = "22";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/moomq" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1228819490@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1228819490" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1228819490" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
