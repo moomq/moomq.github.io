@@ -6,7 +6,7 @@
   <link href="http://moomq.github.io/atom.xml" rel="self"/>
   
   <link href="http://moomq.github.io/"/>
-  <updated>2022-05-02T14:12:13.346Z</updated>
+  <updated>2022-05-14T07:36:48.994Z</updated>
   <id>http://moomq.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MFC</title>
+    <link href="http://moomq.github.io/2022/05/14/mfc/"/>
+    <id>http://moomq.github.io/2022/05/14/mfc/</id>
+    <published>2022-05-14T07:36:20.000Z</published>
+    <updated>2022-05-14T07:36:48.994Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MFC&quot;&gt;&lt;a href=&quot;#MFC&quot; class=&quot;headerlink&quot; title=&quot;MFC&quot;&gt;&lt;/a&gt;MFC&lt;/h1&gt;&lt;h2 id=&quot;一、简介&quot;&gt;&lt;a href=&quot;#一、简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="MFC" scheme="http://moomq.github.io/tags/MFC/"/>
+    
+    <category term="C++" scheme="http://moomq.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://moomq.github.io/2022/05/03/qt-qwidget/"/>
+    <id>http://moomq.github.io/2022/05/03/qt-qwidget/</id>
+    <published>2022-05-03T14:57:53.799Z</published>
+    <updated>2022-05-03T14:57:53.805Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Qt</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>bash guide</title>
@@ -481,64 +529,6 @@
     
     
     <category term="GPL" scheme="http://moomq.github.io/tags/GPL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>几种常见的开源协议介绍</title>
-    <link href="http://moomq.github.io/2022/04/03/ji-chong-chang-jian-de-kai-yuan-xie-yi-jie-shao/"/>
-    <id>http://moomq.github.io/2022/04/03/ji-chong-chang-jian-de-kai-yuan-xie-yi-jie-shao/</id>
-    <published>2022-04-03T05:53:46.000Z</published>
-    <updated>2022-04-29T01:19:31.279Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;开源协议介绍&quot;&gt;&lt;a href=&quot;#开源协议介绍&quot; class=&quot;headerlink&quot; title=&quot;开源协议介绍&quot;&gt;&lt;/a&gt;开源协议介绍&lt;/h1&gt;&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2 id=&quot;一、几种常见的开源协议介绍&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="开源协议" scheme="http://moomq.github.io/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-    <category term="开源协议" scheme="http://moomq.github.io/tags/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代码整洁之道内容概要</title>
-    <link href="http://moomq.github.io/2022/04/02/dai-ma-zheng-ji-zhi-dao-nei-rong-gai-yao/"/>
-    <id>http://moomq.github.io/2022/04/02/dai-ma-zheng-ji-zhi-dao-nei-rong-gai-yao/</id>
-    <published>2022-04-02T01:48:00.000Z</published>
-    <updated>2022-04-27T05:35:14.417Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;读了代码整洁之道，觉得这本书写的很好，所以就将里面自己觉得很经典的内容记录下来，作为自己以后写代码的标准和准则。同时也为那些曾经困惑过的人一点参考吧！&lt;/p&gt;
-&lt;h2 id=&quot;一、在正式开始之前，我们先思考几个几个问题：&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="编程规范" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/"/>
-    
-    
-    <category term="整洁代码" scheme="http://moomq.github.io/tags/%E6%95%B4%E6%B4%81%E4%BB%A3%E7%A0%81/"/>
-    
-    <category term="重构" scheme="http://moomq.github.io/tags/%E9%87%8D%E6%9E%84/"/>
-    
-    <category term="测试" scheme="http://moomq.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-    <category term="规范" scheme="http://moomq.github.io/tags/%E8%A7%84%E8%8C%83/"/>
     
   </entry>
   
