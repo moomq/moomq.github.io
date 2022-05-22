@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>ubuntu</title>
+      <link href="/2022/05/22/ubuntu/"/>
+      <url>/2022/05/22/ubuntu/</url>
+      
+        <content type="html"><![CDATA[<p>ubuntu</p><p>sudo apt install gedit</p><p>sudo apt update</p><p>sudo apt upgrade</p><p>1、sudo apt-get remove &amp;&amp; sudo apt-get autoremove<br> 2、dpkg –list //列出已安装的软件<br> 3、sudo apt-get remove virtualbox &amp;&amp; sudo apt-get autoremove</p><p>sudo apt-get purge命令，与上面的命令不同的是，卸载已安装的软件并删除卸载软件的配置文件。</p><p>sudo add-apt-repository ppa:jonathonf/gcc-7.1<br>sudo apt-get update<br>sudo apt-get install gcc-7 g++-7<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-7 60 –slave /usr/bin/g++ g++ /usr/bin/g++-7</p><p>sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa<br>sudo apt update<br>sudo apt install gcc-10 g++-10<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-10 60 –slave /usr/bin/g++ g++ /usr/bin/g++-10</p><p>sudo apt-get install gdb</p><pre class="line-numbers language-none"><code class="language-none">apt-cache search 软件包名 # 查找软件包apt-cache show 软件包名 # 显示软件包的详细信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装protobuf</p><pre class="line-numbers language-none"><code class="language-none">sudo apt-get install autoconf automake libtool curl make g++ unzipgit clone https://github.com/google/protobuf.gitcd protobufgit submodule update --init --recursive  # 可能会失败，最好网络代理./autogen.sh./configuremake -j8make checksudo make installsudo ldconfig # refresh shared library cache.protoc --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装CMake</p><pre class="line-numbers language-none"><code class="language-none">#前提必须安装OpenSSLgit clone https://github.com/openssl/openssl.gitcd openssl./config        # --prefix=/usr/local --openssldir=/usr/local/opensslmake -j8sudo make install# 安装cmakegit clone https://github.com/Kitware/CMake.gitcd CMake./bootstrapmake -j8sudo make installcmake --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title></title>
       <link href="/2022/05/21/grpc/"/>
       <url>/2022/05/21/grpc/</url>
@@ -176,31 +201,6 @@
         <tags>
             
             <tag> ThreadPool </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ubuntu</title>
-      <link href="/2022/04/28/ubuntu/"/>
-      <url>/2022/04/28/ubuntu/</url>
-      
-        <content type="html"><![CDATA[<p>ubuntu</p><p>sudo apt install gedit</p><p>sudo apt update</p><p>sudo apt upgrade</p><p>1、sudo apt-get remove &amp;&amp; sudo apt-get autoremove<br> 2、dpkg –list //列出已安装的软件<br> 3、sudo apt-get remove virtualbox &amp;&amp; sudo apt-get autoremove</p><p>sudo apt-get purge命令，与上面的命令不同的是，卸载已安装的软件并删除卸载软件的配置文件。</p><p>sudo add-apt-repository ppa:jonathonf/gcc-7.1<br>sudo apt-get update<br>sudo apt-get install gcc-7 g++-7<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-7 60 –slave /usr/bin/g++ g++ /usr/bin/g++-7</p><p>sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa<br>sudo apt update<br>sudo apt install gcc-10 g++-10<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-10 60 –slave /usr/bin/g++ g++ /usr/bin/g++-10</p><p>sudo apt-get install gdb</p><pre class="line-numbers language-none"><code class="language-none">apt-cache search 软件包名 # 查找软件包apt-cache show 软件包名 # 显示软件包的详细信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装protobuf</p><pre class="line-numbers language-none"><code class="language-none">sudo apt-get install autoconf automake libtool curl make g++ unzipgit clone https://github.com/google/protobuf.gitcd protobufgit submodule update --init --recursive  # 可能会失败，最好网络代理./autogen.sh./configuremake -j8make checksudo make installsudo ldconfig # refresh shared library cache.protoc --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装CMake</p><pre class="line-numbers language-none"><code class="language-none">#前提必须安装OpenSSLgit clone https://github.com/openssl/openssl.gitcd openssl./config        # --prefix=/usr/local --openssldir=/usr/local/opensslmake -j8sudo make install# 安装cmakegit clone https://github.com/Kitware/CMake.gitcd CMake./bootstrapmake -j8sudo make installcmake --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 编程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> ubuntu </tag>
             
         </tags>
       
