@@ -476,14 +476,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -536,6 +536,13 @@ pApp-&gt;Run()//完成消息循环。<span aria-hidden="true" class="line-number
 <p>(1)当一个窗口销毁时，它会调用CWnd::DestroyWindow函数，该函数销毁窗口后，将CWnd::m_hWnd设为NULL；</p>
 <p>(2)窗口的生命周期和C++窗口类对象theApp的声明周期不是一致的。当一个窗口销毁时，与C++窗口类对象没有关系，它们之间的纽带仅仅在于这个C++窗口类内部的成员变量m_hWnd，该变量保存了与这个C++窗口类对象相关的哪个窗口的句柄。当程序执行到右大括号结束时，窗口对象的生命周期结束。</p>
 <p>(3)但是，当C++窗口类对象销毁时，与之相关的窗口也将销毁，因为它们之间的纽带m_hWnd已经断了</p>
+<p>DDX和DDV</p>
+<p>​        DoDataExchange<strong>由框架调用</strong>，作用是<strong>交互并且验证对话框数据</strong>，主要由(DDX) 和 (DDV)宏实现。 永远不要直接调用这个函数，而是通过UpdateData(TRUE/FALSE)实现控件与变量之间值的传递。 </p>
+<p>当然你也可以不使用DoDataExchange而完成控件与变量之间值的传递，如：通过GetWindowText和SetWindowText等等函数完成String变量与Edit控件之间的数据交互。</p>
+<p>通过使用ClassWizard向对话类添加成员变量，你可以利用ClassWizard所提供的高效特征，为对话数据交换和对话数据验证自动生成源代码，也就是人们所熟知的DDX/DDV。</p>
+<p>数据交换和验证仅仅应用于为之选定了Value类别的成员变量。也就是CString，BOOL，数字，COleDateTime或COLeCurrency。</p>
+<p><strong>对话数据交换</strong>（DDX）负责数据在控件中的进出。当对话首次出现的时候，每个控件窗口自动用相应的成员变量的值进行初始化。当用户通过单击OK按钮，或通过按Enter键关闭对话的时候，该控件无论是包含哪一个值或文本，都将被复制回该变量。</p>
+<p><strong>对话数据验证</strong>(DDV)可以确保值落在规定的限制之内。交换和验证机制都是由MFC<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%A1%86%E6%9E%B6&amp;spm=1001.2101.3001.7020">框架</a>提供的。每个函数都有一个前缀DDX_或DDV_，来把它作为数据交换或数据验证函数来标识。</p>
 
                 
             </div>
@@ -779,18 +786,17 @@ pApp-&gt;Run()//完成消息循环。<span aria-hidden="true" class="line-number
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/14/mfc/">
+                <a href="/2022/05/21/grpc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/49.jpg" class="responsive-img" alt="MFC">
+                        <img src="/medias/featureimages/24.png" class="responsive-img" alt="">
                         
-                        <span class="card-title">MFC</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -800,33 +806,16 @@ pApp-&gt;Run()//完成消息循环。<span aria-hidden="true" class="line-number
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-21
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            qqmo
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/MFC/">
-                        <span class="chip bg-color">MFC</span>
-                    </a>
-                    
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1052,7 +1041,7 @@ pApp-&gt;Run()//完成消息循环。<span aria-hidden="true" class="line-number
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">47.3k</span>
+                        class="white-color">50.3k</span>
             
             
             

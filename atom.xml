@@ -6,7 +6,7 @@
   <link href="http://moomq.github.io/atom.xml" rel="self"/>
   
   <link href="http://moomq.github.io/"/>
-  <updated>2022-05-14T07:36:48.994Z</updated>
+  <updated>2022-05-21T03:13:44.584Z</updated>
   <id>http://moomq.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://moomq.github.io/2022/05/21/grpc/"/>
+    <id>http://moomq.github.io/2022/05/21/grpc/</id>
+    <published>2022-05-21T02:37:49.186Z</published>
+    <updated>2022-05-21T03:13:44.584Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;RPC&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1、&lt;/strong&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>MFC</title>
     <link href="http://moomq.github.io/2022/05/14/mfc/"/>
     <id>http://moomq.github.io/2022/05/14/mfc/</id>
     <published>2022-05-14T07:36:20.000Z</published>
-    <updated>2022-05-14T07:36:48.994Z</updated>
+    <updated>2022-05-21T02:35:33.896Z</updated>
     
     
       
@@ -191,6 +213,35 @@
     
     
     <category term="ThreadPool" scheme="http://moomq.github.io/tags/ThreadPool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu</title>
+    <link href="http://moomq.github.io/2022/04/28/ubuntu/"/>
+    <id>http://moomq.github.io/2022/04/28/ubuntu/</id>
+    <published>2022-04-28T08:54:29.000Z</published>
+    <updated>2022-05-22T13:11:26.456Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;ubuntu&lt;/p&gt;
+&lt;p&gt;sudo apt install gedit&lt;/p&gt;
+&lt;p&gt;sudo apt update&lt;/p&gt;
+&lt;p&gt;sudo apt upgrade&lt;/p&gt;
+&lt;p&gt;1、sudo apt-get remove &amp;amp;&amp;amp; sudo apt-get</summary>
+        
+      
+    
+    
+    
+    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="ubuntu" scheme="http://moomq.github.io/tags/ubuntu/"/>
     
   </entry>
   
@@ -477,58 +528,6 @@
     
     
     <category term="位运算" scheme="http://moomq.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面向对象编程的理解</title>
-    <link href="http://moomq.github.io/2022/04/05/mian-xiang-dui-xiang-bian-cheng-de-li-jie/"/>
-    <id>http://moomq.github.io/2022/04/05/mian-xiang-dui-xiang-bian-cheng-de-li-jie/</id>
-    <published>2022-04-05T02:30:00.000Z</published>
-    <updated>2022-04-27T05:28:16.326Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;面向过程和面向对象&quot;&gt;&lt;a href=&quot;#面向过程和面向对象&quot; class=&quot;headerlink&quot; title=&quot;面向过程和面向对象&quot;&gt;&lt;/a&gt;面向过程和面向对象&lt;/h2&gt;&lt;h3 id=&quot;面向过程思想概述&quot;&gt;&lt;a href=&quot;#面向过程思想概述&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="面向对象编程" scheme="http://moomq.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开源许可协议 GNU GPL</title>
-    <link href="http://moomq.github.io/2022/04/04/kai-yuan-xu-ke-xie-yi-gnu-gpl/"/>
-    <id>http://moomq.github.io/2022/04/04/kai-yuan-xu-ke-xie-yi-gnu-gpl/</id>
-    <published>2022-04-04T05:54:49.000Z</published>
-    <updated>2022-04-29T01:20:06.092Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;​        在开源领域中，许可协议是指开源社区为了维护作者和贡献者的合法权利，保证软件不被一些商业机构或个人窃取，影响软件的发展而开发的协议。其中，GPL是开源许可协议中非常流行的许可协议之一。&lt;/p&gt;
-&lt;h2 id=&quot;一、基本概念&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="开源协议" scheme="http://moomq.github.io/categories/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/"/>
-    
-    
-    <category term="GPL" scheme="http://moomq.github.io/tags/GPL/"/>
     
   </entry>
   
