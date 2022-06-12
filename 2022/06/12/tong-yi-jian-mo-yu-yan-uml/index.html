@@ -1,0 +1,1695 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="UML讲解, qqmo">
+    <meta name="description" content="UML1.UML概述1.1 什么是UML​        UML(United Modeling Language, 统一建模语言)： 是一种基于面向对象的可视化建模语言，可以用来描述、可视化、构造和文档化软件密集型系统的各种工件。采用了一">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>UML讲解 | qqmo&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="qqmo's blog" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/featureimages/26.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">qqmo&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/featureimages/26.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">qqmo&#39;s blog</div>
+        <div class="logo-desc">
+            
+            a blog sie for qqmo,work and learning note
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/moomq" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/moomq" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/55.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">UML讲解</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/UML/">
+                                <span class="chip bg-color">UML</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                编程笔记
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-06-12
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h1><h2 id="1-UML概述"><a href="#1-UML概述" class="headerlink" title="1.UML概述"></a><strong>1.UML概述</strong></h2><h3 id="1-1-什么是UML"><a href="#1-1-什么是UML" class="headerlink" title="1.1 什么是UML"></a><strong>1.1 什么是UML</strong></h3><p>​        UML(United Modeling Language, 统一建模语言)： 是一种基于面向对象的可视化建模语言，可以用来描述、可视化、构造和文档化软件密集型系统的各种工件。采用了一组形象化的图形(如类图)符号作为建模语言，使用这些符号可以形象地描述系统的各个方面,通过建立图形之间的各种关系(如类与类之间的关系)来描述模型。</p>
+<p>​        UML是独立于过程的，它<strong>适用于各种软件开发方法、软件生命周期的各个阶段、各种应用领域以及各种开发工具</strong>。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/relation.png"></p>
+<h3 id="1-2-UML的目标"><a href="#1-2-UML的目标" class="headerlink" title="1.2 UML的目标"></a>1.2 <strong>UML的目标</strong></h3><ol>
+<li>为建模者提供可用的、富有表达力的、可视化的<strong>建模语言</strong>，以开发和交换<strong>有意义的模型</strong>。</li>
+<li>提供可扩展性和特殊化机制以延伸核心概念。</li>
+<li>支持<strong>独立于编程语言和开发过程的规范</strong>。</li>
+<li>为理解建模语言提供正式的基础。</li>
+<li>推动<strong>面向对象建模工具</strong>市场的成长。</li>
+<li>支持更高级的开发概念。</li>
+</ol>
+<h3 id="1-3-UML的应用范围"><a href="#1-3-UML的应用范围" class="headerlink" title="1.3 UML的应用范围"></a><strong>1.3 UML的应用范围</strong></h3><p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/3.png"></p>
+<h3 id="1-4-UML的构造块：事物、关系、图"><a href="#1-4-UML的构造块：事物、关系、图" class="headerlink" title="1.4 UML的构造块：事物、关系、图"></a><strong>1.4 UML的构造块：事物、关系、图</strong></h3><p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/4.png"></p>
+<h3 id="1-5-基本构件"><a href="#1-5-基本构件" class="headerlink" title="1.5 基本构件"></a>1.5 <strong>基本构件</strong></h3><p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/1.png" alt="UML结构图"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/2.png" alt="UML元素"></p>
+<h2 id="2-用例图"><a href="#2-用例图" class="headerlink" title="2 用例图"></a><strong>2 用例图</strong></h2><h3 id="2-1-用例图基本概念"><a href="#2-1-用例图基本概念" class="headerlink" title="2.1 用例图基本概念"></a><strong>2.1 用例图基本概念</strong></h3><p>​        用例图是用来描述<strong>系统功能</strong>的技术，表示一个系统中<strong>用例</strong>与<strong>参与者</strong>及其<strong>关系</strong>的图，主要用于<strong>需求分析阶段</strong>。用例图的基本组成元素：<strong>参与者、用例、元素之间的关系</strong>。</p>
+<h4 id="2-1-1-使用范围——需求分析"><a href="#2-1-1-使用范围——需求分析" class="headerlink" title="2.1.1 使用范围——需求分析"></a><strong>2.1.1 使用范围——需求分析</strong></h4><ol>
+<li>捕获需求。描述<strong>功能需求、行为需求</strong>（系统要完成什么任务）</li>
+<li>分析需求。明确<strong>类和对象</strong>，建立之间的关系</li>
+</ol>
+<h4 id="2-1-2-基本概念"><a href="#2-1-2-基本概念" class="headerlink" title="2.1.2.基本概念"></a><strong>2.1.2.基本概念</strong></h4><ol>
+<li>用例图是表示一个系统中<strong>用例与参与者关系之间的图</strong>。它描述了<strong>系统中相关的用户和系统</strong>对<strong>不同用户提供的功能和服务</strong>。</li>
+<li>用例图相当于<strong>从用户的视角来描述和建模整个系统</strong>，分析系统的功能与行为。</li>
+<li>用例图中的主要元素包括参与者、用例以及元素之间的关系。此外，用例图<strong>还可以包括注解和约束</strong>，也可以<strong>使用包将图中的元素组合成模块</strong>。</li>
+</ol>
+<h4 id="2-1-3-用例图示例"><a href="#2-1-3-用例图示例" class="headerlink" title="2.1.3.用例图示例"></a><strong>2.1.3.用例图示例</strong></h4><p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/5.png"></p>
+<h3 id="2-2-参与者"><a href="#2-2-参与者" class="headerlink" title="2.2.参与者"></a><strong>2.2.参与者</strong></h3><h4 id="2-2-1-参与者概念"><a href="#2-2-1-参与者概念" class="headerlink" title="2.2.1.参与者概念"></a>2.2.1.参与者概念</h4><ol>
+<li>参与者是与<strong>系统主体交互的外部实体的类元</strong>，描述了一个或一组与系统产生交互的<strong>外部用户或外部事物</strong>。</li>
+<li>参与者位于系统边界之外，而<strong>不是系统的一部分</strong>。</li>
+<li>参与者是<strong>从现实世界中抽象出来的一种形式</strong>，却不一定确切对应的现实中的某个特定对象</li>
+</ol>
+<p>参与者的表示：</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/actor.png"></p>
+<h3 id="2-2-2-如何确认参与者"><a href="#2-2-2-如何确认参与者" class="headerlink" title="2.2.2.如何确认参与者"></a>2.2.2.如何确认参与者</h3><p>​        通过对参与者进行关注和分析，我们可以<strong>把重点放在如何与系统交互这一问题上</strong>，便于进一步确定系统的边界。另外，<strong>参与者也决定了系统需求的完整性</strong>。</p>
+<p>确定参与者可以从以下几个角度来考虑：</p>
+<ol>
+<li>为系统提供输入的人或事物</li>
+<li>接收系统输出的人或事物</li>
+<li>需要接入的第三方系统或设备</li>
+<li>时间是否会触发某些事件</li>
+<li>负责支持或维护系统中信息的人</li>
+</ol>
+<h3 id="2-2-3-参与者分类"><a href="#2-2-3-参与者分类" class="headerlink" title="2.2.3. 参与者分类"></a>2.2.3. 参与者分类</h3><ul>
+<li>主要业务参与者：主要从<strong>用例的执行中获得好处的</strong>关联人员。</li>
+<li>主要系统参与者：直接<strong>同系统交互以发起或触发业务或系统事件</strong>的关联人员。</li>
+<li>外部服务参与者：<strong>响应来自用例的请求</strong>的关联人员。</li>
+<li>外部接收参与者：从用例中接收<strong>某些价值或输出</strong>的非主要的关联人员。</li>
+</ul>
+<h3 id="2-2-4-参与者的泛化关系"><a href="#2-2-4-参与者的泛化关系" class="headerlink" title="2.2.4.参与者的泛化关系"></a>2.2.4.参与者的泛化关系</h3><p>​        当系统中的几个参与者既扮演自身的角色，同时也有更一般化的角色时，可以通过建立泛化关系来进行描述。</p>
+<p>​        与类相似，父参与者可以是抽象的，即不能创建一个父参与者的直接实例，这就要求属于抽象父参与者的外部对象一定能够属于其子参与者之一。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/actor2.png"></p>
+<h3 id="2-3-用例"><a href="#2-3-用例" class="headerlink" title="2.3.用例"></a><strong>2.3.用例</strong></h3><h3 id="2-3-1-用例的概念"><a href="#2-3-1-用例的概念" class="headerlink" title="2.3.1.用例的概念"></a>2.3.1.用例的概念</h3><p>​        用例是类元提供的一个<strong>内聚的的功能单元</strong>，表明系统与一个或多个参与者之间<strong>信息交换的顺序</strong>，也表明了<strong>系统执行的动作</strong>。</p>
+<p>​        简单来说，用例就是某一个参与者在系统中<strong>做某件事从开始到结束的一系列活动的集合</strong>，以及<strong>结束时应该返回的可观测、有意义的结果</strong>，其中<strong>也包含可能的各种分支情况</strong>。用例与用例图被广泛使用于系统的<strong>需求建模阶段</strong>，<strong>并在系统的整个生命周期中被不断细化</strong>。</p>
+<p>用例表示如下：</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/instance.png"></p>
+<h3 id="2-3-2-用例与参与者的关系"><a href="#2-3-2-用例与参与者的关系" class="headerlink" title="2.3.2.用例与参与者的关系"></a>2.3.2.用例与参与者的关系</h3><p>​        <strong>一个用例可以隶属一个或多个参与者</strong>，<strong>一个参与者也可以参与一个或多个用例</strong>。用例与参与者之间存在关联关系。</p>
+<p>主参与者与次参与者：通常来说主参与者是用例的重要服务对象，而次参与者处于一种协作地位。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/instance_actor.png"></p>
+<h3 id="2-3-4-用例的特征"><a href="#2-3-4-用例的特征" class="headerlink" title="2.3.4.用例的特征"></a>2.3.4.用例的特征</h3><p>用例的特征<strong>保证用例能够正确地捕捉功能性需求</strong>，同时<strong>也是判断用例是否准确的依据</strong>。</p>
+<ol>
+<li>用例是<strong>动宾短语</strong></li>
+<li>用例是<strong>相对独立</strong>的</li>
+<li>用例是****由参与者启动****的</li>
+<li>用例要<strong>有可观测的执行结果</strong></li>
+<li>一个用例是一个单元</li>
+</ol>
+<h2 id="2-4-用例之间的关系"><a href="#2-4-用例之间的关系" class="headerlink" title="2.4.用例之间的关系"></a>2.4.用例之间的关系</h2><p>用例之间的关系有：泛化关系、依赖关系（包含、扩展）</p>
+<h3 id="2-4-1-泛化关系"><a href="#2-4-1-泛化关系" class="headerlink" title="2.4.1.泛化关系"></a>2.4.1.泛化关系</h3><p>​        与参与者的泛化关系相似，<strong>用例的泛化关系将特化的用例与一般化的用例联系起来</strong>。子用例<strong>继承了父用例的属性、操作和行为序列</strong>，并且<strong>可以增加属于自己的附加属性和操作</strong>。父用例同样可以定义为抽象用例。</p>
+<p>用例之间的泛化关系表示为一根实线三角箭头，箭头指向父用例一方。如下图：</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/fanhua.png"></p>
+<h4 id="2-4-2-依赖关系——包含"><a href="#2-4-2-依赖关系——包含" class="headerlink" title="2.4.2.依赖关系——包含"></a><strong>2.4.2.依赖关系——包含</strong></h4><p>​        包含指的是<strong>一个用例（基用例）可以包含其他用例（包含用例）具有的行为</strong>，<strong>其中包含用例中定义的行为将被插入基用例定义的行为中</strong>。</p>
+<p>包含的两个基本约束：</p>
+<ol>
+<li>基用例可以看到包含用例，并需要依赖于包含用例的执行结果，但是<strong>它对包含用例的内部结构没有了解</strong>；</li>
+<li>基用例一定<strong>会要求包含用例执行</strong>。</li>
+</ol>
+<p> 包含表示为一个虚线箭头附加上《include》的构造型，<strong>箭头从基用例指向包含用例</strong>。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/yilai.png"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/yilai2.png"></p>
+<h3 id="2-4-3-依赖关系——扩展"><a href="#2-4-3-依赖关系——扩展" class="headerlink" title="2.4.3.依赖关系——扩展"></a>2.4.3.依赖关系——扩展</h3><p>扩展指的是一个用例（扩展用例）对另一个用例（基用例）<strong>行为的增强</strong>。</p>
+<p>扩展使用一个附加了《enxtend》构造型的虚线箭头表示，<strong>箭头指向基用例</strong>。</p>
+<p>注意：<strong>扩展与包含的箭头方向是相反的</strong>，这表明扩展取决于扩展用例而非基用例，扩展用例决定扩展的执行时机，<strong>基用例对此一无所知</strong>。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/extend_depened.png"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/blog\myblog\source_posts\uml\extend_depened2.png"></p>
+<p>扩展用例的使用包括四个部分：</p>
+<ol>
+<li>基用例：<strong>需要被扩展的用例</strong>，“注册”用例。</li>
+<li>扩展用例：提供所添加的行为序列的用例。</li>
+<li>扩展关系：使用虚线箭头表示，箭头指向基用例。</li>
+<li>扩展点：基用例中的一个或多个位置，表示在该位置会根据某条件来决定是否要中断基用例的执行从而执行扩展用例中的片段。</li>
+</ol>
+<h3 id="2-4-4-包含、扩展的区别"><a href="#2-4-4-包含、扩展的区别" class="headerlink" title="2.4.4.包含、扩展的区别"></a>2.4.4.包含、扩展的区别</h3><p>根本区别，包含是无条件执行，扩展是有条件执行。图的起点不同，终点也不同。</p>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>include</strong></th>
+<th><strong>extend</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>作用</strong></td>
+<td>增强基用例的行为</td>
+<td>增强基用例的行为</td>
+</tr>
+<tr>
+<td><strong>执行过程</strong></td>
+<td>包含用例一定会执行</td>
+<td>扩展用例可能被执行</td>
+</tr>
+<tr>
+<td><strong>对基用例的要求</strong></td>
+<td>在没有包含用例的情况下，基用例可以是也可以不是良构的</td>
+<td>在没有扩展用例的情况下，基用例一定是良构的</td>
+</tr>
+<tr>
+<td><strong>表示法</strong></td>
+<td>箭头指向包含用例</td>
+<td>箭头指向基用例</td>
+</tr>
+<tr>
+<td><strong>基用例对增强行为的可见性</strong></td>
+<td>基用例可以看到包含用例，并决定包含用例的执行</td>
+<td>基用例对扩展用例一无所知</td>
+</tr>
+<tr>
+<td><strong>基用例每执行一次，增强行为的执行次数</strong></td>
+<td>只执行一次</td>
+<td>取决于条件（0到多次）</td>
+</tr>
+</tbody></table>
+<h2 id="2-5-用例描述与文档"><a href="#2-5-用例描述与文档" class="headerlink" title="2.5.用例描述与文档"></a>2.5.用例描述与文档</h2><h3 id="2-5-1用例描述概述"><a href="#2-5-1用例描述概述" class="headerlink" title="2.5.1用例描述概述"></a><strong>2.5.1用例描述概述</strong></h3><p>一个完整的用例模型应该不仅仅包括用例图部分，<strong>还要有完整的用例描述部分</strong>。</p>
+<p>一般的用例描述主要包括以下几部分内容：</p>
+<ol>
+<li>用例名称：描述用例的<strong>意图或实现的目标</strong>，一般为动词或动宾短语。</li>
+<li>用例编号：<strong>用例的唯一标识符</strong>，在其他位置可以使用该标识符来引用用例。</li>
+<li>参与者：描述用例的参与者，包括主要参与者和其他参与者。</li>
+<li>用例描述：对用例的一段<strong>简单的概括描述</strong>。</li>
+<li>触发器：<strong>触发用例执行的一个事件</strong>。</li>
+<li>前置条件：用例<strong>执行前系统状态的约束条件</strong>。</li>
+<li>基本事件流（典型过程）：用例的<strong>常规活动序列</strong>，包括参与者发起的动作与系统执行的响应活动。</li>
+<li>扩展事件流（替代过程）：记录<strong>如果典型过程出现异常或变化时的用例行为</strong>，即典型过程以外的其他活动步骤。</li>
+<li>结论：描述用例何时结束。</li>
+<li>后置条件：用例<strong>执行后系统状态的约束条件</strong>。</li>
+<li>补充约束：用例实现时需要考虑的<strong>业务规则、实现约束</strong>等信息。</li>
+</ol>
+<h3 id="2-5-2-前置条件与后置条件"><a href="#2-5-2-前置条件与后置条件" class="headerlink" title="2.5.2.前置条件与后置条件"></a><strong>2.5.2.前置条件与后置条件</strong></h3><p>前置条件指的是<strong>用例执行前系统和参与者应处于的状态</strong>。前置条件是用例的入口限制，它便于我们在进行系统分析及设计的时候注意到，<strong>在何时何地才可以合法地触发这个事件</strong>。</p>
+<p>后置条件是<strong>用例执行完毕后系统处于的状态</strong>。后置条件是对用例执行完毕后系统状况的总结，用来确保用户理解用例执行完毕后的结果，并非其他用例的触发器。</p>
+<p>前置条件与后置条件分别是用例在开始和结束时的<strong>必要条件</strong>。</p>
+<h3 id="2-5-3-事件流"><a href="#2-5-3-事件流" class="headerlink" title="2.5.3.事件流"></a><strong>2.5.3.事件流</strong></h3><p>事件流是对用例在使用场景下的交互动作的抽象，应该包括用例何时以及怎样开始和结束，用例何时与参与者交互，该行为的基本流和可选择的流。</p>
+<p>基本事件流：描述的是用例中最核心的事件流，<strong>是用例大部分时间所进行的场景</strong>。</p>
+<p>扩展事件流：描述的是用例处理过程中的<strong>一些分支或异常情况</strong>。</p>
+<h3 id="2-5-4-补充约束"><a href="#2-5-4-补充约束" class="headerlink" title="2.5.4.补充约束"></a><strong>2.5.4.补充约束</strong></h3><p>补充约束用来描述用例在<strong>系统功能之外的内容</strong>，例如<strong>非功能需求、业务规则</strong>等等。</p>
+<p><strong>数据需求</strong>：与该用例相关的一些数据项的说明。</p>
+<p><strong>业务规则</strong>：与业务相关的<strong>逻辑和操作规则</strong>。</p>
+<p><strong>非功能性需求</strong>：例如性能、支持的并发量等。</p>
+<p><strong>设计约束</strong>：是从多个角度对用例或系统的约定。</p>
+<p><strong>2.6.用例文档实践</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>用例名称</strong></th>
+<th><strong>提交订单</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>用例编号</strong></td>
+<td>UC002</td>
+</tr>
+<tr>
+<td><strong>参与者</strong></td>
+<td>会员</td>
+</tr>
+<tr>
+<td><strong>用例描述</strong></td>
+<td>该用例描述一个系统会员提交一份订单的行为</td>
+</tr>
+<tr>
+<td><strong>触发器</strong></td>
+<td>当订单被提交时，用例触发。</td>
+</tr>
+<tr>
+<td><strong>前置条件</strong></td>
+<td>提交订单的一方需要完成登录操作</td>
+</tr>
+<tr>
+<td><strong>后置条件</strong></td>
+<td>如果订单中的商品有库存，则发货；否则提示用户当前缺货</td>
+</tr>
+<tr>
+<td><strong>基本事件流</strong></td>
+<td>1 参与者将订单信息提交至系统。 2 系统验证用户信息及订单信息合法后作出响应。 3 对于订单中的每种产品，系统根据订单中的数量检查产品库存数量。 4 系统统计订单中产品的总价格。 5 系统从会员的系统账户余额中扣除相应金额。 6 系统生成并保存订单信息并将订单发送至分销中心。 7 系统生成订单确认页面并发送给会员。</td>
+</tr>
+<tr>
+<td><strong>扩展事件流</strong></td>
+<td>A-2 如果订单信息非法，系统通知会员并提示重新提交订单。 A-3 如果订单中产品数量超过产品库存量，则提示会员库存不足，暂无法购买，取消订单同时终止用例。 A-5 如果会员账户余额不足，系统给出相应提示，取消订单并终止用例。</td>
+</tr>
+<tr>
+<td><strong>结论</strong></td>
+<td>当会员收到系统发送的订单确认页面或其他异常信息时，用例结束。</td>
+</tr>
+<tr>
+<td><strong>数据需求</strong></td>
+<td>D-1 订单信息包括订单号、参与者的会员账户名、商品种类数量、商品种类名称以及每种商品的数量。</td>
+</tr>
+<tr>
+<td><strong>业务规则</strong></td>
+<td>B-1 只有当订单中商品信息确认无误后才能要求会员进行支付。</td>
+</tr>
+</tbody></table>
+<h2 id="2-7-用例图使用要点"><a href="#2-7-用例图使用要点" class="headerlink" title="2.7.用例图使用要点"></a>2.7.用例图使用要点</h2><ol>
+<li>构建结构良好的用例。用例图中应该<strong>只包含对系统而言必不可少的用例与相关的参与者</strong>。</li>
+<li>用例的<strong>名称不应该简化到使读者误解其主要语义的程度</strong>。</li>
+<li>摆放元素时应****尽量减少连接线的交叉****，以提供更好的可视化效果。</li>
+<li>组织元素时应使在语义上接近的用例和参与者在图的位置上也同样接近，便于读者理解用例图。</li>
+<li>可以<strong>使用注解或给元素添加颜色</strong>等方式突出图中相对重要的内容。</li>
+<li>用例图中<strong>不应该有太多的关系种类</strong>。</li>
+</ol>
+<h2 id="2-8-用例图建模技术"><a href="#2-8-用例图建模技术" class="headerlink" title="2.8.用例图建模技术"></a>2.8.用例图建模技术</h2><h3 id="2-8-1-对系统的-语境建模"><a href="#2-8-1-对系统的-语境建模" class="headerlink" title="2.8.1.对系统的*语境建模*"></a><strong>2.8.1.对系统的*<em>语境建模*</em></strong></h3><ul>
+<li>识别系统边界。</li>
+<li>识别参与者。</li>
+<li>如果需要，将具有相同特征的参与者使用泛化关系加以组织。</li>
+<li>如果需要，对某些参与者应用一个构造型以便加深理解。</li>
+<li>将参与者应用到用例图中，并描述参与者与用例间的通信路径。</li>
+</ul>
+<h3 id="2-8-2-对系统的-需求建模"><a href="#2-8-2-对系统的-需求建模" class="headerlink" title="2.8.2.对系统的*需求建模*"></a><strong>2.8.2.对系统的*<em>需求建模*</em></strong></h3><ul>
+<li>识别参与者。</li>
+<li>对于某个参与者，考虑其期望系统提供的行为或与系统的交互。</li>
+<li>将行为提炼成用例。</li>
+<li>完善其他用例。分解用例中的公共行为与扩展行为，放入新的用例中以供其他用例使用。</li>
+<li>创建用例图。</li>
+<li>如果需要，在用例图中添加一些注解或约束来陈述系统的非功能需求。</li>
+</ul>
+<h2 id="2-9-案例——学生选课系统"><a href="#2-9-案例——学生选课系统" class="headerlink" title="2.9.案例——学生选课系统"></a>2.9.案例——学生选课系统</h2><p>某学校的网上选课系统主要包括如下功能：</p>
+<p>管理员通过系统管理界面进入，建立本学期要开的各种课程，将课程信息保存在数据库中并可以对课程进行改动和删除。</p>
+<p>学生通过客户机浏览器根据学号和密码进入选课界面，在这里学生可以进行三种操作：查询已选课程，选课以及付费。</p>
+<p>同样，通过业务层。这些操作结果存入数据库中。</p>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>确定系统边界</li>
+<li>确定参与者（名词）</li>
+<li>确定用例（动宾结构）</li>
+<li>确定关系（联系）</li>
+</ol>
+<p><strong>参与者</strong>：学生、教务人员、数据库</p>
+<p><strong>用例</strong>：选课、查询、支付课时费用、登陆、修改课程、添加课程、删除课程</p>
+<p><strong>关系</strong>：关联关系、泛化关系</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/select_class.png"></p>
+<h1 id="3-类图"><a href="#3-类图" class="headerlink" title="3.类图"></a>3.类图</h1><h2 id="3-1-类图简介"><a href="#3-1-类图简介" class="headerlink" title="3.1.类图简介"></a>3.1.类图简介</h2><p> 类图的定义：是显示一组<strong>类、接口、协作以及它们之间关系</strong>的图。</p>
+<p>类图主要包含<strong>7种元素</strong>：类、接口、协作、依赖关系、泛化关系、实现关系、关联关系。</p>
+<p>类图：包、子系统，用来把模型元素聚集成更大的组块。</p>
+<p>类图：约束、注解</p>
+<p> <img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/class.png"></p>
+<h2 id="3-2-类"><a href="#3-2-类" class="headerlink" title="3.2.类"></a>3.2.类</h2><ol>
+<li>类是一组拥有<strong>相同的属性、操作、方法、关系和行为</strong>的对象地描述符。</li>
+<li>类定义了一组有着<strong>状态与行为的对象</strong>。类的<strong>状态由属性和关联来描述</strong>，个体行为由操作来描述，对象的生命周期则由附加给类的状态机来描述。</li>
+<li>在UML中，类表达成一个有三个分隔区的矩形。其中顶端显示<strong>类名</strong>，中间显示<strong>类的属性</strong>，尾端显示<strong>类的操作</strong>。</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/class2.png"></p>
+<h3 id="3-2-1-类——属性"><a href="#3-2-1-类——属性" class="headerlink" title="3.2.1.类——属性"></a>3.2.1.类——属性</h3><p>可见性：描述了该<strong>属性在那些范围内可以被使用</strong>。</p>
+<table>
+<thead>
+<tr>
+<th><strong>可见性</strong></th>
+<th><strong>英文限定符</strong></th>
+<th><strong>UML****标准图示</strong></th>
+<th><strong>Rose****图示</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>公有</strong></td>
+<td>public</td>
+<td>+</td>
+<td></td>
+<td>其他类可以访问</td>
+</tr>
+<tr>
+<td><strong>私有</strong></td>
+<td>private</td>
+<td>-</td>
+<td></td>
+<td>只对本类可见，不能被其他类访问</td>
+</tr>
+<tr>
+<td><strong>保护</strong></td>
+<td>protected</td>
+<td>#</td>
+<td></td>
+<td>对本类及其派生类可见</td>
+</tr>
+</tbody></table>
+<p>类型：属性的数据类型，可以系统固有，也可以用户自定义。属性的类型决定了该属性的所有可能取值的集合。</p>
+<h3 id="3-2-2-类——操作"><a href="#3-2-2-类——操作" class="headerlink" title="3.2.2.类——操作"></a>3.2.2.类——操作</h3><p>可见性：同样描述该操作在那些范围内可以使用，与属性的可见性相同。</p>
+<p>参数列表：是一些按照顺序排列的属性定义了操作的输入。例如：oper(out arg1:int, arg2:double=3.2)</p>
+<p>返回类型即回送调用对象消息的类型。void关键字表示无返回值。</p>
+<p>特性是对操作性质的约束说明。</p>
+<h3 id="3-2-3-类——职责"><a href="#3-2-3-类——职责" class="headerlink" title="3.2.3.类——职责"></a>3.2.3.类——职责</h3><p><strong>职责是类的契约或责任</strong>。当创建一个类时，就声明了这个类的所有对象具有相同种类的状态和相同种类的行为。在较高的抽象层次上，这些相应的属性和操作正式要完成类的职责的特征。</p>
+<p>类的职责是自由形式的文本，在非正式的类图中，可以将职责列在类图操作下的另一分割栏中。</p>
+<h2 id="3-3-接口"><a href="#3-3-接口" class="headerlink" title="3.3 接口"></a>3.3 接口</h2><ol>
+<li>接口是一个<strong>被命名的操作集合</strong>，用于描述类或组件的一个服务。</li>
+<li>接口<strong>不包含属性与方法实现</strong>，但可以有一些操作。接口的所有内容都是公有的。</li>
+<li>接口代表了一份契约，<strong>实现该接口的类元必须履行它</strong>。</li>
+<li>在UML中，接口由一个带名称的小圆圈表示；<strong>也可以表示为带有&lt;<interface>&gt;构造型的类</interface></strong></li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/observe.png"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/observe2.png"></p>
+<h2 id="3-4-类图中的关系"><a href="#3-4-类图中的关系" class="headerlink" title="3.4.类图中的关系"></a>3.4.类图中的关系</h2><p>UML中最常用的四种关系，即<strong>关联关系、泛化关系、依赖关系和实现关系</strong>。</p>
+<h3 id="3-4-1-类图中的关系——关联关系"><a href="#3-4-1-类图中的关系——关联关系" class="headerlink" title="3.4.1.类图中的关系——关联关系"></a>3.4.1.类图中的关系——关联关系</h3><ol>
+<li>关联的实例被称为链，每个链由一组有序或无序的对象组成。</li>
+<li>关联关系靠近被关联元素的部分称为关联端，关联的大部分描述都包含在一组关联端的列表里，每个端用来描述关联中类的对象的参与</li>
+<li>二元关联、自关联、N元关联。</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/class_relation.png"></p>
+<p><strong>注意要点</strong></p>
+<p><strong>关联名称</strong>：放在关联路径的旁边，但远离关联端。</p>
+<p><strong>角色</strong>：放在靠近关联端的部分，表示该关联端连接的类在这一关联关系中担任的角色。角色名上也可使用可见性修饰符号。</p>
+<p><strong>多重性</strong>：放在靠近关联端的部分，表示在关联关系中源端的一个对象可以与目标类的多少个对象之间有关联。</p>
+<p><strong>导航性</strong>：一个布尔值，用来说明运行时刻是否可能穿越一个关联。</p>
+<p><strong>限定符</strong>：是二元关联上的属性组成的列表的插槽，其中的属性值用来从整个对象集合里选择一个唯一的关联对象或者关联对象的集合。</p>
+<p>约束：关联间的约束关系。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/array.png"></p>
+<p><strong>现实例子</strong></p>
+<p>比如客户和订单，每个订单对应特定的客户，每个客户对应一些特定的订单；再例如公司和员工，每个公司对应一些特定的员工，每个员工对应一特定的公司。（表示有关联，也可以表示多重性）</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/company.png"></p>
+<p><strong>派生关联</strong>：属于一种派生元素。它不增加语义信息，只是一种可以由<strong>两个或两个以上的基础关联推算出来的虚拟关联</strong>。 </p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/company2.png"></p>
+<p> 两种特殊的关联关系：<strong>聚合关系</strong>与<strong>组合关系</strong></p>
+<p>1.<strong>聚合关系</strong>：描述“<strong>整体-部分</strong>”的关联关系</p>
+<p>聚合关系没有改变整体与部分之间整个关联的导航含义，也与整体和部分的生命周期无关。（部分与整体相互独立）</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/jvhe.png"></p>
+<p> 2.<strong>组合关系</strong>：描述“整体-部分”的关联关系</p>
+<p>组合关系中的<strong>部分要完全依赖于整体</strong>。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/merge.png"></p>
+<p><strong>关联与聚合的区别</strong></p>
+<ol>
+<li><strong>关联关系</strong>所涉及的<strong>两个对象是处在同一个层次上的</strong>。比如人和自行车就是一种关联关系，而不是聚合关系，因为人不是由自行车组成的。<strong>聚合关系</strong>涉及的<strong>两个对象处于不平等的层次上，一个代表整体，一个代表部分</strong>。比如:电脑和它的显示器、键盘、主板以及内存就是聚集关系，因为主板是电脑的组成部分。</li>
+<li>对于具有<strong>聚集关系（尤其是强聚集关系）的两个对象</strong>，整体对象会制约它的组成对象的生命周期。部分类的对象不能单独存在，它的生命周期依赖于整体类的对象的生命周期，当整体消失，部分也就随之消失。比如张三的电脑被偷了，那么电脑的所有组件也不存在了，除非张三事先把一些电脑的组件（比如硬盘和内存）拆了下来。</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/jvji.png"></p>
+<p><strong>聚合与组合的区别</strong></p>
+<p>聚合关系：<strong>涉及的两个对象处于不平等的层次</strong>上，一个代表整体，一个代表部分。比如:电脑和它的显示器、键盘、主板以及内存就是聚集关系，因为主板是电脑的组成部分。</p>
+<p>组合关系：<strong>代表整体的对象负责代表部分对象的生命周期</strong>。公司不存在，部门也没有意义了。再例如：人和五脏六腑、四肢的关系。</p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/zehe2.png"></p>
+<h3 id="3-4-2-类图中的关系——泛化关系"><a href="#3-4-2-类图中的关系——泛化关系" class="headerlink" title="3.4.2.类图中的关系——泛化关系"></a>3.4.2.类图中的关系——泛化关系</h3><p><strong>泛化关系</strong>定义为一个较普通的元素与一个较特殊的元素之间的类元关系。其中描述一般的元素称为父，描述特殊的元素称为子。（<strong>子类是父类的继承，则父类就是子类的泛化。</strong>）</p>
+<p>通过泛化对应的继承机制使<strong>子类共享父类的属性和操作</strong>，小了模型的规模，同时也防止了模型的更新所导致的定义不一致的意外。</p>
+<p><strong>泛化关系的特征</strong>：</p>
+<ol>
+<li><strong>传递性</strong>：一个类子类的子类同样继承了这个类的特性。在父方向上经过了一个或几个泛化的元素被称为祖先，在子方向上则被称为后代。</li>
+<li><strong>反对称性</strong>：<strong>泛化关系不能成环</strong>，即一个类不可能是自己的祖先和自己的后代。</li>
+</ol>
+<p><strong>泛化关系的两种情况</strong></p>
+<ol>
+<li>单继承：每个类之多能拥有一个父类。编程语言：C#、Java等</li>
+<li><strong>多重继承</strong>：子类可以有多个父类并继承了所有父类的结构、行为和约束。编程语言：C++等</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/jicheng.png"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/blog\myblog\source_posts\uml\jicheng2.png"></p>
+<h3 id="3-4-3-类图中的关系——依赖关系"><a href="#3-4-3-类图中的关系——依赖关系" class="headerlink" title="3.4.3.类图中的关系——依赖关系"></a>3.4.3.类图中的关系——依赖关系</h3><p>依赖关系表示的是<strong>两个元素之间语义上的连接关系</strong>。对于两个元素X和Y，<strong>如果元素X的变化会引起对另一个元素Y的变化</strong>，则称元素Y依赖于X。其中，X被称为提供者，Y被称为客户。</p>
+<p><strong>现实例子</strong>：</p>
+<p>比如说你要去拧螺丝，你是不是要借助(也就是<strong>依赖)螺丝刀</strong>(Screwdriver)来帮助你完成拧螺丝(screw)的工作。</p>
+<p>对于类图而言，主要有以下<strong>需要使用依赖的情况</strong>：</p>
+<ol>
+<li>客户类向提供者类发送消息。</li>
+<li>提供者类是客户类的属性类型。</li>
+<li>提供者类是客户类操作的参数类型。</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/yilai3.png"></p>
+<h3 id="3-4-4-类图中的关系——实现关系"><a href="#3-4-4-类图中的关系——实现关系" class="headerlink" title="3.4.4.类图中的关系——实现关系"></a>3.4.4.类图中的关系——实现关系</h3><p>实现关系用来表示规格说明与实现之间的关系。在类图中，实现关系主要用于<strong>接口与实现该接口的类之间</strong>。</p>
+<p><strong>一个类可以实现多个接口，一个接口也可以被多个类实现</strong>。</p>
+<p>实现关系的两种表示法：</p>
+<ol>
+<li>当接口元素<strong>以带构造型的类的方式表示时</strong>，<strong>用虚线三角形箭头表示</strong>。</li>
+<li>当接口元素以小圆圈方式表示时，用实线表示。</li>
+</ol>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/shixan.png"></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/blog\myblog\source_posts\uml\shixian2.png"></p>
+<p> <strong>3.5.综合例子</strong></p>
+<p><img src="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/total.png"></p>
+<p>参考资料</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">qqmo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://moomq.github.io/2022/06/12/tong-yi-jian-mo-yu-yan-uml/">http://moomq.github.io/2022/06/12/tong-yi-jian-mo-yu-yan-uml/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">qqmo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/UML/">
+                                    <span class="chip bg-color">UML</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechatpay.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/06/12/tong-yi-jian-mo-yu-yan-uml/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/55.png" class="responsive-img" alt="UML讲解">
+                        
+                        <span class="card-title">UML讲解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/UML/">
+                        <span class="chip bg-color">UML</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/05/22/ubuntu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/43.png" class="responsive-img" alt="ubuntu">
+                        
+                        <span class="card-title">ubuntu</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    编程笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ubuntu/">
+                        <span class="chip bg-color">ubuntu</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2022</span>
+            
+            <a href="/about" target="_blank">qqmo</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">56.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2021";
+                        var startMonth = "4";
+                        var startDate = "22";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/moomq" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1228819490@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1228819490" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1228819490" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
