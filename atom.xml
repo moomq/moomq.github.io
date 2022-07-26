@@ -6,7 +6,7 @@
   <link href="http://moomq.github.io/atom.xml" rel="self"/>
   
   <link href="http://moomq.github.io/"/>
-  <updated>2022-06-12T15:34:31.373Z</updated>
+  <updated>2022-07-26T15:01:17.788Z</updated>
   <id>http://moomq.github.io/</id>
   
   <author>
@@ -15,6 +15,82 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gdb调试</title>
+    <link href="http://moomq.github.io/2022/07/26/gdb/"/>
+    <id>http://moomq.github.io/2022/07/26/gdb/</id>
+    <published>2022-07-26T13:50:29.000Z</published>
+    <updated>2022-07-26T15:01:17.788Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;gdb&quot;&gt;&lt;a href=&quot;#gdb&quot; class=&quot;headerlink&quot; title=&quot;gdb&quot;&gt;&lt;/a&gt;gdb&lt;/h2&gt;&lt;h3 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="gdb" scheme="http://moomq.github.io/tags/gdb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>dmalloc</title>
+    <link href="http://moomq.github.io/2022/07/25/dmalloc/"/>
+    <id>http://moomq.github.io/2022/07/25/dmalloc/</id>
+    <published>2022-07-25T07:51:20.000Z</published>
+    <updated>2022-07-26T13:40:54.802Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;代码检视&quot;&gt;&lt;a href=&quot;#代码检视&quot; class=&quot;headerlink&quot; title=&quot;代码检视&quot;&gt;&lt;/a&gt;代码检视&lt;/h2&gt;&lt;p&gt;当设备频繁出现崩溃 挂上coredump后发现每次崩溃产生的core文件都不同</summary>
+        
+      
+    
+    
+    
+    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="code" scheme="http://moomq.github.io/tags/code/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生化分析仪</title>
+    <link href="http://moomq.github.io/2022/07/25/sheng-hua-fen-xi-yi/"/>
+    <id>http://moomq.github.io/2022/07/25/sheng-hua-fen-xi-yi/</id>
+    <published>2022-07-25T00:44:00.000Z</published>
+    <updated>2022-07-25T02:30:57.659Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;生化分析仪&quot;&gt;&lt;a href=&quot;#生化分析仪&quot; class=&quot;headerlink&quot; title=&quot;生化分析仪&quot;&gt;&lt;/a&gt;生化分析仪&lt;/h2&gt;&lt;h3 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1</summary>
+        
+      
+    
+    
+    
+    <category term="仪器知识" scheme="http://moomq.github.io/categories/%E4%BB%AA%E5%99%A8%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="仪器" scheme="http://moomq.github.io/tags/%E4%BB%AA%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>UML讲解</title>
@@ -452,81 +528,6 @@
     <category term="gcc" scheme="http://moomq.github.io/tags/gcc/"/>
     
     <category term="编译" scheme="http://moomq.github.io/tags/%E7%BC%96%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>doxygen教程</title>
-    <link href="http://moomq.github.io/2022/04/09/doxygen-jiao-cheng/"/>
-    <id>http://moomq.github.io/2022/04/09/doxygen-jiao-cheng/</id>
-    <published>2022-04-09T05:50:20.000Z</published>
-    <updated>2022-04-29T07:18:14.425Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;doxygen教程&quot;&gt;&lt;a href=&quot;#doxygen教程&quot; class=&quot;headerlink&quot; title=&quot;doxygen教程&quot;&gt;&lt;/a&gt;doxygen教程&lt;/h1&gt;&lt;h2 id=&quot;一．什么是Doxygen&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="doxygen" scheme="http://moomq.github.io/tags/doxygen/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CMakeLists语法</title>
-    <link href="http://moomq.github.io/2022/04/08/cmakelists-yu-fa/"/>
-    <id>http://moomq.github.io/2022/04/08/cmakelists-yu-fa/</id>
-    <published>2022-04-08T02:42:52.000Z</published>
-    <updated>2022-04-28T07:46:43.370Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;CMakeLists-txt-语法&quot;&gt;&lt;a href=&quot;#CMakeLists-txt-语法&quot; class=&quot;headerlink&quot; title=&quot;CMakeLists.txt 语法&quot;&gt;&lt;/a&gt;CMakeLists.txt 语法&lt;/h1&gt;&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="cmake" scheme="http://moomq.github.io/tags/cmake/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Base64的编码原理</title>
-    <link href="http://moomq.github.io/2022/04/07/base64-de-bian-ma-yuan-li/"/>
-    <id>http://moomq.github.io/2022/04/07/base64-de-bian-ma-yuan-li/</id>
-    <published>2022-04-07T05:39:40.000Z</published>
-    <updated>2022-04-29T01:21:25.019Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Base64的编码原理&quot;&gt;&lt;a href=&quot;#Base64的编码原理&quot; class=&quot;headerlink&quot; title=&quot;Base64的编码原理&quot;&gt;&lt;/a&gt;&lt;strong&gt;Base64的编码原理&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;一、原理&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="编程笔记" scheme="http://moomq.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Base64" scheme="http://moomq.github.io/tags/Base64/"/>
     
   </entry>
   
