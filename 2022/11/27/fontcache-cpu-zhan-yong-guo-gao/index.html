@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="gdb调试, qqmo">
-    <meta name="description" content="gdb1.简介GDB（GNU Debugger）是GCC的调试工具。其功能强大，现描述如下：
-   GDB主要帮忙你完成下面四个方面的功能：
-   1.启动你的程序，可以按照你的自定义的要求随心所欲的运行程序。
-   2.可让被调试的程序在">
+    <meta name="keywords" content="FontCache CPU占用过高, qqmo">
+    <meta name="description" content="FontCache CPU占用过高
+1.delete FontCache3.0.0.0.dat
+1.delete C:\Windows\ServiceProfiles\LocalService\AppData\Local\FontCache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +21,7 @@
 
     
 
-    <title>gdb调试 | qqmo&#39;s blog</title>
+    <title>FontCache CPU占用过高 | qqmo&#39;s blog</title>
     <link rel="icon" type="image/png" href="/medias/featureimages/26.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -315,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/46.svg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/35.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">gdb调试</h1>
+                    <h1 class="description center-align post-title">FontCache CPU占用过高</h1>
                 </div>
             </div>
         </div>
@@ -436,8 +435,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/gdb/">
-                                <span class="chip bg-color">gdb</span>
+                            <a href="/tags/CPU/">
+                                <span class="chip bg-color">CPU</span>
                             </a>
                         
                     </div>
@@ -448,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                编程笔记
+                            <a href="/categories/computer/" class="post-category">
+                                computer
                             </a>
                         
                     </div>
@@ -461,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-26
+                    2022-11-27
                 </div>
                 
 
@@ -470,14 +469,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    812
+                    77
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -500,60 +499,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h3><p>GDB（GNU Debugger）是GCC的调试工具。其功能强大，现描述如下：</p>
-<p>   GDB主要帮忙你完成下面四个方面的功能：</p>
-<p>   1.启动你的程序，可以按照你的自定义的要求随心所欲的运行程序。</p>
-<p>   2.可让被调试的程序在你所指定的设置的断点处停住。（断点可以是条件表达式）</p>
-<p>   3.当程序被停住时，可以检查此时你的程序中所发生的事。</p>
-<p>   4.动态的改变你程序的执行环境。</p>
-<h3 id="2-常用指令"><a href="#2-常用指令" class="headerlink" title="2.常用指令"></a>2.常用指令</h3><pre class="line-numbers language-none"><code class="language-none">$ set args           #指定运行时参数，如：set args 10 20 30 40 50
-$ show args          #查看设置好的运行参数
-$ gdb appName        #进入调试模式
-(gdb) file fileName #指定调试文件
-(gdb) q             #退出调试模式quit
-(gdb) start         #开始调试，停在第一行代码处
-(gdb) r             #run,若没有下过断点，则执行完整个程序；否则程序暂停在下一个可用断点处
-(gdb) s             #单步执行step,进入函数内部
-(gdb) n             #执行单步调试next，不会进入函数内部
-(gdb) ni            #汇编单步执行，不会进入函数内部
-(gdb) si            #汇编单步执行，会进入函数内部
-(gdb) l             #列出所有源代码list
-(gdb) b main        #在main函数处打断点break
-(gdb) b 10          #在第10行位置打断点
-(gdb) b test:10     #在test文件的第10行位置打断点
-(gdb) b 0x3400a     #在0x3400a内存位置打断点
-(gdb) b 10 if i==3  #设置条件断点，i等于3时在第十行位置打断点，适用于循环
-(gdb) d 3           #delete编号为3的断点，清除时GDB不会给出任何提示
-(gdb) clear 3       #清除第3行的断点，清除时GDB会给出提示
-(gdb) disable 3,4   #冻结编号为3和4的断点 多个断点使用逗号分隔
-(gdb) enable 3,4    #启动编号为3和4的断点 多个断点使用逗号分隔
-(gdb) info break    #查看断点信息
-(gdb) tbreak 行号/函数名 #设置临时断点，到达后被自动删除
-(gdb) awatch/watch a   #当变量a被读出或写入时程序被暂停
-(gdb) rwatch a         #当变量a被读出时程序被暂停
-(gdb) c             #运行到断点处continue
-(gdb) p a           #print打印变量a的值
-(gdb) x /6cb 0x804835c #打印地址0x804835c起始的内存内容，连续6个字节，以字符格式输出
-(gdb) call fun      #在当前位置执行函数fun
-(gdb) display a     #设置需要跟踪的变量a 每次断点到该处就显示该变量的值
-(gdb) info display  #显示当前所有跟踪的情况
-(gdb) undisplay 3   #取消对编号为3的跟踪事件
-(gdb) set i=3       #临时设置变量i的值为3
-(gdb) show i        #使用 show 指令查看运行时参数
-(gdb) finish        #退出进入的函数
-(gdb) help print    #查看print指令的解释说明
-(gdb) help          #查看所有指令
-(gdb) info reg      #查看寄存器状态
-(gdb) info stack    #查看堆栈状态
-(gdb) shell ls      #运行shell指令ls
-(gdb) path          #可设定程序的运行路径
-(gdb) show paths    #查看程序的运行路径
-(gdb) cd            #相当于shell的cd命令。
-(gdb) pwd  　       #显示当前的所在目录
-(gdb) 回车          #重复上一条指令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>FontCache CPU占用过高</p>
+<p>1.delete FontCache3.0.0.0.dat</p>
+<pre class="line-numbers language-none"><code class="language-none">1.delete C:\Windows\ServiceProfiles\LocalService\AppData\Local\FontCache3.0.0.0.dat
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-
+<p>2.stop windows presentation Foundation font cache service</p>
+<p>1.打开服务窗口（运行services.msc）</p>
+<p>2.look for windows presentation Foundation font cache 3.0.0.0</p>
+<p>3.Right-click on the service,set the startup type to disable, and click stop.</p>
+<p>4.click apply &gt; ok.</p>
 
                 
             </div>
@@ -580,7 +535,7 @@ $ gdb appName        #进入调试模式
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://moomq.github.io/2022/07/26/gdb/">http://moomq.github.io/2022/07/26/gdb/</a>
+                    <a href="http://moomq.github.io/2022/11/27/fontcache-cpu-zhan-yong-guo-gao/">http://moomq.github.io/2022/11/27/fontcache-cpu-zhan-yong-guo-gao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -618,8 +573,8 @@ $ gdb appName        #进入调试模式
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/gdb/">
-                                    <span class="chip bg-color">gdb</span>
+                                <a href="/tags/CPU/">
+                                    <span class="chip bg-color">CPU</span>
                                 </a>
                             
                         </div>
@@ -798,7 +753,57 @@ $ gdb appName        #进入调试模式
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/07/26/gdb/">
+                <a href="/2022/11/27/fontcache-cpu-zhan-yong-guo-gao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/35.jpg" class="responsive-img" alt="FontCache CPU占用过高">
+                        
+                        <span class="card-title">FontCache CPU占用过高</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/computer/" class="post-category">
+                                    computer
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CPU/">
+                        <span class="chip bg-color">CPU</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/26/gdb-diao-shi/">
                     <div class="card-image">
                         
                         
@@ -829,61 +834,11 @@ $ gdb appName        #进入调试模式
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/gdb/">
                         <span class="chip bg-color">gdb</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/07/25/dmalloc/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/51.jpg" class="responsive-img" alt="dmalloc">
-                        
-                        <span class="card-title">dmalloc</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    编程笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/code/">
-                        <span class="chip bg-color">code</span>
                     </a>
                     
                 </div>
@@ -1074,7 +1029,7 @@ $ gdb appName        #进入调试模式
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">64.1k</span>
+                        class="white-color">64.8k</span>
             
             
             
