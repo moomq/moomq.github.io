@@ -4,6 +4,63 @@
   
     
     <entry>
+      <title>conan</title>
+      <link href="/2023/01/01/conan/"/>
+      <url>/2023/01/01/conan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="conan"><a href="#conan" class="headerlink" title="conan"></a>conan</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>​    Conan 是 C 和 C++ 语言的依赖项和包管理器。它是<a href="https://github.com/conan-io/conan">免费和开源的</a>，适用于所有平台（Windows、Linux、OSX、FreeBSD、Solaris 等），可用于为所有目标开发，包括嵌入式、移动（iOS、Android）和裸机。它还集成了所有构建系统，如 CMake、Visual Studio (MSBuild)、Makefiles、SCons 等，包括专有系统。</p><p>​    它专为加速 C 和 C++ 项目的开发和持续集成而设计和优化。通过完整的二进制管理，它可以为任意数量的包的不同版本创建和重用任意数量的不同二进制文件（针对不同的配置，如体系结构、编译器版本等），在所有平台上使用完全相同的过程。由于它是去中心化的，因此很容易运行您自己的服务器来私下托管您自己的包和二进制文件，而无需共享它们。免费的<a href="https://conan.io/downloads.html">JFrog Artifactory Community Edition (CE)</a>是推荐的 Conan 服务器，用于在您的控制下私下托管您自己的包。</p><p>​    Conan 成熟稳定，坚定地致力于向前兼容（非破坏性政策），并拥有一个完整的团队全职致力于其改进和支持。<a href="https://conan.io/center">它得到了一个伟大社区的支持和使用，从ConanCenter</a>的开源贡献者和包创建者到成千上万使用它的团队和公司。</p><p>​    Conan 是免费和开源的，具有宽松的麻省理工学院许可证。<a href="https://github.com/conan-io/conan">在https://github.com/conan-io/conan</a>查看源代码和问题跟踪（用于问题和支持、报告错误以及建议功能请求和改进）</p><h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h2><p>​        Conan可以安装在许多操作系统中。它已在 Windows、Linux（不同的发行版）、OSX 中得到广泛使用和测试，并且还在 FreeBSD 和 Solaris SunOS 中得到积极使用。据报道，它还可以在其他几个操作系统上运行。Conan的安装方式有以下三种：</p><ol><li>安装 Conan的首选且<strong>强烈推荐的方法</strong>是使用命令从 PyPI（Python 包索引）中安装<code>pip</code>。</li><li>对于不同的系统还有其他可用的安装程序，它们可能带有捆绑的 python 解释器，因此您不必先安装 python。请注意，其中一些<strong>安装程序可能有一些限制</strong>，尤其是使用 pyinstaller 创建的安装程序（例如 Windows exe 和 Linux deb）。</li><li>从源代码运行柯南。</li></ol><p>使用pip安装conan</p><pre class="line-numbers language-none"><code class="language-none">$ pip install conan<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>确保您的<strong>pip</strong>安装与您的<strong>Python&gt;=3.6</strong>版本匹配。较低的 Python 版本将不起作用。</li><li>在<strong>Linux</strong>中，您可能需要<strong>sudo</strong>权限才能全局安装柯南。</li><li>我们强烈建议对与 Python 相关的所有内容使用<strong>virtualenvs</strong>（virtualenvwrapper 效果很好）。</li><li>在<strong>OSX</strong>中，尤其是可能具有<strong>System Integrity Protection</strong>的最新版本中，pip 可能会失败。尝试使用 virtualenvs，或使用其他用户安装。<code>$ pip install --user conan</code></li><li>一些 Linux 发行版，例如 Linux Mint，安装后需要重启（shell 重启，或者 logout/system 不够用），所以在路径中找到了 Conan。</li></ul><p>pip 的已知安装问题</p><p><strong>当使用pip install –user <username> 安装</username></strong>Conan 时，通常会为其创建一个新目录。但是，该目录不会自动附加到PATH并且<strong>conan</strong>命令不起作用。这通常可以通过重新启动终端会话或运行以下命令来解决：</p><pre class="line-numbers language-none"><code class="language-none">$ source ~/.profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> build </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C_C++环境搭建</title>
+      <link href="/2022/12/24/c-c-huan-jing-da-jian/"/>
+      <url>/2022/12/24/c-c-huan-jing-da-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-C-环境搭建"><a href="#C-C-环境搭建" class="headerlink" title="C_C++环境搭建"></a>C_C++环境搭建</h1><h2 id="1、Visual-Studio-Code"><a href="#1、Visual-Studio-Code" class="headerlink" title="1、Visual Studio Code"></a>1、Visual Studio Code</h2><p>1.1 下载安装</p><pre class="line-numbers language-none"><code class="language-none">https://marketplace.visualstudio.com/vscode<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="2、Clion"><a href="#2、Clion" class="headerlink" title="2、Clion"></a>2、Clion</h2><h2 id="3、Visual-Studio-2019"><a href="#3、Visual-Studio-2019" class="headerlink" title="3、Visual Studio 2019"></a>3、Visual Studio 2019</h2><h2 id="4、Cmake-notepad"><a href="#4、Cmake-notepad" class="headerlink" title="4、Cmake + notepad"></a>4、Cmake + notepad</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> template </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2022/12/24/template/"/>
+      <url>/2022/12/24/template/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> template </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>FontCache CPU占用过高</title>
       <link href="/2022/11/27/fontcache-cpu-zhan-yong-guo-gao/"/>
       <url>/2022/11/27/fontcache-cpu-zhan-yong-guo-gao/</url>
@@ -133,7 +190,7 @@
       <link href="/2022/05/22/ubuntu/"/>
       <url>/2022/05/22/ubuntu/</url>
       
-        <content type="html"><![CDATA[<p>ubuntu</p><p>sudo apt install gedit</p><p>sudo apt update</p><p>sudo apt upgrade</p><p>sudo apt-get remove softname1</p><p>1、sudo apt-get remove &amp;&amp; sudo apt-get autoremove<br> 2、dpkg –list //列出已安装的软件<br> 3、sudo apt-get remove virtualbox &amp;&amp; sudo apt-get autoremove</p><p>sudo apt-get purge命令，与上面的命令不同的是，卸载已安装的软件并删除卸载软件的配置文件。</p><p><strong>wget <a href="http://ftp.gnu.org/gnu/gdb/gdb-7.10.1.tar.gz">http://ftp.gnu.org/gnu/gdb/gdb-7.10.1.tar.gz</a></strong></p><p>sudo add-apt-repository ppa:jonathonf/gcc-7.1<br>sudo apt-get update<br>sudo apt-get install gcc-7 g++-7<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-7 60 –slave /usr/bin/g++ g++ /usr/bin/g++-7</p><p>sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa<br>sudo apt update<br>sudo apt install gcc-10 g++-10<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-10 60 –slave /usr/bin/g++ g++ /usr/bin/g++-10</p><p>sudo apt-get install gdb</p><pre class="line-numbers language-none"><code class="language-none">apt-cache search 软件包名 # 查找软件包apt-cache show 软件包名 # 显示软件包的详细信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装protobuf</p><pre class="line-numbers language-none"><code class="language-none">sudo apt-get install autoconf automake libtool curl make g++ unzipgit clone https://github.com/google/protobuf.gitcd protobufgit submodule update --init --recursive  # 可能会失败，最好网络代理./autogen.sh./configuremake -j8make checksudo make installsudo ldconfig # refresh shared library cache.protoc --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装CMake</p><pre class="line-numbers language-none"><code class="language-none">#前提必须安装OpenSSLgit clone https://github.com/openssl/openssl.gitcd openssl./config        # --prefix=/usr/local --openssldir=/usr/local/opensslmake -j8sudo make install# 安装cmakegit clone https://github.com/Kitware/CMake.gitcd CMake./bootstrapmake -j8sudo make installcmake --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>ubuntu</p><p>sudo apt install gedit</p><p>sudo apt update</p><p>sudo apt upgrade</p><p>sudo apt-get remove softname1</p><p>1、sudo apt-get remove &amp;&amp; sudo apt-get autoremove<br> 2、dpkg –list //列出已安装的软件<br> 3、sudo apt-get remove virtualbox &amp;&amp; sudo apt-get autoremove</p><p>sudo apt-get purge命令，与上面的命令不同的是，卸载已安装的软件并删除卸载软件的配置文件。</p><p><strong>wget <a href="http://ftp.gnu.org/gnu/gdb/gdb-7.10.1.tar.gz">http://ftp.gnu.org/gnu/gdb/gdb-7.10.1.tar.gz</a></strong></p><p>sudo add-apt-repository ppa:jonathonf/gcc-7.1<br>sudo apt-get update<br>sudo apt-get install gcc-7 g++-7<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-7 60 –slave /usr/bin/g++ g++ /usr/bin/g++-7</p><p>sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa<br>sudo apt update<br>sudo apt install gcc-10 g++-10<br>sudo update-alternatives –install /usr/bin/gcc gcc /usr/bin/gcc-10 60 –slave /usr/bin/g++ g++ /usr/bin/g++-10</p><p>sudo apt-get install gdb</p><pre class="line-numbers language-none"><code class="language-none">apt-cache search 软件包名 # 查找软件包apt-cache show 软件包名 # 显示软件包的详细信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>安装protobuf</p><pre class="line-numbers language-none"><code class="language-none">sudo apt-get install autoconf automake libtool curl make g++ unzipgit clone https://github.com/google/protobuf.gitcd protobufgit submodule update --init --recursive  # 可能会失败，最好网络代理./autogen.sh./configuremake -j8make checksudo make installsudo ldconfig # refresh shared library cache.protoc --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>安装CMake</p><pre class="line-numbers language-none"><code class="language-none">#前提必须安装OpenSSLgit clone https://github.com/openssl/openssl.gitcd openssl./config        # --prefix=/usr/local --openssldir=/usr/local/opensslmake -j8sudo make install# 安装cmakegit clone https://github.com/Kitware/CMake.gitcd CMake./bootstrapmake -j8sudo make installcmake --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Windows-下映射-WSL-系统文件为磁盘"><a href="#Windows-下映射-WSL-系统文件为磁盘" class="headerlink" title="Windows 下映射 WSL 系统文件为磁盘"></a>Windows 下映射 WSL 系统文件为磁盘</h3><pre class="line-numbers language-none"><code class="language-none">//方法一，映射为本地磁盘subst Z: C:\Users\moomq\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\rootfs//方法二，映射为网络驱动器\\wsl$\Ubuntu-20.04<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
